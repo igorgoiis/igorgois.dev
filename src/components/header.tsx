@@ -46,8 +46,8 @@ export function Header() {
 
   return (
     <>
-      <header className={`site-header fixed inset-x-0 top-0 z-[70] ${scrolled && !open ? "is-glass" : ""}`}>
-        <div className="mx-auto flex w-full max-w-[1680px] items-center justify-between px-5 py-4 md:px-8">
+      <header className={`site-header fixed inset-x-0 top-3 z-[70] px-3 md:top-4 md:px-5 ${scrolled && !open ? "is-scrolled" : ""}`}>
+        <div className="site-bar mx-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-full px-4 py-2 md:px-5">
           <a href={`${base}#top`} data-transition={site.name} className="flex items-center gap-3 text-foreground no-underline" aria-label={site.name}>
             <Logo className="h-[22px] w-auto" />
             <span className="mono-label hidden sm:inline">{site.domain}</span>
