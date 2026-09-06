@@ -1,7 +1,8 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { usePageTransition } from "./page-transition";
 import { routing, type Locale } from "@/i18n/routing";
 
 const LABEL: Record<Locale, string> = { pt: "PT", en: "EN", es: "ES" };
@@ -10,7 +11,7 @@ const NAME: Record<Locale, string> = { pt: "Português", en: "English", es: "Esp
 export function LocaleSwitch() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
-  const router = useRouter();
+  const { navigate } = usePageTransition();
   const t = useTranslations("Header");
 
   return (
@@ -24,7 +25,7 @@ export function LocaleSwitch() {
             aria-pressed={active}
             aria-label={active ? NAME[l] : t("switchTo", { locale: NAME[l] })}
             onClick={() => {
-              if (!active) router.replace(pathname, { locale: l, scroll: false });
+              if (!active) navigate(`/${l}${pathname === "/" ? "" : pathname}`, LABEL[l], true);
             }}
             className={`rounded-full px-3 py-1 font-mono text-[11px] tracking-wider transition-all ${
               active ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"

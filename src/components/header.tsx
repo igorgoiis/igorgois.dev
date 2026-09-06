@@ -38,7 +38,7 @@ export function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-[70]">
         <div className="mx-auto flex w-full max-w-[1680px] items-center justify-between px-5 py-4 md:px-8">
-          <a href={`${base}#top`} className="flex items-baseline gap-3 no-underline" aria-label={site.name}>
+          <a href={`${base}#top`} data-transition={site.name} className="flex items-baseline gap-3 no-underline" aria-label={site.name}>
             <span className="display text-base font-bold tracking-tight">{site.name}</span>
             <span className="mono-label hidden sm:inline">{site.domain}</span>
           </a>
@@ -84,7 +84,7 @@ export function Header() {
             {site.location.city}, {site.location.country[locale]} · {site.location.utc}
           </span>
           <div className="flex items-center gap-5">
-            <a href={`${base}/cv`} onClick={() => setOpen(false)} className="hover:text-foreground">
+            <a href={`${base}/cv`} data-transition="CV" onClick={() => setOpen(false)} className="hover:text-foreground">
               {t("cv")}
             </a>
             <a href={site.links.github} target="_blank" rel="noopener" className="inline-flex items-center gap-1.5 hover:text-foreground">

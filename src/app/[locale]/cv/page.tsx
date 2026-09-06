@@ -37,7 +37,7 @@ export default async function CvPage({ params }: { params: Promise<{ locale: str
       <main className="cv-page px-5 pb-16 pt-28 md:px-8">
         <div className="mx-auto max-w-3xl">
           <div className="no-print mb-6 flex flex-wrap items-center justify-between gap-3">
-            <a href={`/${locale}`} className="hero-cta">
+            <a href={`/${locale}`} className="hero-cta" data-transition={site.name}>
               <ArrowRightIcon className="h-3.5 w-3.5 rotate-180" />
               {c.ui.back}
             </a>

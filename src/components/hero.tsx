@@ -43,7 +43,7 @@ export function Hero() {
             {t("ctaContact")}
             <ArrowRightIcon className="h-3.5 w-3.5" />
           </a>
-          <a href={`/${locale}/cv`} className="hero-cta">
+          <a href={`/${locale}/cv`} className="hero-cta" data-transition="CV">
             {t("ctaCv")}
             <ArrowRightIcon className="h-3.5 w-3.5 -rotate-45" />
           </a>

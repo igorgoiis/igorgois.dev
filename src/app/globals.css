@@ -1047,3 +1047,113 @@ html.lenis body {
     text-decoration: none;
   }
 }
+
+/* ---------- Transição de página ---------- */
+
+.pt {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+}
+.pt[data-state="cover"] {
+  pointer-events: auto;
+}
+.pt__panel {
+  position: absolute;
+  inset: -2% 0;
+  transform: translateY(102%);
+  will-change: transform;
+}
+.js .pt__panel--ink {
+  /* primeira carga começa coberta, para o loader */
+  transform: translateY(0);
+}
+.pt__panel--primary {
+  background: linear-gradient(120deg, var(--brand-from), var(--brand-via), var(--brand-to));
+}
+.pt__panel--ink {
+  background: var(--foreground);
+  color: var(--background);
+  display: grid;
+  place-items: center;
+  place-content: center;
+  gap: 1rem;
+}
+.pt__label {
+  display: inline-flex;
+  overflow: hidden;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: clamp(28px, 6vw, 72px);
+  line-height: 1.1;
+}
+.pt__label > span {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.6s var(--ease), opacity 0.4s;
+}
+.pt[data-state="cover"] .pt__label > span,
+.pt[data-state="reveal"] .pt__label > span {
+  transform: none;
+  opacity: 1;
+}
+.pt__bar {
+  width: 120px;
+  height: 2px;
+  background: color-mix(in srgb, var(--background) 25%, transparent);
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+}
+.pt__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--brand-from), var(--brand-to));
+}
+.pt[data-state="cover"] .pt__bar::after,
+.pt[data-state="reveal"] .pt__bar::after {
+  animation: pt-bar 0.7s var(--ease) forwards;
+}
+
+@keyframes pt-up {
+  from { transform: translateY(102%); }
+  to { transform: translateY(0); }
+}
+@keyframes pt-out {
+  from { transform: translateY(0); }
+  to { transform: translateY(-102%); }
+}
+@keyframes pt-bar {
+  to { transform: scaleX(1); }
+}
+
+.pt[data-state="cover"] .pt__panel--primary {
+  animation: pt-up 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.pt[data-state="cover"] .pt__panel--ink {
+  animation: pt-up 0.55s cubic-bezier(0.76, 0, 0.24, 1) 0.08s forwards;
+}
+.pt[data-state="reveal"] .pt__panel--ink {
+  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.45s forwards;
+}
+.pt[data-state="reveal"] .pt__panel--primary {
+  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.55s forwards;
+}
+.pt[data-state="idle"] .pt__panel {
+  transform: translateY(102%);
+  animation: none;
+}
+.pt[data-state="idle"] .pt__label > span {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt {
+    display: none;
+  }
+}
