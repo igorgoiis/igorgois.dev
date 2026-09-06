@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import { useRouter as useNextRouter, usePathname as useNextPathname } from "next/navigation";
 import { site } from "@/config/site";
 
-type State = "idle" | "cover" | "reveal";
+type State = "initial" | "idle" | "cover" | "reveal";
 type Ctx = { navigate: (href: string, label?: string, replace?: boolean) => void };
 
 const TransitionContext = createContext<Ctx>({ navigate: () => {} });
@@ -21,7 +21,7 @@ const PENDING_KEY = "pt:label";
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const router = useNextRouter();
   const pathname = useNextPathname();
-  const [state, setState] = useState<State>("idle");
+  const [state, setState] = useState<State>("initial");
   const [label, setLabel] = useState<string>(site.name);
   const pendingRef = useRef<string | null>(null);
   const enabledRef = useRef(false);
@@ -33,7 +33,10 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     enabledRef.current = !reduce;
-    if (reduce) return;
+    if (reduce) {
+      setTimeout(() => setState("idle"), 0);
+      return;
+    }
     let pending: string | null = null;
     try {
       pending = sessionStorage.getItem(PENDING_KEY);
