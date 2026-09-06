@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" width="130" height="130" role="img" aria-label="Gois.dev">
+  <defs>
+    <linearGradient id="ma" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="29" fill="#0b1020"/>
+  <g transform="translate(20.00 31.95)">
+    <path transform="translate(0.00 66.00) scale(0.10000 -0.10000)" fill="#f2f1ec" d="M301 -14Q215 -14 153.5 29Q92 72 59.5 148.5Q27 225 27 325Q27 399 45.5 462.5Q64 526 103 573.5Q142 621 202 647.5Q262 674 345 674Q415 674 465.5 655Q516 636 548 602Q580 568 593 523.5Q606 479 601 428L450 410Q452 455 439 483.5Q426 512 400.5 526Q375 540 339 540Q296 540 264 517Q232 494 214.5 448Q197 402 197 333Q197 282 207 241.5Q217 201 237 173.5Q257 146 286.5 131.5Q316 117 354 117Q392 117 419 130.5Q446 144 460.5 167.5Q475 191 475 222L371 222L371 336L619 336L619 212L619 0L508 0L508 178L499 178Q494 116 469.5 73Q445 30 402.5 8Q360 -14 301 -14Z"/>
+    <circle cx="80.40" cy="56.50" r="9.50" fill="url(#ma)"/>
+  </g>
+</svg>
