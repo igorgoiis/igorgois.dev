@@ -492,6 +492,35 @@ body {
   border-color: color-mix(in srgb, var(--brand-via) 60%, var(--border));
   background: var(--card);
 }
+.tile-icon {
+  width: 34px;
+  height: 34px;
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s, color 0.3s;
+}
+.tile:hover .tile-icon {
+  opacity: 1;
+  color: var(--brand-via);
+}
+.tile-initials {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  color: var(--muted-foreground);
+}
 
 /* ---------- Contato ---------- */
 

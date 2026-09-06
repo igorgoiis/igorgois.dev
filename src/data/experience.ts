@@ -71,27 +71,32 @@ export const experience: Experience[] = [
   },
 ];
 
-export type StackItem = { name: string; category: "mobile" | "web" | "backend" | "data" | "ai" | "infra" };
+export type StackItem = {
+  name: string;
+  category: "mobile" | "web" | "backend" | "data" | "ai" | "infra";
+  /** Arquivo em /public/stack. Sem ícone, o tile mostra as iniciais. */
+  icon?: string;
+};
 
 export const stack: StackItem[] = [
-  { name: "React Native", category: "mobile" },
-  { name: "Expo", category: "mobile" },
+  { name: "React Native", category: "mobile", icon: "react-native" },
+  { name: "Expo", category: "mobile", icon: "expo" },
   { name: "Reanimated", category: "mobile" },
-  { name: "Next.js", category: "web" },
-  { name: "React", category: "web" },
-  { name: "TypeScript", category: "web" },
-  { name: "Tailwind", category: "web" },
-  { name: "NestJS", category: "backend" },
-  { name: "Node.js", category: "backend" },
-  { name: "Hono", category: "backend" },
-  { name: "PostgreSQL", category: "data" },
-  { name: "Prisma", category: "data" },
-  { name: "Drizzle", category: "data" },
-  { name: "OpenAI API", category: "ai" },
-  { name: "Claude API", category: "ai" },
-  { name: "n8n", category: "ai" },
-  { name: "Vercel", category: "infra" },
-  { name: "Cloudflare", category: "infra" },
-  { name: "Docker", category: "infra" },
-  { name: "GitHub Actions", category: "infra" },
+  { name: "Next.js", category: "web", icon: "nextjs" },
+  { name: "React", category: "web", icon: "react" },
+  { name: "TypeScript", category: "web", icon: "typescript" },
+  { name: "Tailwind", category: "web", icon: "tailwind" },
+  { name: "NestJS", category: "backend", icon: "nestjs" },
+  { name: "Node.js", category: "backend", icon: "nodejs" },
+  { name: "Hono", category: "backend", icon: "hono" },
+  { name: "PostgreSQL", category: "data", icon: "postgresql" },
+  { name: "Prisma", category: "data", icon: "prisma" },
+  { name: "Drizzle", category: "data", icon: "drizzle" },
+  { name: "OpenAI API", category: "ai", icon: "openai" },
+  { name: "Claude API", category: "ai", icon: "claude" },
+  { name: "n8n", category: "ai", icon: "n8n" },
+  { name: "Vercel", category: "infra", icon: "vercel" },
+  { name: "Cloudflare", category: "infra", icon: "cloudflare" },
+  { name: "Docker", category: "infra", icon: "docker" },
+  { name: "GitHub Actions", category: "infra", icon: "github-actions" },
 ];

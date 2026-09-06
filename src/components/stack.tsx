@@ -12,7 +12,19 @@ export function Stack() {
         {stack.map((s) => (
           <div key={s.name} className="tile">
             <span className="mono-label">{t(`cat.${s.category}`)}</span>
-            <span className="display text-base font-bold leading-tight tracking-tight">{s.name}</span>
+            {s.icon ? (
+              <span
+                className="tile-icon"
+                style={{ WebkitMaskImage: `url(/stack/${s.icon}.svg)`, maskImage: `url(/stack/${s.icon}.svg)` }}
+                role="img"
+                aria-label={s.name}
+              />
+            ) : (
+              <span className="tile-initials display" aria-hidden="true">
+                {s.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 2)}
+              </span>
+            )}
+            <span className="display text-sm font-bold leading-tight tracking-tight">{s.name}</span>
           </div>
         ))}
       </div>
