@@ -8,7 +8,6 @@ import { ArrowRightIcon } from "./icons";
 export function Hero() {
   const t = useTranslations("Hero");
   const locale = useLocale() as Locale;
-  const cv = site.cv[locale];
 
   return (
     <section id="top" className="relative overflow-hidden px-5 pb-10 pt-28 md:px-8 md:pt-32">
@@ -44,12 +43,10 @@ export function Hero() {
             {t("ctaContact")}
             <ArrowRightIcon className="h-3.5 w-3.5" />
           </a>
-          {cv && (
-            <a href={cv} target="_blank" rel="noopener" className="hero-cta" data-cursor="PDF">
-              {t("ctaCv")}
-              <ArrowRightIcon className="h-3.5 w-3.5 -rotate-45" />
-            </a>
-          )}
+          <a href={`/${locale}/cv`} className="hero-cta">
+            {t("ctaCv")}
+            <ArrowRightIcon className="h-3.5 w-3.5 -rotate-45" />
+          </a>
         </div>
         <div className="hero-anim hero-anim-3 max-w-xs md:ml-auto md:text-right">
           <p className="display text-2xl font-bold tracking-tight md:text-3xl">{t("qualityRight")}</p>

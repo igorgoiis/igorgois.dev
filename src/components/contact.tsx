@@ -9,12 +9,10 @@ import { ArrowUpRightIcon } from "./icons";
 export function Contact() {
   const t = useTranslations("Contact");
   const locale = useLocale() as Locale;
-  const cv = site.cv[locale];
-
   const links = [
-    { label: "LinkedIn", href: site.links.linkedin },
-    { label: "GitHub", href: site.links.github },
-    ...(cv ? [{ label: t("resume"), href: cv }] : []),
+    { label: "LinkedIn", href: site.links.linkedin, external: true },
+    { label: "GitHub", href: site.links.github, external: true },
+    { label: t("resume"), href: `/${locale}/cv`, external: false },
   ];
 
   return (
@@ -52,7 +50,7 @@ export function Contact() {
         <ul className="flex flex-col items-start gap-2 md:items-end">
           {links.map((l) => (
             <li key={l.label}>
-              <a href={l.href} target="_blank" rel="noopener" className="arrow-link display text-2xl">
+              <a href={l.href} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener" : undefined} className="arrow-link display text-2xl">
                 {l.label}
                 <ArrowUpRightIcon className="h-4 w-4" />
               </a>

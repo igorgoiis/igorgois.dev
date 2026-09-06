@@ -22,7 +22,7 @@ export function Header() {
   const t = useTranslations("Header");
   const locale = useLocale() as Locale;
   const [open, setOpen] = useState(false);
-  const cv = site.cv[locale];
+  const base = `/${locale}`;
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -38,7 +38,7 @@ export function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-[70]">
         <div className="mx-auto flex w-full max-w-[1680px] items-center justify-between px-5 py-4 md:px-8">
-          <a href="#top" className="flex items-baseline gap-3 no-underline" aria-label={site.name}>
+          <a href={`${base}#top`} className="flex items-baseline gap-3 no-underline" aria-label={site.name}>
             <span className="display text-base font-bold tracking-tight">{site.name}</span>
             <span className="mono-label hidden sm:inline">{site.domain}</span>
           </a>
@@ -69,7 +69,7 @@ export function Header() {
           {NAV.map((item, i) => (
             <a
               key={item.key}
-              href={item.href}
+              href={`${base}${item.href}`}
               onClick={() => setOpen(false)}
               className="menu-link"
               style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
@@ -84,11 +84,9 @@ export function Header() {
             {site.location.city}, {site.location.country[locale]} · {site.location.utc}
           </span>
           <div className="flex items-center gap-5">
-            {cv && (
-              <a href={cv} target="_blank" rel="noopener" className="hover:text-foreground">
-                {t("cv")}
-              </a>
-            )}
+            <a href={`${base}/cv`} onClick={() => setOpen(false)} className="hover:text-foreground">
+              {t("cv")}
+            </a>
             <a href={site.links.github} target="_blank" rel="noopener" className="inline-flex items-center gap-1.5 hover:text-foreground">
               <GithubIcon className="h-3.5 w-3.5" /> {t("github")}
             </a>

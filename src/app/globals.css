@@ -880,3 +880,170 @@ html.lenis body {
     background: var(--background);
   }
 }
+
+/* ---------- Página de CV ---------- */
+
+.cv-page {
+  min-height: 100svh;
+}
+.cv-document {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  padding: 2.5rem;
+  box-shadow: 0 30px 80px -50px color-mix(in srgb, var(--foreground) 40%, transparent);
+}
+@media (max-width: 640px) {
+  .cv-document {
+    padding: 1.5rem 1.25rem;
+  }
+}
+.cv-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.cv-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  list-style: none;
+  padding: 0;
+}
+.cv-contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: inherit;
+}
+.cv-contacts a:hover {
+  color: var(--brand-via);
+}
+.cv-section {
+  margin-bottom: 1.75rem;
+}
+.cv-h2 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.75rem;
+}
+.cv-text {
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+.cv-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.5rem;
+  font-size: 0.875rem;
+}
+.cv-grid dt {
+  font-weight: 600;
+}
+.cv-grid dd {
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+@media (max-width: 640px) {
+  .cv-grid {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+  .cv-grid dd {
+    margin-bottom: 0.6rem;
+  }
+}
+.cv-bullets {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: color-mix(in srgb, var(--foreground) 88%, transparent);
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+}
+.cv-btn:hover {
+  border-color: var(--brand-via);
+  transform: translateY(-1px);
+}
+.cv-btn-primary {
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+}
+
+@media print {
+  @page {
+    margin: 14mm 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print,
+  header,
+  canvas,
+  .cursor,
+  .menu-overlay {
+    display: none !important;
+  }
+  .cv-page {
+    padding: 0 !important;
+    min-height: auto;
+  }
+  .cv-document {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+  .cv-header {
+    border-bottom: 2px solid #000;
+  }
+  .cv-h2,
+  .cv-contacts,
+  .cv-grid dd,
+  .cv-bullets,
+  .text-muted-foreground {
+    color: #333 !important;
+  }
+  .cv-text,
+  .cv-grid,
+  .cv-bullets {
+    font-size: 10.5pt;
+  }
+  .cv-job {
+    break-inside: avoid;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
