@@ -74,9 +74,14 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   const navigate = useCallback(
     (href: string, nextLabel?: string, replace = false) => {
-      const go = () => (replace ? router.replace(href, { scroll: false }) : router.push(href, { scroll: false }));
-      if (!enabledRef.current || state !== "idle") {
-        go();
+      if (!enabledRef.current) {
+        if (replace) router.replace(href, { scroll: false });
+        else router.push(href, { scroll: false });
+        return;
+      }
+      // Já cobrindo: só troca o destino, a navegação pendente segue.
+      if (state === "cover") {
+        pendingRef.current = href;
         return;
       }
       const finalLabel = nextLabel || site.name;
@@ -87,7 +92,11 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         sessionStorage.setItem(PENDING_KEY, finalLabel);
       } catch {}
       setState("cover");
-      window.setTimeout(go, COVER_MS);
+      window.setTimeout(() => {
+        const target = pendingRef.current ?? href;
+        if (replace) router.replace(target, { scroll: false });
+        else router.push(target, { scroll: false });
+      }, COVER_MS);
     },
     [router, state],
   );
