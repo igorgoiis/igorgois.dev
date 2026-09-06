@@ -5,9 +5,9 @@
 export const site = {
   name: "Igor Gois",
   shortName: "Igor",
-  domain: "igorgois-dev.vercel.app",
-  url: "https://igorgois-dev.vercel.app",
-  email: "igor.gois.dev@gmail.com",
+  domain: "igorgois.dev",
+  url: "https://igorgois.dev",
+  email: "contato@igorgois.dev",
   location: {
     city: "Petrolina",
     state: "PE",
