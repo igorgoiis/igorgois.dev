@@ -14,7 +14,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10" aria-hidden="true">
         <div className="hero-blob absolute -inset-x-16 top-[10%] m-auto h-[46%] rounded-full" />
       </div>
-      <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-[1680px] flex-col justify-between">
+      <div className="mx-auto flex w-full max-w-[1680px] flex-col gap-8 md:min-h-[calc(100svh-9.5rem)] md:justify-between md:gap-0">
 
       {/* Linha superior: cargo + status */}
       <div className="hero-anim hero-anim-1 flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
@@ -29,7 +29,7 @@ export function Hero() {
       <ParticleName name={site.name} />
 
       {/* Qualidades nas bordas, como no Lannino */}
-      <div className="grid gap-8 md:grid-cols-[1fr_auto_1fr] md:items-end">
+      <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-end md:gap-8">
         <div className="hero-anim hero-anim-3 max-w-xs">
           <p className="display text-2xl font-bold tracking-tight md:text-3xl">{t("qualityLeft")}</p>
           <p className="mt-1 text-sm text-muted-foreground">{t("qualityLeftSub")}</p>
@@ -54,7 +54,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="hero-anim hero-anim-5 mt-10 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+      <div className="hero-anim hero-anim-5 mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground md:mt-10">
         <span>{t("located")}</span>
         <span>{t("worldwide")}</span>
       </div>

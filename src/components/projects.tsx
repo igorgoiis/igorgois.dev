@@ -47,7 +47,7 @@ function Frame({ p, locale, priority }: { p: Project; locale: Locale; priority: 
               <Image src={p.cover[locale]} alt={p.name} fill sizes="280px" className="object-cover object-top" priority={priority} />
             ) : (
               <div className="brand-gradient flex h-full flex-col justify-between p-6 pt-16 text-white">
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] opacity-80">{p.address}</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] opacity-80">{p.address}</span>
                 <div>
                   <p className="display text-4xl font-extrabold leading-none tracking-tight">{p.name}</p>
                   <p className="mt-2 text-sm opacity-85">{p.category[locale]}</p>
@@ -111,7 +111,7 @@ export function Projects({ locale }: { locale: Locale }) {
               <p className="mt-5 leading-relaxed text-muted-foreground">{p.description[locale]}</p>
               <p className="brand-text mt-4 text-sm font-semibold">{p.result[locale]}</p>
 
-              <dl className="mt-8 grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 border-t border-border pt-6 text-sm">
+              <dl className="mt-8 grid gap-y-3 border-t border-border pt-6 text-sm sm:grid-cols-[auto_1fr] sm:gap-x-6">
                 <dt className="mono-label pt-1">{t("year")}</dt>
                 <dd>{p.period[locale]}</dd>
                 <dt className="mono-label pt-1">{t("role")}</dt>

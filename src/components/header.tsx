@@ -52,8 +52,10 @@ export function Header() {
             <Logo className="h-[22px] w-auto" />
             <span className="mono-label hidden sm:inline">{site.domain}</span>
           </a>
-          <div className="flex items-center gap-2">
-            <LocaleSwitch />
+          <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="hidden md:block">
+              <LocaleSwitch />
+            </div>
             <ThemeToggle />
             <button
               type="button"
@@ -90,9 +92,14 @@ export function Header() {
           ))}
         </nav>
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-4 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-          <span>
-            {site.location.city}, {site.location.country[locale]} · {site.location.utc}
-          </span>
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="md:hidden">
+              <LocaleSwitch />
+            </div>
+            <span>
+              {site.location.city}, {site.location.country[locale]} · {site.location.utc}
+            </span>
+          </div>
           <div className="flex items-center gap-5">
             <a href={`${base}/cv`} data-transition="CV" onClick={() => setOpen(false)} className="hover:text-foreground">
               {t("cv")}

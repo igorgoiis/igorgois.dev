@@ -212,7 +212,7 @@ body {
   font-variation-settings: "wdth" 100;
   letter-spacing: -0.045em;
   line-height: 0.9;
-  font-size: clamp(64px, 15.5vw, 236px);
+  font-size: clamp(60px, 19vw, 236px);
 }
 
 /* Linha vertical que cresce com o scroll e liga o hero à seção seguinte */
@@ -326,7 +326,7 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--muted-foreground);
   display: flex;
@@ -335,7 +335,7 @@ body {
 }
 .phone {
   position: relative;
-  width: min(280px, 72vw);
+  width: min(280px, 60vw);
   aspect-ratio: 9 / 19;
   border-radius: 40px;
   border: 1px solid var(--border);
@@ -527,11 +527,14 @@ body {
 .email-link {
   text-decoration: none;
   color: var(--foreground);
+  /* cabe em uma linha em qualquer largura: ~23 caracteres a 0,29em cada */
+  font-size: clamp(22px, 5.1vw, 72px);
 }
 .email-text {
   font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -0.04em;
+  font-size: inherit;
   background-image: linear-gradient(
     90deg,
     var(--foreground) 0%,
@@ -805,27 +808,27 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-anim,
+  .js .hero-anim,
   .hero-blob,
   .status-dot::after,
   .marquee-track,
-  .motto {
+  .js .motto {
     animation: none !important;
-    opacity: 1;
+    opacity: 1 !important;
   }
-  .motto {
-    color: var(--foreground);
-    -webkit-text-stroke: 0;
+  .js .motto {
+    color: var(--foreground) !important;
+    -webkit-text-stroke: 0 !important;
   }
-  .in-view-anim,
-  .rise > span,
+  .js .in-view-anim,
+  .js .rise > span,
   .menu-link {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
-  .mosaic {
-    display: none;
+  .js .mosaic {
+    display: none !important;
   }
   .spine {
     transition: none;
@@ -1210,5 +1213,52 @@ html.lenis body {
 @media (prefers-reduced-motion: reduce) {
   .pt {
     display: none !important;
+  }
+}
+
+/* ---------- Toque e telas estreitas ---------- */
+
+@media (pointer: coarse) {
+  .hero-cta,
+  .arrow-link,
+  .cv-btn,
+  .gallery-btn,
+  .site-bar button,
+  .site-bar a {
+    min-height: 40px;
+  }
+  .hero-cta {
+    padding-block: 8px;
+  }
+}
+@media (max-width: 767px) {
+  .hero-name {
+    letter-spacing: -0.04em;
+  }
+  .email-text {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+  .motto {
+    font-size: clamp(44px, 13vw, 80px);
+  }
+  .focus-word {
+    font-size: clamp(40px, 11vw, 64px);
+  }
+  .tile {
+    padding: 0.65rem;
+  }
+  .tile-icon,
+  .tile-initials {
+    width: 26px;
+    height: 26px;
+  }
+  .tile-initials {
+    font-size: 11px;
+  }
+}
+@media (max-width: 400px) {
+  .site-bar {
+    padding-inline: 0.75rem;
   }
 }

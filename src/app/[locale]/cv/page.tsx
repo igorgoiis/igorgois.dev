@@ -141,7 +141,7 @@ export default async function CvPage({ params }: { params: Promise<{ locale: str
               </dl>
             </section>
 
-            <p className="mt-8 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground print:mt-4">{c.ui.updated}</p>
+            <p className="mt-8 text-center font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground print:mt-4">{c.ui.updated}</p>
           </article>
         </div>
       </main>

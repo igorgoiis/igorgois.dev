@@ -130,10 +130,10 @@ export function Story() {
                     className={`story-step ${on ? "on" : ""}`}
                     onClick={() => !pinned && setActive(i)}
                   >
-                    <div className="flex items-baseline gap-4">
+                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
                       <span className="mono-label tabular-nums">0{i + 1}</span>
                       <h3 className="display text-2xl font-bold tracking-tight md:text-3xl">{s.title}</h3>
-                      <span className="chip ml-auto hidden md:inline-flex">{s.tag}</span>
+                      <span className="chip md:ml-auto">{s.tag}</span>
                     </div>
                     <div className="story-step-text"><p>{s.text}</p></div>
                   </li>
@@ -142,7 +142,7 @@ export function Story() {
             </ol>
           </div>
 
-          <div className="flex justify-center md:justify-end">
+          <div className="hidden justify-center md:flex md:justify-end">
             <div className="phone">
               <div className="screen">
                 <Screen step={pinned ? active : active} />

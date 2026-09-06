@@ -8,7 +8,7 @@ export function Stack() {
   return (
     <Section id="stack" className="px-5 py-24 md:px-8 md:py-36">
       <SectionTitle no={t("no")} label={t("label")} title={t("title")} />
-      <div className="in-view-anim in-view-anim-2 mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10">
+      <div className="in-view-anim in-view-anim-2 mt-12 grid grid-cols-3 gap-2.5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 md:gap-3">
         {stack.map((s) => (
           <div key={s.name} className="tile">
             <span className="mono-label">{t(`cat.${s.category}`)}</span>

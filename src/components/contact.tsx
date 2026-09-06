@@ -23,14 +23,14 @@ export function Contact() {
       <a
         href={`mailto:${site.email}`}
         data-cursor={t("cursorEmail")}
-        className="in-view-anim in-view-anim-2 email-link mt-12 inline-flex items-center gap-3 text-3xl sm:text-5xl md:text-7xl"
+        className="in-view-anim in-view-anim-2 email-link mt-10 inline-flex max-w-full items-center gap-2 md:mt-12 md:gap-3"
       >
-        <span className="email-text break-all">{site.email}</span>
-        <ArrowUpRightIcon className="email-arrow h-8 w-8 shrink-0 md:h-14 md:w-14" />
+        <span className="email-text">{site.email}</span>
+        <ArrowUpRightIcon className="email-arrow h-[0.8em] w-[0.8em] shrink-0" />
       </a>
 
       <div className="in-view-anim in-view-anim-3 mt-16 grid gap-8 border-t border-border pt-8 md:grid-cols-2">
-        <dl className="mono-label grid grid-cols-[auto_1fr] gap-x-6 gap-y-2">
+        <dl className="mono-label grid gap-y-3 sm:grid-cols-[auto_1fr] sm:gap-x-6 sm:gap-y-2 [&>dd]:mb-1 sm:[&>dd]:mb-0">
           <dt>{t("location")}</dt>
           <dd className="text-foreground">
             {site.location.city}, {site.location.state}, {site.location.country[locale]} · {site.location.utc}
