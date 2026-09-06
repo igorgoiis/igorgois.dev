@@ -7,6 +7,7 @@ import type { Locale } from "@/i18n/routing";
 import { LocaleSwitch } from "./locale-switch";
 import { ThemeToggle } from "./theme-toggle";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import { Logo } from "./logo";
 
 const NAV = [
   { key: "focus", href: "#focus", no: "01" },
@@ -38,8 +39,8 @@ export function Header() {
     <>
       <header className="fixed inset-x-0 top-0 z-[70]">
         <div className="mx-auto flex w-full max-w-[1680px] items-center justify-between px-5 py-4 md:px-8">
-          <a href={`${base}#top`} data-transition={site.name} className="flex items-baseline gap-3 no-underline" aria-label={site.name}>
-            <span className="display text-base font-bold tracking-tight">{site.name}</span>
+          <a href={`${base}#top`} data-transition={site.name} className="flex items-center gap-3 text-foreground no-underline" aria-label={site.name}>
+            <Logo className="h-[22px] w-auto" />
             <span className="mono-label hidden sm:inline">{site.domain}</span>
           </a>
           <div className="flex items-center gap-2">

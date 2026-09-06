@@ -8,6 +8,7 @@ import { cv } from "@/data/cv";
 import { Header } from "@/components/header";
 import { PrintButton } from "@/components/print-button";
 import { ArrowRightIcon, GithubIcon, LinkedinIcon } from "@/components/icons";
+import { Logo } from "@/components/logo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -53,6 +54,7 @@ export default async function CvPage({ params }: { params: Promise<{ locale: str
 
           <article className="cv-document">
             <header className="cv-header">
+              <div className="mb-4 text-foreground"><Logo className="h-5 w-auto" /></div>
               <h1 className="display text-4xl font-bold tracking-tight print:text-3xl">{site.name}</h1>
               <p className="mt-1 text-lg text-muted-foreground">
                 {c.title} · {c.headline}

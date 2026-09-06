@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { getTranslations } from "next-intl/server";
 import { site } from "@/config/site";
 
@@ -9,6 +11,8 @@ export const contentType = "image/png";
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Hero" });
+  const markSvg = await readFile(join(process.cwd(), "public/brand/g-mark-app.svg"), "utf8");
+  const mark = `data:image/svg+xml;base64,${Buffer.from(markSvg).toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -38,9 +42,9 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             filter: "blur(90px)",
           }}
         />
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22, letterSpacing: 4, textTransform: "uppercase", opacity: 0.8 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 22, letterSpacing: 4, textTransform: "uppercase", opacity: 0.9 }}>
           <span>{t("role")}</span>
-          <span>{site.domain}</span>
+          <img src={mark} alt="" width={96} height={96} style={{ borderRadius: 22 }} />
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 148, fontWeight: 800, letterSpacing: -8, lineHeight: 1 }}>{site.name}</div>
