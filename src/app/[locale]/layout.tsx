@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Outfit, JetBrains_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
@@ -91,10 +90,13 @@ export default async function LocaleLayout({
     <html
       lang={HTML_LANG[locale as Locale]}
       suppressHydrationWarning
-      className={`${display.variable} ${outfit.variable} ${jetbrains.variable}`}
+      className={`js ${display.variable} ${outfit.variable} ${jetbrains.variable}`}
     >
       <head>
-        <Script id="js-flag" strategy="beforeInteractive">{`document.documentElement.classList.add("js")`}</Script>
+        {/* Sem JavaScript: nada fica escondido à espera de animação e a cortina não existe. */}
+        <noscript>
+          <style>{`.pt{display:none!important}.in-view-anim{opacity:1!important;transform:none!important}.rise>span{transform:none!important}.hero-anim{opacity:1!important;animation:none!important}.motto{color:var(--foreground)!important;-webkit-text-stroke:0!important}.mosaic{display:none!important}`}</style>
+        </noscript>
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <NextIntlClientProvider>
