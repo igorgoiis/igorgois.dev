@@ -10,7 +10,8 @@ type Ctx = { navigate: (href: string, label?: string, replace?: boolean) => void
 const TransitionContext = createContext<Ctx>({ navigate: () => {} });
 export const usePageTransition = () => useContext(TransitionContext);
 
-const COVER_MS = 620;
+const COVER_MS = 1000;
+const PENDING_KEY = "pt:label";
 
 /**
  * Transição entre páginas: dois painéis sobem cobrindo a tela com o nome do
@@ -26,19 +27,29 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const enabledRef = useRef(false);
   const firstRef = useRef(true);
 
-  // Loader inicial: começa coberto e revela.
+  // Loader inicial: começa coberto e revela. Se a página anterior deixou um
+  // rótulo pendente (troca de idioma remonta o layout), a revelação usa esse
+  // rótulo em vez do nome, e a transição continua como uma só.
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     enabledRef.current = !reduce;
     if (reduce) return;
-    const id = window.setTimeout(() => setState("reveal"), 60);
+    let pending: string | null = null;
+    try {
+      pending = sessionStorage.getItem(PENDING_KEY);
+      if (pending) sessionStorage.removeItem(PENDING_KEY);
+    } catch {}
+    const id = window.setTimeout(() => {
+      if (pending) setLabel(pending);
+      setState("reveal");
+    }, 60);
     return () => window.clearTimeout(id);
   }, []);
 
   // Rede de segurança: se o animationend não vier (aba oculta), volta a idle.
   useEffect(() => {
     if (state !== "reveal") return;
-    const id = window.setTimeout(() => setState("idle"), 1600);
+    const id = window.setTimeout(() => setState("idle"), 2400);
     return () => window.clearTimeout(id);
   }, [state]);
 
@@ -50,6 +61,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     }
     if (pendingRef.current) {
       pendingRef.current = null;
+      try {
+        sessionStorage.removeItem(PENDING_KEY);
+      } catch {}
       window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
       setState("reveal");
     }
@@ -62,8 +76,13 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         go();
         return;
       }
-      setLabel(nextLabel || site.name);
+      const finalLabel = nextLabel || site.name;
+      setLabel(finalLabel);
       pendingRef.current = href;
+      try {
+        // Sobrevive à remontagem do layout (troca de idioma).
+        sessionStorage.setItem(PENDING_KEY, finalLabel);
+      } catch {}
       setState("cover");
       window.setTimeout(go, COVER_MS);
     },

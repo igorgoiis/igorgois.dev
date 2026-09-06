@@ -1191,7 +1191,7 @@ html.lenis body {
 }
 .pt[data-state="cover"] .pt__bar::after,
 .pt[data-state="reveal"] .pt__bar::after {
-  animation: pt-bar 0.7s var(--ease) forwards;
+  animation: pt-bar 1.1s var(--ease) forwards;
 }
 
 @keyframes pt-up {
@@ -1213,10 +1213,10 @@ html.lenis body {
   animation: pt-up 0.55s cubic-bezier(0.76, 0, 0.24, 1) 0.08s forwards;
 }
 .pt[data-state="reveal"] .pt__panel--ink {
-  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.45s forwards;
+  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.8s forwards;
 }
 .pt[data-state="reveal"] .pt__panel--primary {
-  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.55s forwards;
+  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.9s forwards;
 }
 .pt[data-state="idle"] .pt__panel {
   transform: translateY(102%);
