@@ -1124,7 +1124,8 @@ html.lenis body {
 
 /* ---------- Transição de página ---------- */
 
-/* Sem JS a cortina não existe; com JS, nasce coberta (estado "initial"). */
+/* Sem JS a cortina não existe; com JS nasce coberta (estado "initial").
+   O movimento dos painéis é feito pela Web Animations API no componente. */
 .pt {
   display: none;
   position: fixed;
@@ -1136,7 +1137,8 @@ html.lenis body {
   display: block;
 }
 .pt[data-state="cover"],
-.pt[data-state="initial"] {
+.pt[data-state="initial"],
+.pt[data-state="reveal"] {
   pointer-events: auto;
 }
 .pt__panel {
@@ -1144,6 +1146,9 @@ html.lenis body {
   inset: -2% 0;
   transform: translateY(102%);
   will-change: transform;
+}
+.pt[data-state="initial"] .pt__panel {
+  transform: translateY(0);
 }
 .pt__panel--primary {
   background: linear-gradient(120deg, var(--brand-from), var(--brand-via), var(--brand-to));
@@ -1155,10 +1160,6 @@ html.lenis body {
   place-items: center;
   place-content: center;
   gap: 1rem;
-}
-/* Estado inicial: os dois painéis cobrem a tela, sem animação. */
-.pt[data-state="initial"] .pt__panel {
-  transform: translateY(0);
 }
 .pt__label {
   display: inline-flex;
@@ -1179,6 +1180,9 @@ html.lenis body {
   transform: none;
   opacity: 1;
 }
+.pt[data-state="idle"] .pt__label > span {
+  transition: none;
+}
 .pt__bar {
   width: 120px;
   height: 2px;
@@ -1197,41 +1201,10 @@ html.lenis body {
 }
 .pt[data-state="cover"] .pt__bar::after,
 .pt[data-state="reveal"] .pt__bar::after {
-  animation: pt-bar 1.1s var(--ease) both;
-}
-
-@keyframes pt-up {
-  from { transform: translateY(102%); }
-  to { transform: translateY(0); }
-}
-@keyframes pt-out {
-  from { transform: translateY(0); }
-  to { transform: translateY(-102%); }
+  animation: pt-bar 1.3s var(--ease) both;
 }
 @keyframes pt-bar {
   to { transform: scaleX(1); }
-}
-
-/* "both": durante o atraso o painel já fica na posição inicial da animação,
-   sem voltar ao estado escondido no meio do caminho. */
-.pt[data-state="cover"] .pt__panel--primary {
-  animation: pt-up 0.55s cubic-bezier(0.76, 0, 0.24, 1) both;
-}
-.pt[data-state="cover"] .pt__panel--ink {
-  animation: pt-up 0.55s cubic-bezier(0.76, 0, 0.24, 1) 0.08s both;
-}
-.pt[data-state="reveal"] .pt__panel--ink {
-  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.8s both;
-}
-.pt[data-state="reveal"] .pt__panel--primary {
-  animation: pt-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.9s both;
-}
-.pt[data-state="idle"] .pt__panel {
-  transform: translateY(102%);
-  animation: none;
-}
-.pt[data-state="idle"] .pt__label > span {
-  transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
