@@ -1,0 +1,159 @@
+{
+  "Meta": {
+    "title": "Igor Gois · Engenheiro de Software Full-Stack (React Native, Next.js, Node.js)",
+    "description": "Engenheiro de software full-stack com 6 anos de experiência. Seis apps publicados nas lojas, sistemas web em Next.js e NestJS e integrações com IA. Petrolina, Brasil, aberto a trabalho remoto."
+  },
+  "Header": {
+    "menu": "Menu",
+    "close": "Fechar",
+    "toggleTheme": "Alternar tema",
+    "switchTo": "Mudar para {locale}",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "CV",
+    "nav": {
+      "focus": "Foco",
+      "story": "Processo",
+      "projects": "Projetos",
+      "experience": "Experiência",
+      "stack": "Stack",
+      "contact": "Contato"
+    }
+  },
+  "Hero": {
+    "role": "Engenheiro de Software · Full Stack",
+    "qualityLeft": "Mobile first",
+    "qualityLeftSub": "React Native e Expo · 1,5 mi+ instalações nas lojas",
+    "qualityRight": "Web & IA",
+    "qualityRightSub": "Next.js, NestJS e robôs que rodam todo dia",
+    "located": "Baseado em Petrolina, Brasil",
+    "worldwide": "Trabalhando para o mundo",
+    "ctaProjects": "Ver projetos",
+    "ctaContact": "Falar comigo",
+    "status": "Aberto a trabalho remoto",
+    "ctaCv": "Baixar CV"
+  },
+  "Focus": {
+    "no": "N° 1",
+    "label": "Foco",
+    "lead": "Construo produtos que são:",
+    "words": [
+      "Publicados",
+      "Rápidos",
+      "Medidos"
+    ],
+    "blocks": {
+      "mobile": {
+        "title": "Mobile",
+        "text": "Apps React Native e Expo em produção na App Store e na Google Play. Hoje lidero a reconstrução dos três apps de delivery da Pede.ai: 1,5 mi+ instalações, cerca de 300 mil sessões por dia e taxa de ANR no Android reduzida em 90%. Seis apps publicados na carreira.",
+        "stat": "1,5 mi+",
+        "statLabel": "instalações na Google Play"
+      },
+      "web": {
+        "title": "Web",
+        "text": "Sistemas em Next.js e NestJS com PostgreSQL: painéis, marketplaces e uma plataforma white label usada por mais de 90 fintechs. Já liderei squads de até 6 engenheiros, do modelo de dados ao deploy, com code review e CI.",
+        "stat": "6",
+        "statLabel": "engenheiros no maior squad"
+      },
+      "ai": {
+        "title": "IA",
+        "text": "Integrações que trabalham sozinhas: robôs que leem PDFs, classificam com a API da OpenAI e devolvem JSON validado por schema. Foi assim na Licite Nordeste, todo dia.",
+        "stat": "3",
+        "statLabel": "produtos em produção"
+      }
+    }
+  },
+  "Projects": {
+    "no": "N° 3",
+    "label": "Projetos",
+    "title": "Produtos reais, em produção",
+    "motto": [
+      "Seis apps",
+      "Duas lojas",
+      "Um dev"
+    ],
+    "year": "Ano",
+    "role": "Papel",
+    "tech": "Tecnologias",
+    "visit": "Visitar",
+    "gallery": "Ver telas",
+    "screens": "{count} telas",
+    "galleryTitle": "Telas de {name}",
+    "close": "Fechar",
+    "prev": "Tela anterior",
+    "next": "Próxima tela",
+    "realScreens": "telas reais",
+    "cursorGallery": "Ver telas",
+    "cursorVisit": "Abrir"
+  },
+  "Experience": {
+    "no": "N° 4",
+    "label": "Experiência",
+    "title": "Seis anos, cinco times",
+    "current": "atual"
+  },
+  "Stack": {
+    "no": "N° 5",
+    "label": "Stack",
+    "title": "Ferramentas do dia a dia",
+    "cat": {
+      "mobile": "Mobile",
+      "web": "Web",
+      "backend": "Backend",
+      "data": "Dados",
+      "ai": "IA",
+      "infra": "Infra"
+    }
+  },
+  "Contact": {
+    "no": "N° 6",
+    "label": "Contato",
+    "title": "Vamos conversar",
+    "subtitle": "Aberto a vagas remotas e projetos freelance. Escreva sobre uma ideia, uma oportunidade ou só para dizer oi.",
+    "location": "Localização",
+    "localTime": "Hora local",
+    "status": "Status",
+    "statusValue": "Aberto a trabalho remoto",
+    "resume": "Currículo / CV",
+    "cursorEmail": "Enviar e-mail",
+    "mobility": "Mobilidade",
+    "mobilityValue": "Mudança para a Espanha em andamento · remoto de qualquer lugar"
+  },
+  "Footer": {
+    "tagline": "Feito em Petrolina, disponível para o mundo.",
+    "builtWith": "feito com Next.js, canvas e café",
+    "humor": [
+      "Sim, as partículas do nome são canvas puro. Sem biblioteca.",
+      "Se você chegou até aqui, o Lighthouse também chegou a 90+.",
+      "O modo escuro é navy porque preto puro cansa a vista."
+    ]
+  },
+  "Story": {
+    "no": "N° 2",
+    "label": "Processo",
+    "title": "Da ideia à loja",
+    "lead": "O caminho que todo app meu percorre. Quatro etapas, sempre nesta ordem.",
+    "steps": [
+      {
+        "title": "Descoberta",
+        "text": "Converso com quem paga e com quem usa. Saio com o problema em uma frase, o modelo de dados rascunhado e uma lista curta do que precisa existir na primeira versão.",
+        "tag": "Escopo em 1 frase"
+      },
+      {
+        "title": "Protótipo",
+        "text": "Telas navegáveis antes de código. Fluxo principal de ponta a ponta no Figma, testado com o cliente, para errar barato e decidir a interface com dados reais.",
+        "tag": "Figma navegável"
+      },
+      {
+        "title": "Código",
+        "text": "TypeScript de ponta a ponta. React Native com Expo no app, Next.js e NestJS no back, PostgreSQL, testes no que quebra e CI rodando a cada PR.",
+        "tag": "PRs pequenos, CI verde"
+      },
+      {
+        "title": "Loja",
+        "text": "Build assinado, revisão da Apple e do Google, release por etapas e monitoramento de crash e ANR. Depois da loja, o produto continua: métrica, ajuste, nova versão.",
+        "tag": "App Store · Google Play"
+      }
+    ]
+  }
+}

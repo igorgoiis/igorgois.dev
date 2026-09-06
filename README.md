@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# igorgois.dev
 
-## Getting Started
+Portfólio pessoal de Igor Gois, engenheiro de software full-stack. Trilíngue (PT, EN, ES), com nome em partículas, campo de estrelas, seção pinada "Da ideia à loja" e projetos em molduras de navegador e telefone.
 
-First, run the development server:
+Personal portfolio of Igor Gois, full-stack software engineer. Trilingual (PT, EN, ES), with a particle name, starfield, a pinned "From idea to store" section and projects in browser and phone frames.
+
+## Stack
+
+Next.js 16 (App Router), TypeScript, Tailwind CSS v4, next-intl, Lenis, next-themes. Animações em canvas 2D puro e CSS, sem GSAP ou Framer Motion.
+
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000
+npm run dev -- -H 0.0.0.0   # acessível pelo celular na mesma rede
+npm run build && npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Onde mexer
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/config/site.ts` — nome, e-mail, links, localização, caminhos dos CVs
+- `messages/{pt,en,es}.json` — todos os textos
+- `src/data/projects.ts` — cases e galerias de telas
+- `src/data/experience.ts` — linha do tempo e stack
+- `public/projects/` — capas e prints; `public/cv/` — currículos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Rotas
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`/pt`, `/en`, `/es`, com `hreflang`, `sitemap.xml`, `robots.txt` e imagem OpenGraph por idioma.
