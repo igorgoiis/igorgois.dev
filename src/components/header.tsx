@@ -23,7 +23,16 @@ export function Header() {
   const t = useTranslations("Header");
   const locale = useLocale() as Locale;
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const base = `/${locale}`;
+
+  // Vidro só depois que o conteúdo começa a passar por baixo do header.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -37,7 +46,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-[70]">
+      <header className={`site-header fixed inset-x-0 top-0 z-[70] ${scrolled && !open ? "is-glass" : ""}`}>
         <div className="mx-auto flex w-full max-w-[1680px] items-center justify-between px-5 py-4 md:px-8">
           <a href={`${base}#top`} data-transition={site.name} className="flex items-center gap-3 text-foreground no-underline" aria-label={site.name}>
             <Logo className="h-[22px] w-auto" />
