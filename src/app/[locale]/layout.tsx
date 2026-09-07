@@ -9,6 +9,7 @@ import { Providers } from "@/components/providers";
 import { Starfield } from "@/components/starfield";
 import { Cursor } from "@/components/cursor";
 import { JsonLd } from "@/components/json-ld";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "../globals.css";
 
 const display = Bricolage_Grotesque({
@@ -109,6 +110,8 @@ export default async function LocaleLayout({
         </noscript>
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        {/* Google Analytics 4: só entra quando NEXT_PUBLIC_GA_ID estiver definido na Vercel. */}
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
         <NextIntlClientProvider>
           <Providers>
             <JsonLd locale={locale as Locale} description={tMeta("description")} />
