@@ -90,7 +90,7 @@ export function ParticleName({ name, words }: Props) {
     const mouse = { x: -9999, y: -9999 };
     let alphaBoost = isDark() ? 1 : 0.92;
 
-    const sample = () => {
+    const sample = (step: number) => {
       const r = anchor.getBoundingClientRect();
       const st = getComputedStyle(anchor);
       const text = (anchor.textContent ?? "").trim();
@@ -127,7 +127,6 @@ export function ParticleName({ name, words }: Props) {
       const kx = r.width / textW;
       const ky = (r.height * 0.78) / textH;
       const out: { x: number; y: number }[] = [];
-      const step = mobile ? 5 : 4;
       for (let y = 0; y < off.height; y += step)
         for (let x = 0; x < off.width; x += step)
           if (d[(y * off.width + x) * 4 + 3] > 128) out.push({ x: (x - off.width / 2) * kx, y: (y - off.height / 2) * ky });
@@ -138,10 +137,41 @@ export function ParticleName({ name, words }: Props) {
     let wordIndex = 0;
     let phase: "form" | "disperse" = "form";
     let phaseAt = performance.now();
+    const CAP = mobile ? 900 : 3200; // teto de partículas por desempenho
+    const BASE_STEP = mobile ? 4 : 3; // densidade alvo (px entre amostras)
+    let step = BASE_STEP;
 
-    /** Reatribui alvos às partículas existentes para a palavra atual. */
+    /** Um passo só para todas as palavras: mesma densidade em "IA" e em "Sistemas". */
+    const calibrateStep = () => {
+      const current = anchor.textContent;
+      let maxCount = 0;
+      for (const w of cycle) {
+        anchor.textContent = w;
+        maxCount = Math.max(maxCount, sample(BASE_STEP).length);
+      }
+      anchor.textContent = current;
+      step = maxCount > CAP ? Math.ceil(BASE_STEP * Math.sqrt(maxCount / CAP)) : BASE_STEP;
+    };
+
+    const makeParticle = (t: { x: number; y: number }, cols: string[], spreadX: number, spreadY: number): Particle => ({
+      tx: t.x,
+      ty: t.y,
+      sx: rnd() * spreadX * 2,
+      sy: rnd() * spreadY * 2,
+      orbit: Math.random() * Math.PI * 2,
+      orbitR: 8 + Math.random() * 30,
+      orbitSpeed: (0.002 + Math.random() * 0.004) * (Math.random() < 0.5 ? 1 : -1),
+      jrate: 0.0006 + Math.random() * 0.0012,
+      jphase: Math.random() * Math.PI * 2,
+      twinkle: Math.random() * Math.PI * 2,
+      size: 1.1 + Math.random() * 1.5,
+      rgb: cols[Math.floor(Math.random() * 3)],
+      vx: 0, vy: 0, dx: 0, dy: 0,
+    });
+
+    /** Reatribui alvos para a palavra atual, ajustando a quantidade de partículas à área dela. */
     const retarget = () => {
-      const targets = sample();
+      const targets = sample(step);
       if (!targets.length) return;
       for (let i = targets.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -151,10 +181,15 @@ export function ParticleName({ name, words }: Props) {
       const hostRect = host.getBoundingClientRect();
       cx = a.left + a.width / 2 - hostRect.left;
       cy = a.top + a.height / 2 - hostRect.top;
+      const want = Math.min(targets.length, CAP);
+      const cols = brandColors();
+      const spreadX = Math.min(0.46 * W, 760);
+      const spreadY = Math.min(0.5 * H, 380);
+      if (pts.length > want) pts.length = want;
+      while (pts.length < want) pts.push(makeParticle(targets[pts.length], cols, spreadX, spreadY));
       for (let i = 0; i < pts.length; i++) {
-        const t = targets[i % targets.length];
-        pts[i].tx = t.x;
-        pts[i].ty = t.y;
+        pts[i].tx = targets[i].x;
+        pts[i].ty = targets[i].y;
       }
     };
 
@@ -168,38 +203,9 @@ export function ParticleName({ name, words }: Props) {
       canvas.style.height = `${H}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const a = anchor.getBoundingClientRect();
-      cx = a.left + a.width / 2 - hostRect.left;
-      cy = a.top + a.height / 2 - hostRect.top;
-
-      const targets = sample();
-      for (let i = targets.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [targets[i], targets[j]] = [targets[j], targets[i]];
-      }
-      const max = Math.min(targets.length, mobile ? 520 : 1700);
-      const spreadX = Math.min(0.46 * W, 760);
-      const spreadY = Math.min(0.5 * H, 380);
-      const cols = brandColors();
+      calibrateStep();
       pts = [];
-      for (let k = 0; k < max; k++) {
-        const t = targets[k];
-        pts.push({
-          tx: t.x,
-          ty: t.y,
-          sx: rnd() * spreadX * 2,
-          sy: rnd() * spreadY * 2,
-          orbit: Math.random() * Math.PI * 2,
-          orbitR: 8 + Math.random() * 30,
-          orbitSpeed: (0.002 + Math.random() * 0.004) * (Math.random() < 0.5 ? 1 : -1),
-          jrate: 0.0006 + Math.random() * 0.0012,
-          jphase: Math.random() * Math.PI * 2,
-          twinkle: Math.random() * Math.PI * 2,
-          size: 1.1 + Math.random() * 1.5,
-          rgb: cols[Math.floor(Math.random() * 3)],
-          vx: 0, vy: 0, dx: 0, dy: 0,
-        });
-      }
+      retarget();
     };
 
     const frame = (t: number) => {
