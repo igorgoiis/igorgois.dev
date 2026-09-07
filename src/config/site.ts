@@ -25,6 +25,8 @@ export const site = {
     en: "/cv/igor-gois-cv-en.pdf",
     es: "/cv/igor-gois-cv-es.pdf",
   },
+  /** ID de métricas do Google Analytics 4 (público). Uma variável de ambiente sobrepõe. */
+  gaId: process.env.NEXT_PUBLIC_GA_ID || "G-2MWS3B406R",
   /** Hue base da marca. 235 gera teal -> azul -> violeta. */
   paintHue: 235,
 } as const;

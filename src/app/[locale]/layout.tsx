@@ -110,8 +110,8 @@ export default async function LocaleLayout({
         </noscript>
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        {/* Google Analytics 4: só entra quando NEXT_PUBLIC_GA_ID estiver definido na Vercel. */}
-        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
+        {/* Google Analytics 4. O ID fica em site.ts; NEXT_PUBLIC_GA_ID sobrepõe. */}
+        {site.gaId && <GoogleAnalytics gaId={site.gaId} />}
         <NextIntlClientProvider>
           <Providers>
             <JsonLd locale={locale as Locale} description={tMeta("description")} />
