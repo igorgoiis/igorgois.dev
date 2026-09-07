@@ -8,6 +8,7 @@ import { site } from "@/config/site";
 import { Providers } from "@/components/providers";
 import { Starfield } from "@/components/starfield";
 import { Cursor } from "@/components/cursor";
+import { JsonLd } from "@/components/json-ld";
 import "../globals.css";
 
 const display = Bricolage_Grotesque({
@@ -52,6 +53,14 @@ export async function generateMetadata({
     metadataBase: new URL(site.url),
     title: t("title"),
     description: t("description"),
+    keywords: [
+      "desenvolvedor de software Petrolina", "desenvolvedor de sites Petrolina", "criação de sites Petrolina",
+      "desenvolvimento de sistemas Petrolina", "desenvolvedor de aplicativos Petrolina", "programador Petrolina",
+      "software house Petrolina", "desenvolvedor React Native", "desenvolvedor Next.js", "Igor Gois",
+    ],
+    verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : undefined,
     alternates: {
       canonical: `${site.url}/${locale}`,
       languages: { ...languages, "x-default": `${site.url}/${routing.defaultLocale}` },
@@ -85,6 +94,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale as Locale);
+  const tMeta = await getTranslations({ locale, namespace: "Meta" });
 
   return (
     <html
@@ -101,6 +111,7 @@ export default async function LocaleLayout({
       <body className="min-h-screen bg-background text-foreground antialiased">
         <NextIntlClientProvider>
           <Providers>
+            <JsonLd locale={locale as Locale} description={tMeta("description")} />
             <Starfield />
             <Cursor />
             <div className="relative min-h-screen">{children}</div>

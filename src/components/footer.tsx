@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { site } from "@/config/site";
 import { Humor } from "./humor";
 import { Logo } from "./logo";
+import { servicesPath, type Locale } from "@/i18n/routing";
 
 export function Footer() {
   const t = useTranslations("Footer");
@@ -18,7 +19,10 @@ export function Footer() {
           </a>
           <p className="display text-2xl font-bold tracking-tight">{t("tagline")}</p>
           <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-            {year} © {site.name} · {t("builtWith")}
+            {year} © {site.name} · {t("builtWith")} ·{" "}
+            <a href={`/${locale}${servicesPath[locale as Locale]}`} className="hover:text-foreground">
+              {t("servicesLink")}
+            </a>
           </p>
         </div>
         <Humor lines={humor} />

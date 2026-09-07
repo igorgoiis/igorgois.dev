@@ -1,7 +1,7 @@
 {
   "Meta": {
-    "title": "Igor Gois · Engenheiro de Software Full-Stack (React Native, Next.js, Node.js)",
-    "description": "Engenheiro de software full-stack com 6 anos de experiência. Seis apps publicados nas lojas, sistemas web em Next.js e NestJS e integrações com IA. Petrolina, Brasil, aberto a trabalho remoto."
+    "title": "Igor Gois · Desenvolvedor de Software Full-Stack em Petrolina, PE",
+    "description": "Desenvolvimento de sites, sistemas web e aplicativos em Petrolina, PE, e remoto para todo o Brasil. React Native, Next.js, NestJS e integrações com IA. Seis apps publicados, 1,5 mi+ instalações."
   },
   "Header": {
     "menu": "Menu",
@@ -17,7 +17,8 @@
       "projects": "Projetos",
       "experience": "Experiência",
       "stack": "Stack",
-      "contact": "Contato"
+      "contact": "Contato",
+      "services": "Serviços"
     }
   },
   "Hero": {
@@ -111,7 +112,7 @@
     "no": "N° 6",
     "label": "Contato",
     "title": "Vamos conversar",
-    "subtitle": "Aberto a vagas remotas e projetos freelance. Escreva sobre uma ideia, uma oportunidade ou só para dizer oi.",
+    "subtitle": "Aberto a vagas remotas e projetos freelance. Atendo Petrolina, Juazeiro e região presencialmente, e todo o Brasil e o exterior em remoto. Escreva sobre uma ideia, uma oportunidade ou só para dizer oi.",
     "location": "Localização",
     "localTime": "Hora local",
     "status": "Status",
@@ -128,7 +129,8 @@
       "Sim, as partículas do nome são canvas puro. Sem biblioteca.",
       "Se você chegou até aqui, o Lighthouse também chegou a 90+.",
       "O modo escuro é navy porque preto puro cansa a vista."
-    ]
+    ],
+    "servicesLink": "Serviços em Petrolina"
   },
   "Story": {
     "no": "N° 2",
@@ -157,5 +159,74 @@
         "tag": "App Store · Google Play"
       }
     ]
+  },
+  "Services": {
+    "meta": {
+      "title": "Desenvolvimento de Sites, Sistemas e Aplicativos em Petrolina, PE | Igor Gois",
+      "description": "Desenvolvedor de software em Petrolina, PE: criação de sites, sistemas web, aplicativos Android e iOS e integrações com IA. Atendimento presencial em Petrolina e Juazeiro e remoto para todo o Brasil."
+    },
+    "no": "Serviços",
+    "eyebrow": "Petrolina, PE · Brasil · remoto",
+    "h1": "Desenvolvimento de sites, sistemas e aplicativos em Petrolina",
+    "lead": "Sou desenvolvedor de software full-stack com 6 anos de experiência, baseado em Petrolina, PE. Atendo empresas de Petrolina, Juazeiro e do Vale do São Francisco presencialmente, e clientes de todo o Brasil e do exterior em remoto. Sem intermediários: quem conversa com você é quem programa.",
+    "servicesTitle": "O que eu faço",
+    "services": [
+      {
+        "title": "Sites e landing pages",
+        "text": "Site institucional, landing page de campanha, página para clínica, escritório ou loja. Rápido, bonito no celular e pronto para o Google, com formulário, WhatsApp e mapa."
+      },
+      {
+        "title": "Sistemas web",
+        "text": "Painéis administrativos, marketplaces, plataformas white label e sistemas sob medida em Next.js e NestJS com PostgreSQL. Do modelo de dados ao deploy, com testes e CI."
+      },
+      {
+        "title": "Aplicativos Android e iOS",
+        "text": "Apps em React Native publicados na App Store e na Google Play. Seis apps na carreira, entre eles apps de delivery com 1,5 mi+ instalações e fintechs white label."
+      },
+      {
+        "title": "Integrações com IA",
+        "text": "Robôs que leem documentos, classificam e devolvem dados estruturados com as APIs da OpenAI e da Anthropic. Automação de rotinas que hoje dependem de alguém copiar e colar."
+      },
+      {
+        "title": "Evolução e manutenção",
+        "text": "Assumo sistemas e apps existentes: correção de bugs, performance, novas funcionalidades e publicação nas lojas, com entregas em PRs pequenos e revisáveis."
+      }
+    ],
+    "areaTitle": "Onde atendo",
+    "areaText": "Presencialmente em Petrolina, PE, e Juazeiro, BA. Em remoto, todo o Brasil e clientes internacionais, com comunicação por escrito e horário de Brasília.",
+    "howTitle": "Como funciona",
+    "how": [
+      "Você me conta o problema por e-mail ou WhatsApp e eu respondo com perguntas e uma proposta com etapas, prazo e valor.",
+      "Protótipo navegável antes do código, para decidir a interface com você.",
+      "Entregas semanais com link para testar. Você acompanha o progresso, não espera o fim.",
+      "Publicação, monitoramento e um período de ajustes incluído."
+    ],
+    "faqTitle": "Perguntas frequentes",
+    "faq": [
+      {
+        "q": "Quanto custa um site em Petrolina?",
+        "a": "Depende do escopo. Uma landing page ou site institucional simples fica na faixa de poucos milhares de reais; um sistema ou aplicativo é orçado por etapas. Respondo com uma proposta detalhada depois de entender o que você precisa."
+      },
+      {
+        "q": "Em quanto tempo fica pronto?",
+        "a": "Sites e landing pages: de uma a três semanas. Sistemas e aplicativos: de um a três meses, com entregas semanais para você acompanhar."
+      },
+      {
+        "q": "Você atende fora de Petrolina?",
+        "a": "Sim. A maior parte dos meus clientes é remota. Trabalho com empresas de todo o Brasil e do exterior, com reuniões online e comunicação por escrito."
+      },
+      {
+        "q": "Você faz manutenção em sistemas que já existem?",
+        "a": "Sim. Assumo projetos em React, React Native, Next.js, Node.js e NestJS, corrijo bugs, melhoro performance e publico novas versões nas lojas."
+      },
+      {
+        "q": "Como começar?",
+        "a": "Envie um e-mail para contato@igorgois.dev com uma descrição do que precisa. Em até um dia útil eu respondo com perguntas e o próximo passo."
+      }
+    ],
+    "ctaTitle": "Vamos conversar sobre o seu projeto",
+    "ctaText": "Escreva para contato@igorgois.dev com o que você precisa. Respondo em até um dia útil.",
+    "ctaButton": "Enviar e-mail",
+    "ctaPortfolio": "Ver projetos"
   }
 }

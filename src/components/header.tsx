@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { site } from "@/config/site";
-import type { Locale } from "@/i18n/routing";
+import { servicesPath, type Locale } from "@/i18n/routing";
 import { LocaleSwitch } from "./locale-switch";
 import { ThemeToggle } from "./theme-toggle";
 import { GithubIcon, LinkedinIcon } from "./icons";
@@ -16,6 +16,7 @@ const NAV = [
   { key: "experience", href: "#experience", no: "04" },
   { key: "stack", href: "#stack", no: "05" },
   { key: "contact", href: "#contact", no: "06" },
+  { key: "services", href: "SERVICES", no: "07" },
 ] as const;
 
 /** Barra mínima sempre visível e menu em tela cheia com links numerados. */
@@ -81,7 +82,8 @@ export function Header() {
           {NAV.map((item, i) => (
             <a
               key={item.key}
-              href={`${base}${item.href}`}
+              href={item.href === "SERVICES" ? `${base}${servicesPath[locale]}` : `${base}${item.href}`}
+              data-transition={item.href === "SERVICES" ? t("nav.services") : undefined}
               onClick={() => setOpen(false)}
               className="menu-link"
               style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
