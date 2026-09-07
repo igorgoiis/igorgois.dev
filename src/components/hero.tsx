@@ -26,7 +26,7 @@ export function Hero() {
       </div>
 
       {/* Nome gigante em partículas */}
-      <ParticleName name={site.name} />
+      <ParticleName name={site.name} words={t.raw("words") as string[]} />
 
       {/* Qualidades nas bordas, como no Lannino */}
       <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-end md:gap-8">

@@ -46,13 +46,19 @@ function brandColors(): string[] {
   return [hslToRgb(h - 61, 84, 62), hslToRgb(h - 29, 91, 62), hslToRgb(h + 30, 81, 62)];
 }
 
-type Props = { name: string };
+type Props = { name: string; words?: string[] };
+
+const WORD_MS = 4200; // tempo com cada palavra formada
+const DISPERSE_MS = 900; // tempo dispersando antes de trocar a palavra
 
 /**
- * Nome gigante formado por partículas. O h1 real fica no DOM com opacity-0;
- * o canvas desenha o mesmo texto em pontos.
+ * Palavras gigantes formadas por partículas: começa pelo nome e alterna com
+ * os serviços. O h1 real mantém o nome para leitores de tela e buscadores;
+ * o span de amostragem troca de texto com opacity-0 e o canvas desenha os pontos.
  */
-export function ParticleName({ name }: Props) {
+export function ParticleName({ name, words }: Props) {
+  const cycle = words && words.length > 0 ? words : [name];
+  const wordsKey = cycle.join("|");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const nameRef = useRef<HTMLSpanElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -128,6 +134,30 @@ export function ParticleName({ name }: Props) {
       return out;
     };
 
+    const cycle = wordsKey.split("|");
+    let wordIndex = 0;
+    let phase: "form" | "disperse" = "form";
+    let phaseAt = performance.now();
+
+    /** Reatribui alvos às partículas existentes para a palavra atual. */
+    const retarget = () => {
+      const targets = sample();
+      if (!targets.length) return;
+      for (let i = targets.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [targets[i], targets[j]] = [targets[j], targets[i]];
+      }
+      const a = anchor.getBoundingClientRect();
+      const hostRect = host.getBoundingClientRect();
+      cx = a.left + a.width / 2 - hostRect.left;
+      cy = a.top + a.height / 2 - hostRect.top;
+      for (let i = 0; i < pts.length; i++) {
+        const t = targets[i % targets.length];
+        pts[i].tx = t.x;
+        pts[i].ty = t.y;
+      }
+    };
+
     const build = () => {
       const hostRect = host.getBoundingClientRect();
       W = hostRect.width;
@@ -181,7 +211,20 @@ export function ParticleName({ name }: Props) {
       ctx.clearRect(0, 0, W, H);
       const dt = last ? Math.min(t - last, 250) : 16.7;
       last = t;
-      const target = t < start ? 0 : reduce ? 1 : 0.72 + 0.24 * Math.sin(t * 0.00045);
+      // Ciclo de palavras: forma, dispersa, troca o texto e forma de novo.
+      if (!reduce && cycle.length > 1 && t > start) {
+        if (phase === "form" && t - phaseAt > WORD_MS) {
+          phase = "disperse";
+          phaseAt = t;
+        } else if (phase === "disperse" && t - phaseAt > DISPERSE_MS) {
+          wordIndex = (wordIndex + 1) % cycle.length;
+          anchor.textContent = cycle[wordIndex];
+          retarget();
+          phase = "form";
+          phaseAt = t;
+        }
+      }
+      const target = t < start ? 0 : reduce ? 1 : phase === "disperse" ? 0.18 : 0.78 + 0.18 * Math.sin(t * 0.00045);
       const rate = target > progress ? 0.05 : 0.03;
       progress += (target - progress) * (1 - Math.pow(1 - rate, dt / 16.7));
       const a = progress;
@@ -303,14 +346,15 @@ export function ParticleName({ name }: Props) {
       themeObserver.disconnect();
       viewObserver.disconnect();
     };
-  }, []);
+  }, [wordsKey]);
 
   return (
     <div ref={sectionRef} className="relative py-6 md:py-10">
       <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 z-0" />
       <h1 className="hero-anim hero-anim-2 relative z-10 text-center">
-        <span ref={nameRef} className="hero-name inline-block whitespace-nowrap opacity-0">
-          {name}
+        <span className="sr-only">{name}</span>
+        <span ref={nameRef} aria-hidden="true" className="hero-name inline-block whitespace-nowrap opacity-0">
+          {cycle[0]}
         </span>
       </h1>
     </div>

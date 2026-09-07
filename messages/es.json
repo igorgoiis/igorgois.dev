@@ -31,7 +31,15 @@
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Hablar conmigo",
     "status": "Abierto a trabajo remoto",
-    "ctaCv": "Ver CV"
+    "ctaCv": "Ver CV",
+    "words": [
+      "Igor Gois",
+      "Full Stack",
+      "Apps",
+      "Sitios",
+      "Sistemas",
+      "IA"
+    ]
   },
   "Focus": {
     "no": "N° 1",
