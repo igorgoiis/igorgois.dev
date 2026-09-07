@@ -16,6 +16,8 @@ export type Project = {
   role: Localized;
   stack: string[];
   cover: Record<Locale, string>;
+  /** Chamada grande acima do projeto, um dado que resume o trabalho. */
+  kicker: Localized;
   /** Telas reais do produto. Quando existe, o card ganha o botão "Ver telas". */
   gallery?: { src: string; alt: Localized }[];
   url?: string;
@@ -27,12 +29,13 @@ export const projects: Project[] = [
     name: "Pede.ai",
     kind: "mobile",
     address: "App Store · Google Play",
+    kicker: { pt: "1,5 mi+ instalações", en: "1.5M+ installs", es: "1,5 M+ instalaciones" },
     category: { pt: "Mobile · Delivery", en: "Mobile · Delivery", es: "Móvil · Delivery" },
     period: { pt: "2025 – hoje", en: "2025 – today", es: "2025 – hoy" },
     description: {
-      pt: "App de delivery em React Native e Expo, publicado na App Store e na Google Play em três marcas do grupo: Pede.ai, Aiboo Delivery e QFome. Reestruturação completa: nova interface, Expo Router, animações com Reanimated, mapa com geolocalização, rastreamento do pedido em tempo real e listas longas otimizadas para aparelhos simples.",
-      en: "Delivery app built with React Native and Expo, live on the App Store and Google Play under three group brands: Pede.ai, Aiboo Delivery and QFome. Full rebuild: new UI, Expo Router, Reanimated animations, map with geolocation, real-time order tracking and long lists tuned for low-end devices.",
-      es: "App de delivery en React Native y Expo, publicada en la App Store y en Google Play bajo tres marcas del grupo: Pede.ai, Aiboo Delivery y QFome. Reestructuración completa: nueva interfaz, Expo Router, animaciones con Reanimated, mapa con geolocalización, seguimiento del pedido en tiempo real y listas largas optimizadas para dispositivos sencillos.",
+      pt: "App de delivery em React Native, publicado na App Store e na Google Play em três marcas do grupo: Pede.ai, Aiboo Delivery e QFome. Reestruturação completa: nova interface, animações com Reanimated, mapa com geolocalização, rastreamento do pedido em tempo real e listas longas otimizadas para aparelhos simples.",
+      en: "Delivery app built with React Native, live on the App Store and Google Play under three group brands: Pede.ai, Aiboo Delivery and QFome. Full rebuild: new UI, Reanimated animations, map with geolocation, real-time order tracking and long lists tuned for low-end devices.",
+      es: "App de delivery en React Native, publicada en la App Store y en Google Play bajo tres marcas del grupo: Pede.ai, Aiboo Delivery y QFome. Reestructuración completa: nueva interfaz, animaciones con Reanimated, mapa con geolocalización, seguimiento del pedido en tiempo real y listas largas optimizadas para dispositivos sencillos.",
     },
     result: {
       pt: "1,5 mi+ instalações · ~300 mil sessões/dia · ANR no Android reduzido em 90% · v6.0 com Pix, Apple Pay e Live Activities",
@@ -44,7 +47,7 @@ export const projects: Project[] = [
       en: "Senior frontend developer, app owner",
       es: "Desarrollador frontend senior, responsable de la app",
     },
-    stack: ["React Native", "Expo", "TypeScript", "Reanimated", "React Query", "Zustand", "Zod"],
+    stack: ["React Native", "TypeScript", "Reanimated", "React Query", "Zustand", "Zod"],
     cover: { pt: "/projects/pede-ai.png", en: "/projects/pede-ai-en.png", es: "/projects/pede-ai.png" },
   },
   {
@@ -52,22 +55,23 @@ export const projects: Project[] = [
     name: "Licite Nordeste",
     kind: "web",
     address: "licitenordeste.com.br",
-    category: { pt: "Web · IA · Produto próprio", en: "Web · AI · Own product", es: "Web · IA · Producto propio" },
+    kicker: { pt: "IA que lê editais", en: "AI that reads tenders", es: "IA que lee pliegos" },
+    category: { pt: "Web · IA", en: "Web · AI", es: "Web · IA" },
     period: { pt: "2024 – 2025", en: "2024 – 2025", es: "2024 – 2025" },
     description: {
-      pt: "Plataforma de licitações construída do zero. Um robô de IA baixa editais em PDF todos os dias, extrai e classifica os dados com a API da OpenAI e devolve orientação para cada usuário conforme o perfil. Frontend em Next.js, backend em NestJS com PostgreSQL.",
-      en: "Public-tender platform built from scratch. An AI robot downloads PDF notices every day, extracts and classifies the data with the OpenAI API and returns guidance to each user based on their profile. Next.js frontend, NestJS backend with PostgreSQL.",
-      es: "Plataforma de licitaciones construida desde cero. Un robot de IA descarga pliegos en PDF todos los días, extrae y clasifica los datos con la API de OpenAI y devuelve orientación a cada usuario según su perfil. Frontend en Next.js, backend en NestJS con PostgreSQL.",
+      pt: "Plataforma de licitações onde atuo como engenheiro full-stack. Um robô de IA baixa editais em PDF todos os dias, extrai e classifica os dados com a API da OpenAI e devolve orientação para cada usuário conforme o perfil. Frontend em Next.js, backend em NestJS com PostgreSQL.",
+      en: "Public-tender platform where I work as a full-stack engineer. An AI robot downloads PDF notices every day, extracts and classifies the data with the OpenAI API and returns guidance to each user based on their profile. Next.js frontend, NestJS backend with PostgreSQL.",
+      es: "Plataforma de licitaciones donde trabajo como ingeniero full-stack. Un robot de IA descarga pliegos en PDF todos los días, extrae y clasifica los datos con la API de OpenAI y devuelve orientación a cada usuario según su perfil. Frontend en Next.js, backend en NestJS con PostgreSQL.",
     },
     result: {
-      pt: "Robô lê e classifica editais diariamente · saída JSON validada por schema · produto do zero à produção",
-      en: "Robot reads and classifies notices daily · schema-validated JSON output · zero to production",
-      es: "Robot lee y clasifica pliegos a diario · salida JSON validada por esquema · de cero a producción",
+      pt: "Robô lê e classifica editais diariamente · saída JSON validada por schema · frontend, backend e integração com IA",
+      en: "Robot reads and classifies notices daily · schema-validated JSON output · frontend, backend and AI integration",
+      es: "Robot lee y clasifica pliegos a diario · salida JSON validada por esquema · frontend, backend e integración con IA",
     },
     role: {
-      pt: "Fundador e engenheiro full-stack",
-      en: "Founder and full-stack engineer",
-      es: "Fundador e ingeniero full-stack",
+      pt: "Engenheiro full-stack",
+      en: "Full-stack engineer",
+      es: "Ingeniero full-stack",
     },
     stack: ["Next.js", "NestJS", "PostgreSQL", "OpenAI API", "TypeScript", "Angular"],
     cover: {
@@ -90,6 +94,7 @@ export const projects: Project[] = [
     name: "Bankeiro",
     kind: "web",
     address: "bankeiro · white label",
+    kicker: { pt: "90+ fintechs", en: "90+ fintechs", es: "90+ fintechs" },
     category: { pt: "Web · Fintech · White label", en: "Web · Fintech · White label", es: "Web · Fintech · White label" },
     period: { pt: "2024 – 2026", en: "2024 – 2026", es: "2024 – 2026" },
     description: {

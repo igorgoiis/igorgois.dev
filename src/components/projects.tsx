@@ -80,7 +80,6 @@ function Frame({ p, locale, priority }: { p: Project; locale: Locale; priority: 
  */
 export function Projects({ locale }: { locale: Locale }) {
   const t = useTranslations("Projects");
-  const motto = t.raw("motto") as string[];
   const [gallery, setGallery] = useState<string | null>(null);
   const galleryProject = projects.find((p) => p.slug === gallery);
 
@@ -92,11 +91,9 @@ export function Projects({ locale }: { locale: Locale }) {
 
       {projects.map((p, i) => (
         <Section key={p.slug} id={`project-${p.slug}`} className="px-5 py-16 md:px-8 md:py-24">
-          {motto[i] && (
-            <div className="mb-10 overflow-hidden md:mb-16">
-              <p className="motto">{motto[i]}</p>
-            </div>
-          )}
+          <div className="mb-10 overflow-hidden md:mb-16">
+            <p className="motto">{p.kicker[locale]}</p>
+          </div>
 
           <article className={`grid items-center gap-10 md:grid-cols-12 ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}>
             <div className={`in-view-anim in-view-anim-1 md:col-span-7 ${p.kind === "mobile" ? "md:col-span-5" : ""}`}>

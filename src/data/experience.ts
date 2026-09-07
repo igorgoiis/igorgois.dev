@@ -19,11 +19,11 @@ export const experience: Experience[] = [
     period: { pt: "nov 2025 – hoje", en: "Nov 2025 – today", es: "nov 2025 – hoy" },
     current: true,
     summary: {
-      pt: "Lidero a reconstrução dos três apps de delivery (Pede.ai, Aiboo Delivery e QFome): 1,5 mi+ instalações, ~300 mil sessões/dia, ANR no Android reduzido em 90%. Nova UI, Expo Router, Reanimated, React Query, Zustand e Zod. Responsável pelos releases nas lojas.",
-      en: "Leading the rebuild of the three delivery apps (Pede.ai, Aiboo Delivery and QFome): 1.5M+ installs, ~300K daily sessions, Android ANR cut by 90%. New UI, Expo Router, Reanimated, React Query, Zustand and Zod. Own the store releases.",
-      es: "Lidero la reconstrucción de las tres apps de delivery (Pede.ai, Aiboo Delivery y QFome): 1,5 M+ de instalaciones, ~300 mil sesiones/día, ANR en Android reducido un 90 %. Nueva UI, Expo Router, Reanimated, React Query, Zustand y Zod. Responsable de las releases en las tiendas.",
+      pt: "Lidero a reconstrução dos três apps de delivery (Pede.ai, Aiboo Delivery e QFome): 1,5 mi+ instalações, ~300 mil sessões/dia, ANR no Android reduzido em 90%. Nova UI, Reanimated, React Query, Zustand e Zod. Responsável pelos releases nas lojas.",
+      en: "Leading the rebuild of the three delivery apps (Pede.ai, Aiboo Delivery and QFome): 1.5M+ installs, ~300K daily sessions, Android ANR cut by 90%. New UI, Reanimated, React Query, Zustand and Zod. Own the store releases.",
+      es: "Lidero la reconstrucción de las tres apps de delivery (Pede.ai, Aiboo Delivery y QFome): 1,5 M+ de instalaciones, ~300 mil sesiones/día, ANR en Android reducido un 90 %. Nueva UI, Reanimated, React Query, Zustand y Zod. Responsable de las releases en las tiendas.",
     },
-    stack: ["React Native", "Expo", "TypeScript"],
+    stack: ["React Native", "TypeScript", "Reanimated"],
   },
   {
     company: "MB Labs · Bankeiro",
