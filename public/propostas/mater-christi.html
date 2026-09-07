@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Proposta · Site Mater Christi Saúde Integrada · Gois.dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-2: #101a30;
+    --panel: #ffffff;
+    --paper: #f6f8fc;
+    --ink: #0f172a;
+    --ink-2: #475569;
+    --ink-3: #7c879b;
+    --line: #e3e8f2;
+    --teal: #2dd4bf;
+    --blue: #3b82f6;
+    --violet: #8b5cf6;
+    --grad: linear-gradient(120deg, #2dd4bf 0%, #3b82f6 50%, #8b5cf6 100%);
+    --clinic: #16295f;
+    --clinic-2: #2a4db5;
+    --gold: #c9a227;
+    --ok: #0f7f47;
+    --radius: 20px;
+    --shadow: 0 20px 50px -24px rgb(15 23 42 / 0.25);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: "Fraunces", Georgia, serif; font-weight: 500; letter-spacing: -0.015em; line-height: 1.1; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+  .eyebrow.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .muted { color: var(--ink-2); }
+  .small { font-size: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-grad { background: var(--grad); color: #fff; box-shadow: 0 14px 30px -14px rgb(59 130 246 / .7); }
+  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+  .btn-wa { background: var(--ok); color: #fff; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .grid { display: grid; gap: 18px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 860px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+  section { padding: 72px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .sec-head { max-width: 640px; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); margin-top: 10px; }
+  .sec-head p { margin-top: 12px; color: var(--ink-2); font-size: 17px; }
+
+  /* topo escuro com a marca */
+  .top { background: radial-gradient(70% 90% at 90% 0%, rgba(59,130,246,.35), transparent 60%), radial-gradient(50% 70% at 0% 100%, rgba(45,212,191,.22), transparent 60%), linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); color: #fff; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; gap: 16px; flex-wrap: wrap; }
+  .brand { height: 26px; width: auto; display: block; color: #fff; }
+  .topbar .meta { display: flex; gap: 22px; font-size: 13px; color: rgba(255,255,255,.7); flex-wrap: wrap; }
+  .topbar .meta b { color: #fff; font-weight: 600; }
+  .hero { padding: 56px 0 72px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(38px, 6vw, 64px); }
+  .hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { margin-top: 20px; font-size: 18px; color: rgba(255,255,255,.78); max-width: 560px; }
+  .hero .cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: 24px; backdrop-filter: blur(6px); }
+  .hero-card dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; margin: 0; font-size: 14px; }
+  .hero-card dt { color: rgba(255,255,255,.6); }
+  .hero-card dd { margin: 0; font-weight: 600; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; }
+  .pill.live { background: rgba(45,212,191,.15); color: var(--teal); border: 1px solid rgba(45,212,191,.35); }
+  .pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(45,212,191,.2); }
+
+  /* contexto */
+  .finding { display: flex; gap: 14px; }
+  .finding .n { flex: 0 0 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 700; color: #fff; background: var(--clinic); font-size: 14px; }
+  .finding h3 { font-size: 18px; }
+  .finding p { margin-top: 6px; color: var(--ink-2); font-size: 15px; }
+
+  /* entregas */
+  .feature { display: flex; gap: 14px; align-items: flex-start; }
+  .feature .ic { flex: 0 0 40px; height: 40px; border-radius: 12px; background: #eef4fc; color: var(--clinic-2); display: grid; place-items: center; }
+  .feature h3 { font-size: 17px; }
+  .feature p { margin-top: 4px; color: var(--ink-2); font-size: 14.5px; }
+  .pages { columns: 2; column-gap: 40px; padding: 0; margin: 0; list-style: none; }
+  @media (max-width: 700px) { .pages { columns: 1; } }
+  .pages li { break-inside: avoid; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 15px; display: flex; justify-content: space-between; gap: 12px; }
+  .pages li span:last-child { color: var(--ink-3); font-size: 13px; white-space: nowrap; }
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 700px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+  .metric { background: var(--clinic); color: #fff; border-radius: 16px; padding: 20px; }
+  .metric b { display: block; font-family: "Fraunces", serif; font-size: 40px; font-weight: 500; color: #dcb94a; line-height: 1; }
+  .metric span { display: block; margin-top: 8px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+
+  /* investimento */
+  .options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .options { grid-template-columns: 1fr; } }
+  .option { position: relative; cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .option:hover { transform: translateY(-2px); }
+  .option.selected { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(59,130,246,.15), var(--shadow); }
+  .option .tag { position: absolute; top: -12px; left: 24px; background: var(--grad); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .option h3 { font-size: 22px; }
+  .option .price .per { font-size: 15px; color: var(--ink-2); font-weight: 600; }
+  .option .price { margin-top: 14px; display: flex; align-items: baseline; gap: 8px; }
+  .option .price b { font-family: "Fraunces", serif; font-weight: 500; font-size: 38px; letter-spacing: -0.02em; }
+  .option .price span { color: var(--ink-3); font-size: 14px; }
+  .option ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; font-size: 15px; }
+  .option li { display: flex; gap: 10px; align-items: flex-start; }
+  .option li::before { content: ""; flex: 0 0 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: var(--clinic-2); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/70% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/70% no-repeat; background-color: var(--clinic-2); }
+  .option li.off { color: #9a3412; }
+  .option li.off::before {
+    background-color: #dc2626;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E");
+  }
+  .option li.off small { display: block; color: var(--ink-3); font-size: 12.5px; }
+  .option .pick { margin-top: 20px; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; color: var(--blue); }
+  .option .pick .radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #cbd5e1; display: grid; place-items: center; }
+  .option.selected .pick .radio { border-color: var(--blue); }
+  .option.selected .pick .radio::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+  .terms { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 860px) { .terms { grid-template-columns: 1fr; } }
+  .terms .card { padding: 18px 20px; font-size: 14.5px; }
+  .terms .card b { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+  .note { margin-top: 18px; padding: 16px 18px; border-radius: 14px; background: #fff8e3; border: 1px solid #f1dfa2; font-size: 14.5px; color: #5b4a12; }
+
+  /* suporte */
+  .switch { display: inline-flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px; }
+  .switch button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--ink-2); }
+  .switch button.on { background: var(--ink); color: #fff; }
+  .switch .save { font-size: 12px; font-weight: 700; color: var(--ok); padding-right: 10px; }
+  .plans { margin-top: 24px; }
+  .plan h3 { font-size: 22px; }
+  .plan .who { margin-top: 4px; font-size: 14px; color: var(--ink-3); }
+  .plan .price { margin-top: 16px; }
+  .plan .price b { font-family: "Fraunces", serif; font-weight: 500; font-size: 40px; letter-spacing: -0.02em; }
+  .plan .price span { font-size: 14px; color: var(--ink-3); }
+  .plan ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; font-size: 14.5px; }
+  .plan li { padding-left: 22px; position: relative; }
+  .plan li::before { content: "•"; position: absolute; left: 6px; color: var(--blue); font-weight: 700; }
+  .plan.featured { border-color: var(--clinic); background: linear-gradient(180deg, #f3f6fd, #fff); }
+  .plan .badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--clinic-2); background: #e6eefc; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+
+  /* domínio */
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; }
+  .status { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 13px; }
+  .status.free { color: var(--ok); }
+  .status.taken { color: #b42318; }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; background: #eef2f8; padding: 2px 6px; border-radius: 6px; }
+
+  /* etapas */
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+  .step { position: relative; padding: 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+  .step .k { font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--blue); }
+  .step h3 { font-size: 16px; margin-top: 6px; }
+  .step p { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+  .check { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .check li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+  .check li .box { flex: 0 0 20px; height: 20px; border-radius: 6px; border: 1.5px solid #c7d0e0; margin-top: 2px; }
+
+  /* resumo fixo */
+  .summary { position: sticky; bottom: 16px; z-index: 5; margin-top: 30px; }
+  .summary .card { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 22px; box-shadow: var(--shadow); flex-wrap: wrap; background: var(--ink); color: #fff; border-color: transparent; }
+  .summary b { font-family: "Fraunces", serif; font-weight: 500; font-size: 26px; }
+  .summary .muted { color: rgba(255,255,255,.7); }
+
+  footer { background: var(--bg); color: #fff; padding: 48px 0 32px; }
+  footer .row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+  footer .sig { font-size: 14px; color: rgba(255,255,255,.75); }
+  footer .sig b { color: #fff; font-weight: 600; display: block; font-size: 16px; }
+  footer .links { display: flex; gap: 18px; font-size: 14px; }
+  footer .links a { color: rgba(255,255,255,.8); text-decoration: none; }
+  footer .links a:hover { color: #fff; }
+  footer .fine { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); font-size: 12px; color: rgba(255,255,255,.5); }
+
+  [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  [data-reveal].in { opacity: 1; transform: none; }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: #fff; zoom: 0.72; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none !important; text-shadow: none !important; }
+    .wrap { width: min(1080px, 100% - 64px); }
+    .summary, .no-print, .option .pick { display: none !important; }
+    .print-only { display: block !important; }
+    /* gradiente em texto não imprime: cai para cor sólida */
+    .eyebrow.grad, .hero h1 span { background: none !important; -webkit-text-fill-color: initial; color: #7dd3fc; }
+    .eyebrow.grad { color: #2dd4bf; }
+    .btn-grad { background: #3b82f6 !important; }
+    .hero-card { backdrop-filter: none; background: rgba(255,255,255,.08); }
+    .top { padding: 8px 0 28px; }
+    .topbar { padding: 18px 0; }
+    .hero { padding: 20px 0 8px; gap: 28px; }
+    section { padding: 34px 0; break-inside: auto; }
+    .sec-head { margin-bottom: 22px; break-after: avoid; }
+    .card, .option, .plan, .step, .finding, .feature, .metric, .note, .terms .card, tr { break-inside: avoid; }
+    .options, .plans, .steps, .terms, .grid { break-inside: auto; }
+    .option.selected { border-color: var(--line); }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    footer { break-before: auto; padding: 32px 0 24px; }
+    a { text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="topbar">
+      <svg class="brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383 93" width="383" height="93" role="img" aria-label="Gois.dev">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6 6)">
+    <path transform="translate(0.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M301 -14Q215 -14 153.5 29Q92 72 59.5 148.5Q27 225 27 325Q27 399 45.5 462.5Q64 526 103 573.5Q142 621 202 647.5Q262 674 345 674Q415 674 465.5 655Q516 636 548 602Q580 568 593 523.5Q606 479 601 428L450 410Q452 455 439 483.5Q426 512 400.5 526Q375 540 339 540Q296 540 264 517Q232 494 214.5 448Q197 402 197 333Q197 282 207 241.5Q217 201 237 173.5Q257 146 286.5 131.5Q316 117 354 117Q392 117 419 130.5Q446 144 460.5 167.5Q475 191 475 222L371 222L371 336L619 336L619 212L619 0L508 0L508 178L499 178Q494 116 469.5 73Q445 30 402.5 8Q360 -14 301 -14Z"/>
+    <path transform="translate(60.90 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M282 -14Q206 -14 147 16.5Q88 47 55 108.5Q22 170 22 263Q22 360 56.5 421.5Q91 483 150.5 512.5Q210 542 285 542Q363 542 421.5 511.5Q480 481 512.5 419.5Q545 358 545 264Q545 167 510.5 105.5Q476 44 416.5 15Q357 -14 282 -14ZM286 105Q317 105 338 122.5Q359 140 370 174Q381 208 381 255Q381 307 369 342.5Q357 378 334.5 397Q312 416 280 416Q250 416 229 398.5Q208 381 197 347Q186 313 186 265Q186 189 212.5 147Q239 105 286 105Z"/>
+    <path transform="translate(113.60 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M36 0L36 528L198 528L198 0ZM116 566Q70 566 45.5 585.5Q21 605 21 642Q21 680 45.5 699.5Q70 719 116 719Q163 719 187.5 699Q212 679 212 642Q212 606 187.5 586Q163 566 116 566Z"/>
+    <path transform="translate(133.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M267 -14Q214 -14 168.5 -3.5Q123 7 89.5 30Q56 53 38.5 91.5Q21 130 24 185L165 197Q167 164 180 142.5Q193 121 216 111Q239 101 272 101Q303 101 325.5 111.5Q348 122 348 147Q348 160 340 168.5Q332 177 310.5 184.5Q289 192 248 202Q197 215 156 228Q115 241 86 259Q57 277 42 303.5Q27 330 27 369Q27 424 56.5 462.5Q86 501 138 521.5Q190 542 258 542Q319 542 372 523Q425 504 455.5 461Q486 418 478 347L340 334Q343 363 332 383.5Q321 404 300 414.5Q279 425 249 425Q215 425 196.5 412.5Q178 400 178 381Q178 366 189.5 355.5Q201 345 225.5 337.5Q250 330 289 321Q323 314 360 303Q397 292 429 273.5Q461 255 481 225Q501 195 501 149Q501 100 474 63Q447 26 395 6Q343 -14 267 -14Z"/>
+    <circle cx="200.20" cy="56.50" r="9.50" fill="url(#g)"/>
+    <path transform="translate(217.70 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M233 -14Q178 -14 131.5 15.5Q85 45 57.5 106Q30 167 30 262Q30 352 55 412Q80 472 125.5 502.5Q171 533 230 533Q281 533 318 511Q355 489 378 444Q401 399 410 331L419 331Q413 375 408.5 411Q404 447 402 477.5Q400 508 400 534L400 685L510 685L509 217L511 0L411 0L418 173L410 173Q398 110 374 68.5Q350 27 315 6.5Q280 -14 233 -14ZM263 78Q297 78 322.5 94.5Q348 111 365 138Q382 165 390.5 195.5Q399 226 399 254L399 262Q399 282 394 305.5Q389 329 378.5 352.5Q368 376 352.5 395Q337 414 315 426Q293 438 265 438Q227 438 199 415.5Q171 393 156 352Q141 311 141 257Q141 204 155 163.5Q169 123 196.5 100.5Q224 78 263 78Z"/>
+    <path transform="translate(271.05 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M281 -14Q216 -14 169 6Q122 26 91 62Q60 98 44.5 146.5Q29 195 29 253Q29 310 44 360.5Q59 411 89 450Q119 489 164.5 511Q210 533 273 533Q331 533 374.5 513Q418 493 446.5 456Q475 419 486.5 368Q498 317 491 255L97 249L97 318L410 323L390 283Q393 332 381 367.5Q369 403 342 422.5Q315 442 273 442Q227 442 196.5 418.5Q166 395 151 353.5Q136 312 136 257Q136 167 174 120Q212 73 284 73Q319 73 342.5 84Q366 95 379.5 112.5Q393 130 398.5 151Q404 172 402 192L504 185Q505 145 492 109.5Q479 74 451.5 46.5Q424 19 381.5 2.5Q339 -14 281 -14Z"/>
+    <path transform="translate(319.15 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M189 0L7 519L125 519L257 94L262 94L395 519L508 519L326 0Z"/>
+  </g>
+</svg>
+
+      <div class="meta">
+        <span>Proposta <b id="num">GD-2026-001</b></span>
+        <span>Emitida em <b id="date"></b></span>
+        <span>Válida até <b id="valid"></b></span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div>
+        <p class="eyebrow grad">Proposta comercial · site institucional</p>
+        <h1 style="margin-top:14px">Um site à altura da <span>Mater Christi</span>, pronto para agendar pelo WhatsApp.</h1>
+        <p class="lead">A clínica já tem a melhor nota do Centro no Google e um Instagram bem cuidado, mas quem procura “psiquiatra em Petrolina” não encontra vocês. Este projeto coloca a Mater Christi no Google, com as 16 especialidades, a agenda da semana e um botão de agendar em cada tela.</p>
+        <div class="cta">
+          <a class="btn btn-grad" href="https://mater-christi.igorgois.dev" target="_blank" rel="noopener">Ver o site pronto ↗</a>
+          <a class="btn btn-ghost no-print" href="#investimento">Ver investimento</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <span class="pill live">Demonstração no ar</span>
+        <dl style="margin-top:16px">
+          <dt>Cliente</dt><dd>Mater Christi Saúde Integrada</dd>
+          <dt>Endereço</dt><dd>Av. Souza Filho, 911 · Centro · Petrolina</dd>
+          <dt>Proposta por</dt><dd>Igor Gois · Gois.dev</dd>
+          <dt>Prazo</dt><dd>7 dias úteis após o conteúdo aprovado</dd>
+          <dt>Estado</dt><dd>Site construído e testado. Falta só o conteúdo final</dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="contexto">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">O que encontramos</p>
+      <h2>Vocês já fazem a parte difícil. Falta a porta de entrada.</h2>
+      <p>Antes de desenhar, levantamos o Instagram, o Google Maps e o mercado local. Quatro achados definem o projeto.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card finding" data-reveal>
+        <div class="n">1</div>
+        <div><h3>Nota 4,8 no Google, mas sem site e na categoria errada</h3><p>O perfil aparece como “Serviço de saúde mental” e sem link. Quem busca clínica médica, pediatra ou ortopedista em Petrolina não chega até vocês.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">2</div>
+        <div><h3>A agenda da semana vive nos stories</h3><p>Quem quer saber se tem fisioterapia na segunda precisa abrir cinco stories. No site, isso vira um filtro por dia, sempre atualizado.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">3</div>
+        <div><h3>Identidade forte, pouco aproveitada</h3><p>As artes do Instagram são consistentes: azul-marinho, dourado, ícones em círculo. O site foi desenhado para parecer continuação delas, não outra marca.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">4</div>
+        <div><h3>O domínio materchristi.com.br já tem dono</h3><p>Pertence a um apostolado católico, sem relação com a clínica. Verificamos alternativas livres e explicamos abaixo como registrar no nome de vocês.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="entrega">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">O que o site entrega</p>
+      <h2>Feito para gerar agendamento, não só para existir.</h2>
+      <p>Cada seção termina em um botão de WhatsApp com a mensagem já escrita. A recepção recebe “Quero agendar Psicologia ABA com Emile” em vez de “oi”.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card feature" data-reveal><div class="ic">📅</div><div><h3>Agenda por dia da semana</h3><p>Filtro Seg a Sex mostrando quem atende em cada dia, com “hoje” destacado.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">💬</div><div><h3>WhatsApp pré-preenchido</h3><p>Mensagem pronta por especialidade, por profissional, por pacote e para o cartão de desconto.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">🔎</div><div><h3>Uma página por especialidade</h3><p>16 páginas otimizadas para buscas como “psiquiatra em Petrolina” e “psicólogo ABA Petrolina”.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">👩‍⚕️</div><div><h3>Equipe com foto e agendamento</h3><p>Cards dos 10 profissionais com especialidade, frase e botão direto para marcar com cada um.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">💳</div><div><h3>Cartão de desconto e pacotes</h3><p>Destaque para o cartão de R$ 30 e para os pacotes Diamante, Ouro, Prata e Ginecológico.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">📍</div><div><h3>Localização, horários e FAQ</h3><p>Mapa integrado, rota no Google Maps, telefones clicáveis e as dúvidas que a recepção mais responde.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">📱</div><div><h3>Celular em primeiro lugar</h3><p>Testado em 375, 768, 1024 e 1280 px. A maioria dos pacientes vai chegar pelo Instagram, no celular.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">🔗</div><div><h3>Bonito ao compartilhar</h3><p>Imagem de prévia automática para WhatsApp e Instagram, na home e em cada especialidade.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">✨</div><div><h3>Movimento com propósito</h3><p>Transições entre páginas, contadores e animações suaves. Desligam para quem prefere menos movimento.</p></div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:28px">
+      <div class="card" data-reveal>
+        <p class="eyebrow">Estrutura</p>
+        <h3 style="font-size:22px;margin-top:8px">17 páginas</h3>
+        <ul class="pages" style="margin-top:14px">
+          <li><span>Início, com 11 seções</span><span>1 página</span></li>
+          <li><span>Índice de especialidades</span><span>1 página</span></li>
+          <li><span>Psiquiatria, Clínica Médica, Geriatria</span><span>3 páginas</span></li>
+          <li><span>Pediatria, Ginecologia, Ortopedia</span><span>3 páginas</span></li>
+          <li><span>Psicologia, Psicologia ABA, Neuropsicologia</span><span>3 páginas</span></li>
+          <li><span>Psicopedagogia, Fonoaudiologia, Fisioterapia</span><span>3 páginas</span></li>
+          <li><span>Nutrição, Nutrição Infantil</span><span>2 páginas</span></li>
+          <li><span>Audiometria, Eletrocardiograma</span><span>2 páginas</span></li>
+        </ul>
+      </div>
+      <div class="card" data-reveal>
+        <p class="eyebrow">Medido no Google Lighthouse</p>
+        <h3 style="font-size:22px;margin-top:8px">Rápido, acessível e pronto para o Google</h3>
+        <div class="metrics" style="margin-top:16px">
+          <div class="metric"><b>98</b><span>Performance mobile</span></div>
+          <div class="metric"><b>100</b><span>Desktop</span></div>
+          <div class="metric"><b>100</b><span>Acessibilidade</span></div>
+          <div class="metric"><b>100</b><span>SEO</span></div>
+        </div>
+        <p class="small muted" style="margin-top:14px">Sites de clínica costumam ficar entre 40 e 70 no celular. Nota alta significa carregar em 4G fraco e aparecer melhor nas buscas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Investimento</p>
+      <h2>Três formas de começar. Escolha a que faz sentido hoje.</h2>
+      <p>As três entregam o site completo que está no ar. A diferença está em como pagar e em quem edita o conteúdo depois: eu, dentro do suporte, ou a própria recepção, pelo painel.</p>
+    </div>
+
+    <div class="options" data-reveal>
+      <div class="card option" data-option="sub" data-mode="sub" data-price="349" data-label="Assinatura">
+        <span class="tag" style="background:var(--ok)">Sem entrada</span>
+        <h3>Assinatura</h3>
+        <p class="muted small" style="margin-top:6px">Site, hospedagem e suporte em uma mensalidade.</p>
+        <div class="price"><b>R$ 349</b><span class="per">/mês</span><span>por 12 meses</span></div>
+        <ul>
+          <li>Site completo com 17 páginas, como na demonstração</li>
+          <li>Conteúdo, fotos e agenda revisados com a clínica</li>
+          <li>Domínio configurado e site publicado com HTTPS</li>
+          <li>Cadastro no Google Business e correção da categoria</li>
+          <li>Plano Cuidado incluído: até 4 edições por mês, resposta em 24 h</li>
+          <li>Cobrança automática no cartão ou boleto, sem lembrete mensal</li>
+          <li>Após a 12ª mensalidade, o site passa para o nome da clínica e o plano cai para R$ 149/mês</li>
+          <li class="off"><span>Não inclui painel para a recepção editar sozinha<small>Pode ser adicionado depois por R$ 1.500.</small></span></li>
+        </ul>
+        <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
+      </div>
+      <div class="card option selected" data-option="site" data-price="3490" data-label="Site institucional">
+        <h3>Site institucional</h3>
+        <p class="muted small" style="margin-top:6px">Conteúdo fixo. Alterações pelo suporte.</p>
+        <div class="price"><b>R$ 3.490</b><span>projeto fechado</span></div>
+        <ul>
+          <li>Site completo com 17 páginas, como na demonstração</li>
+          <li>Conteúdo, fotos e agenda revisados com a clínica</li>
+          <li>Domínio configurado e site publicado com HTTPS</li>
+          <li>Cadastro no Google Business e correção da categoria</li>
+          <li>Google Search Console configurado</li>
+          <li>30 dias de ajustes após a publicação</li>
+          <li class="off"><span>Não inclui painel para a recepção editar sozinha<small>Alterações são feitas por mim, pelo plano de suporte ou avulsas.</small></span></li>
+        </ul>
+        <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
+      </div>
+      <div class="card option" data-option="cms" data-price="4990" data-label="Site + painel de edição">
+        <span class="tag">Recomendado</span>
+        <h3>Site + painel de edição</h3>
+        <p class="muted small" style="margin-top:6px">A recepção edita agenda, equipe, pacotes e fotos.</p>
+        <div class="price"><b>R$ 4.990</b><span>projeto fechado</span></div>
+        <ul>
+          <li>Tudo do Site institucional</li>
+          <li>Painel de edição com login do Google, sem mensalidade</li>
+          <li>Troca de agenda semanal, profissionais, pacotes, FAQ e fotos</li>
+          <li>Publicação automática em segundos após salvar</li>
+          <li>Treinamento de 1 hora com a recepção, gravado</li>
+          <li>Guia de edição ilustrado</li>
+        </ul>
+        <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
+      </div>
+    </div>
+
+    <div class="terms">
+      <div class="card"><b>Pagamento</b>Projeto fechado: 50% no aceite, 50% na publicação, Pix ou cartão em até 3x sem juros. Assinatura: 12 mensalidades em cobrança recorrente no cartão ou boleto, a primeira na publicação do site.</div>
+      <div class="card"><b>Propriedade</b>Projeto fechado: código, domínio e contas no nome da clínica desde o início, sem fidelidade. Assinatura: o domínio já nasce no nome da clínica; código e hospedagem ficam comigo até a 12ª mensalidade e então são transferidos.</div>
+      <div class="card"><b>Garantia e permanência</b>30 dias de ajustes após publicar; erros corrigidos sem custo, sempre. Na assinatura, permanência mínima de 12 meses: cancelamento antes disso quita 50% das mensalidades restantes, sem transferência do site.</div>
+    </div>
+
+    <div class="note"><strong>Condição de lançamento.</strong> Estes valores consideram a Mater Christi como caso de referência: autorização para usar o site no meu portfólio, um depoimento curto e o crédito “site por Gois.dev” no rodapé. Sem essas condições, o projeto é orçado em R$ 5.900 e R$ 7.900.</div>
+    <div class="note print-only" id="print-accept" style="display:none;background:#eaf7ef;border-color:#bfe3cc;color:#0f4d2c"><strong>Para aceitar:</strong> responda por WhatsApp em <span id="print-wa"></span> ou por e-mail em contato@igorgois.dev, informando a opção escolhida. Eu envio no mesmo dia a lista do que precisamos para começar.</div>
+  </div>
+</section>
+
+<section id="suporte">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Suporte e hospedagem</p>
+      <h2>Opcional. O site funciona sem, mas fica melhor com.</h2>
+      <p>A hospedagem não tem custo fixo. O plano paga a manutenção, o monitoramento, as edições e a garantia de que alguém responde quando precisar.</p>
+    </div>
+
+    <div class="switch no-print" data-reveal>
+      <button class="on" data-period="m">Mensal</button>
+      <button data-period="a">Anual</button>
+      <span class="save">2 meses grátis no anual</span>
+    </div>
+
+    <div class="grid g3 plans">
+      <div class="card plan" data-reveal>
+        <h3>Essencial</h3>
+        <p class="who">Para quem só quer o site no ar, sem surpresas.</p>
+        <div class="price"><b data-m="89" data-a="890">R$ 89</b><span data-suffix>/mês</span></div>
+        <ul>
+          <li>Hospedagem, certificado HTTPS e domínio configurado</li>
+          <li>Monitoramento 24 h com aviso se cair</li>
+          <li>Backup diário</li>
+          <li>Atualizações de segurança</li>
+          <li>Resposta em até 48 h úteis</li>
+        </ul>
+      </div>
+      <div class="card plan featured" data-reveal>
+        <span class="badge">Mais escolhido</span>
+        <h3>Cuidado</h3>
+        <p class="who">Para quem quer mudar agenda, preços e fotos sem se preocupar.</p>
+        <div class="price"><b data-m="149" data-a="1490">R$ 149</b><span data-suffix>/mês</span></div>
+        <ul>
+          <li>Tudo do Essencial</li>
+          <li>Até 4 edições por mês (texto, foto, agenda, pacote)</li>
+          <li>Resposta em até 24 h úteis</li>
+          <li>Relatório mensal de visitas e cliques no WhatsApp</li>
+          <li>Ajustes de SEO conforme o Google mudar</li>
+        </ul>
+      </div>
+      <div class="card plan" data-reveal>
+        <h3>Avulso</h3>
+        <p class="who">Sem plano. Chama quando precisar.</p>
+        <div class="price"><b>R$ 120</b><span>/edição</span></div>
+        <ul>
+          <li>Cada solicitação de alteração é um chamado</li>
+          <li>Prazo de até 5 dias úteis</li>
+          <li>Hospedagem por conta da clínica, com orientação minha</li>
+          <li>Sem monitoramento nem backup gerenciado</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:16px">Com a opção “Site + painel de edição”, a maioria das clínicas fica confortável no plano Essencial, porque as edições do dia a dia passam a ser feitas pela recepção.</p>
+  </div>
+</section>
+
+<section id="dominio">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Domínio e e-mail</p>
+      <h2>O endereço do site é da clínica, registrado no CNPJ de vocês.</h2>
+      <p>Hoje a clínica não tem domínio. Verificamos as opções em 6 de setembro de 2026. O registro é feito no Registro.br, no nome da Mater Christi, e eu cuido de toda a configuração.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card" data-reveal>
+        <table>
+          <thead><tr><th>Domínio</th><th>Situação</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td><code>materchristisaude.com.br</code></td><td><span class="status free">Livre</span></td><td>Recomendado. Curto e diz o que a clínica é.</td></tr>
+            <tr><td><code>clinicamaterchristi.com.br</code></td><td><span class="status free">Livre</span></td><td>Boa alternativa.</td></tr>
+            <tr><td><code>materchristi.med.br</code></td><td><span class="status free">Livre</span></td><td>Exige comprovação de atividade médica no registro.</td></tr>
+            <tr><td><code>materchristi.com.br</code></td><td><span class="status taken">Ocupado</span></td><td>Pertence a um apostolado católico, desde maio de 2026.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" data-reveal>
+        <p class="eyebrow">Como funciona</p>
+        <ul class="check" style="margin-top:12px">
+          <li><span class="box"></span><span><b>Registro no nome da clínica.</b> Custa cerca de R$ 40 por ano, pago pela clínica diretamente ao Registro.br. Não passa por mim.</span></li>
+          <li><span class="box"></span><span><b>Configuração incluída.</b> DNS, certificado HTTPS e redirecionamentos ficam por minha conta, dentro do projeto.</span></li>
+          <li><span class="box"></span><span><b>Se já existir um domínio</b> que eu não encontrei, uso ele. É só me passar o acesso ao painel onde foi registrado.</span></li>
+          <li><span class="box"></span><span><b>E-mail profissional, opcional.</b> contato@materchristisaude.com.br. Zoho Mail é gratuito para até 5 contas; Google Workspace custa cerca de R$ 36 por conta ao mês. Configuro qualquer um dos dois.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="etapas">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Prazo e etapas</p>
+      <h2>Sete dias úteis depois do conteúdo aprovado.</h2>
+      <p>O site já está construído. O tempo agora é de conteúdo e revisão, e depende mais da clínica do que de mim.</p>
+    </div>
+    <div class="steps" data-reveal>
+      <div class="step"><span class="k">DIA 0</span><h3>Aceite</h3><p>Assinatura desta proposta e primeira parcela. Escolha do domínio.</p></div>
+      <div class="step"><span class="k">DIAS 1 A 3</span><h3>Conteúdo</h3><p>Fotos em alta, confirmação da agenda, preços, convênios e equipe completa.</p></div>
+      <div class="step"><span class="k">DIAS 4 A 5</span><h3>Revisão</h3><p>Site atualizado com o conteúdo real. Uma rodada de ajustes com quem decide.</p></div>
+      <div class="step"><span class="k">DIAS 6 A 7</span><h3>Publicação</h3><p>Domínio no ar, Google Business e Search Console configurados. Segunda parcela.</p></div>
+      <div class="step"><span class="k">30 DIAS</span><h3>Acompanhamento</h3><p>Ajustes incluídos e primeiro relatório de visitas e cliques no WhatsApp.</p></div>
+    </div>
+
+    <div class="card" style="margin-top:22px" data-reveal>
+      <p class="eyebrow">O que precisamos da clínica</p>
+      <ul class="check" style="margin-top:12px">
+        <li><span class="box"></span><span>Logo em arquivo vetorial (SVG, PDF ou AI), o mesmo que o designer usa nas artes</span></li>
+        <li><span class="box"></span><span>Fotos em alta da fachada, recepção e consultórios, e autorização para usar as fotos dos profissionais</span></li>
+        <li><span class="box"></span><span>Agenda semanal atualizada e nomes do psiquiatra, clínico geral, geriatra e pediatra</span></li>
+        <li><span class="box"></span><span>Convênios aceitos, lista de exames e conteúdo dos pacotes Prata e Ginecológico</span></li>
+        <li><span class="box"></span><span>Acesso de administrador ao perfil do Google Business, ou autorização para eu solicitar</span></li>
+      </ul>
+    </div>
+
+    <div class="summary no-print" data-reveal>
+      <div class="card">
+        <div>
+          <span class="muted small">Sua seleção</span>
+          <div><b id="sum-price">R$ 3.490</b> <span class="muted small" id="sum-label">Site institucional · suporte opcional</span></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-wa" id="accept" href="#" target="_blank" rel="noopener">Aceitar pelo WhatsApp</a>
+          <button class="btn btn-ghost" id="print" type="button">Salvar em PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div style="display:flex;align-items:center;gap:18px">
+        <svg class="brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383 93" width="383" height="93" role="img" aria-label="Gois.dev">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6 6)">
+    <path transform="translate(0.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M301 -14Q215 -14 153.5 29Q92 72 59.5 148.5Q27 225 27 325Q27 399 45.5 462.5Q64 526 103 573.5Q142 621 202 647.5Q262 674 345 674Q415 674 465.5 655Q516 636 548 602Q580 568 593 523.5Q606 479 601 428L450 410Q452 455 439 483.5Q426 512 400.5 526Q375 540 339 540Q296 540 264 517Q232 494 214.5 448Q197 402 197 333Q197 282 207 241.5Q217 201 237 173.5Q257 146 286.5 131.5Q316 117 354 117Q392 117 419 130.5Q446 144 460.5 167.5Q475 191 475 222L371 222L371 336L619 336L619 212L619 0L508 0L508 178L499 178Q494 116 469.5 73Q445 30 402.5 8Q360 -14 301 -14Z"/>
+    <path transform="translate(60.90 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M282 -14Q206 -14 147 16.5Q88 47 55 108.5Q22 170 22 263Q22 360 56.5 421.5Q91 483 150.5 512.5Q210 542 285 542Q363 542 421.5 511.5Q480 481 512.5 419.5Q545 358 545 264Q545 167 510.5 105.5Q476 44 416.5 15Q357 -14 282 -14ZM286 105Q317 105 338 122.5Q359 140 370 174Q381 208 381 255Q381 307 369 342.5Q357 378 334.5 397Q312 416 280 416Q250 416 229 398.5Q208 381 197 347Q186 313 186 265Q186 189 212.5 147Q239 105 286 105Z"/>
+    <path transform="translate(113.60 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M36 0L36 528L198 528L198 0ZM116 566Q70 566 45.5 585.5Q21 605 21 642Q21 680 45.5 699.5Q70 719 116 719Q163 719 187.5 699Q212 679 212 642Q212 606 187.5 586Q163 566 116 566Z"/>
+    <path transform="translate(133.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M267 -14Q214 -14 168.5 -3.5Q123 7 89.5 30Q56 53 38.5 91.5Q21 130 24 185L165 197Q167 164 180 142.5Q193 121 216 111Q239 101 272 101Q303 101 325.5 111.5Q348 122 348 147Q348 160 340 168.5Q332 177 310.5 184.5Q289 192 248 202Q197 215 156 228Q115 241 86 259Q57 277 42 303.5Q27 330 27 369Q27 424 56.5 462.5Q86 501 138 521.5Q190 542 258 542Q319 542 372 523Q425 504 455.5 461Q486 418 478 347L340 334Q343 363 332 383.5Q321 404 300 414.5Q279 425 249 425Q215 425 196.5 412.5Q178 400 178 381Q178 366 189.5 355.5Q201 345 225.5 337.5Q250 330 289 321Q323 314 360 303Q397 292 429 273.5Q461 255 481 225Q501 195 501 149Q501 100 474 63Q447 26 395 6Q343 -14 267 -14Z"/>
+    <circle cx="200.20" cy="56.50" r="9.50" fill="url(#g)"/>
+    <path transform="translate(217.70 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M233 -14Q178 -14 131.5 15.5Q85 45 57.5 106Q30 167 30 262Q30 352 55 412Q80 472 125.5 502.5Q171 533 230 533Q281 533 318 511Q355 489 378 444Q401 399 410 331L419 331Q413 375 408.5 411Q404 447 402 477.5Q400 508 400 534L400 685L510 685L509 217L511 0L411 0L418 173L410 173Q398 110 374 68.5Q350 27 315 6.5Q280 -14 233 -14ZM263 78Q297 78 322.5 94.5Q348 111 365 138Q382 165 390.5 195.5Q399 226 399 254L399 262Q399 282 394 305.5Q389 329 378.5 352.5Q368 376 352.5 395Q337 414 315 426Q293 438 265 438Q227 438 199 415.5Q171 393 156 352Q141 311 141 257Q141 204 155 163.5Q169 123 196.5 100.5Q224 78 263 78Z"/>
+    <path transform="translate(271.05 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M281 -14Q216 -14 169 6Q122 26 91 62Q60 98 44.5 146.5Q29 195 29 253Q29 310 44 360.5Q59 411 89 450Q119 489 164.5 511Q210 533 273 533Q331 533 374.5 513Q418 493 446.5 456Q475 419 486.5 368Q498 317 491 255L97 249L97 318L410 323L390 283Q393 332 381 367.5Q369 403 342 422.5Q315 442 273 442Q227 442 196.5 418.5Q166 395 151 353.5Q136 312 136 257Q136 167 174 120Q212 73 284 73Q319 73 342.5 84Q366 95 379.5 112.5Q393 130 398.5 151Q404 172 402 192L504 185Q505 145 492 109.5Q479 74 451.5 46.5Q424 19 381.5 2.5Q339 -14 281 -14Z"/>
+    <path transform="translate(319.15 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M189 0L7 519L125 519L257 94L262 94L395 519L508 519L326 0Z"/>
+  </g>
+</svg>
+
+        <div class="sig"><b>Igor Gois</b>Software Engineer · Full-Stack</div>
+      </div>
+      <div class="links">
+        <a href="https://igorgois.dev" target="_blank" rel="noopener">igorgois.dev</a>
+        <a href="mailto:contato@igorgois.dev">contato@igorgois.dev</a>
+        <a href="https://www.linkedin.com/in/igor-gois" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <p class="fine">Proposta válida por 15 dias a partir da emissão. Valores em reais, sem impostos adicionais para pessoa jurídica emissora de nota. O site de demonstração em mater-christi.igorgois.dev usa fotos e informações públicas do Instagram da clínica apenas para apresentação e será removido após a publicação no domínio definitivo. Preços de domínio e e-mail são de terceiros e podem variar. Assinatura: contrato de 12 meses com cobrança recorrente; após o período, renovação mensal sem fidelidade no plano de suporte escolhido; inadimplência superior a 30 dias suspende o site até a regularização.</p>
+  </div>
+</footer>
+
+<script>
+  // Configure aqui antes de enviar
+  const CONFIG = {
+    whatsapp: "5587998097362", // ex.: 5587999990000
+    validityDays: 15,
+  };
+
+  const fmt = (n) => "R$ " + n.toLocaleString("pt-BR");
+  const today = new Date();
+  const valid = new Date(today); valid.setDate(valid.getDate() + CONFIG.validityDays);
+  const df = new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+  document.getElementById("date").textContent = df.format(today);
+  document.getElementById("valid").textContent = df.format(valid);
+
+  // Seleção da opção de projeto
+  const options = document.querySelectorAll(".option");
+  const sumPrice = document.getElementById("sum-price");
+  const sumLabel = document.getElementById("sum-label");
+  const accept = document.getElementById("accept");
+  function select(opt) {
+    options.forEach((o) => o.classList.toggle("selected", o === opt));
+    const price = Number(opt.dataset.price);
+    const sub = opt.dataset.mode === "sub";
+    sumPrice.textContent = sub ? fmt(price) + "/mês" : fmt(price);
+    sumLabel.textContent = sub ? "Assinatura · 12 meses, suporte incluído" : opt.dataset.label + " · suporte opcional";
+    const valor = sub ? `${fmt(price)} por mês, 12 meses` : fmt(price);
+    const msg = `Olá, Igor! Aceito a proposta GD-2026-001 para o site da Mater Christi, opção "${opt.dataset.label}" (${valor}). Vamos começar?`;
+    accept.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  }
+  options.forEach((o) => o.addEventListener("click", () => select(o)));
+  select(document.querySelector(".option.selected"));
+
+  // Mensal / anual
+  document.querySelectorAll(".switch button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".switch button").forEach((b) => b.classList.toggle("on", b === btn));
+      const annual = btn.dataset.period === "a";
+      document.querySelectorAll(".plan [data-m]").forEach((el) => {
+        el.textContent = fmt(Number(annual ? el.dataset.a : el.dataset.m));
+        el.nextElementSibling.textContent = annual ? "/ano" : "/mês";
+      });
+    });
+  });
+
+  document.getElementById("print").addEventListener("click", () => window.print());
+  // Telefone formatado no bloco de aceite da versão impressa
+  const wa = CONFIG.whatsapp.replace(/\D/g, "");
+  const m = wa.match(/^55(\d{2})(\d{5})(\d{4})$/);
+  document.getElementById("print-wa").textContent = m ? `(${m[1]}) ${m[2]}-${m[3]}` : wa;
+
+  // Reveal ao rolar
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
