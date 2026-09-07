@@ -48,8 +48,8 @@ function brandColors(): string[] {
 
 type Props = { name: string; words?: string[] };
 
-const WORD_MS = 4200; // tempo com cada palavra formada
-const DISPERSE_MS = 900; // tempo dispersando antes de trocar a palavra
+const WORD_MS = 7500; // tempo com cada palavra formada
+const DISPERSE_MS = 700; // tempo dispersando antes de trocar a palavra
 
 /**
  * Palavras gigantes formadas por partículas: começa pelo nome e alterna com
@@ -127,7 +127,7 @@ export function ParticleName({ name, words }: Props) {
       const kx = r.width / textW;
       const ky = (r.height * 0.78) / textH;
       const out: { x: number; y: number }[] = [];
-      const step = mobile ? 6 : 5;
+      const step = mobile ? 5 : 4;
       for (let y = 0; y < off.height; y += step)
         for (let x = 0; x < off.width; x += step)
           if (d[(y * off.width + x) * 4 + 3] > 128) out.push({ x: (x - off.width / 2) * kx, y: (y - off.height / 2) * ky });
@@ -177,7 +177,7 @@ export function ParticleName({ name, words }: Props) {
         const j = Math.floor(Math.random() * (i + 1));
         [targets[i], targets[j]] = [targets[j], targets[i]];
       }
-      const max = Math.min(targets.length, mobile ? 320 : 1100);
+      const max = Math.min(targets.length, mobile ? 520 : 1700);
       const spreadX = Math.min(0.46 * W, 760);
       const spreadY = Math.min(0.5 * H, 380);
       const cols = brandColors();
@@ -224,7 +224,7 @@ export function ParticleName({ name, words }: Props) {
           phaseAt = t;
         }
       }
-      const target = t < start ? 0 : reduce ? 1 : phase === "disperse" ? 0.18 : 0.78 + 0.18 * Math.sin(t * 0.00045);
+      const target = t < start ? 0 : reduce ? 1 : phase === "disperse" ? 0.15 : 0.965 + 0.035 * Math.sin(t * 0.00045);
       const rate = target > progress ? 0.05 : 0.03;
       progress += (target - progress) * (1 - Math.pow(1 - rate, dt / 16.7));
       const a = progress;
@@ -236,11 +236,11 @@ export function ParticleName({ name, words }: Props) {
         const r = 1 - 0.85 * a;
         const ox = cx + p.sx + Math.cos(p.orbit) * p.orbitR * r * 3;
         const oy = cy + p.sy + Math.sin(p.orbit) * p.orbitR * r * 2;
-        const s = 0.6 + 0.5 * a;
+        const s = 0.9 - 0.65 * a;
         const jx = Math.sin(t * p.jrate + p.jphase) * s;
         const jy = Math.cos(t * p.jrate * 1.3 + p.jphase) * s;
-        const mx = cx + p.tx + Math.cos(p.orbit) * (1 - a) * 2 + jx;
-        const my = cy + p.ty + Math.sin(p.orbit) * (1 - a) * 2 + jy;
+        const mx = cx + p.tx + Math.cos(p.orbit) * (1 - a) * 1.2 + jx;
+        const my = cy + p.ty + Math.sin(p.orbit) * (1 - a) * 1.2 + jy;
         let x = ox + (mx - ox) * f;
         let y = oy + (my - oy) * f;
 
