@@ -402,15 +402,15 @@
     <div class="sec-head" data-reveal>
       <p class="eyebrow">Investimento</p>
       <h2>Duas formas de fechar. As duas entregam o site que está no ar.</h2>
-      <p>A diferença é só em como pagar. Nas duas, o cadastro inicial das peças e o treinamento da planilha estão incluídos.</p>
+      <p>A diferença está em como pagar e em quem cadastra as peças depois: você, pela planilha, ou eu, dentro do plano Cuidado que vem na assinatura.</p>
     </div>
 
     <div class="options" data-reveal>
-      <div class="card option selected" data-option="proj" data-price="990" data-label="Projeto fechado, condição de lançamento">
+      <div class="card option selected" data-option="proj" data-price="1099" data-label="Projeto fechado, condição de lançamento">
         <span class="tag">Recomendado · condição de lançamento</span>
         <h3>Projeto fechado</h3>
         <p class="muted small" style="margin-top:6px">Paga uma vez. O site é seu desde o primeiro dia.</p>
-        <div class="price"><b>R$ 990</b><span>à vista no Pix, ou 3x de R$ 330</span></div>
+        <div class="price"><b>R$ 1.099</b><span>à vista no Pix, ou 3x de R$ 366,33</span></div>
         <ul>
           <li>Site completo, como na demonstração, com o logo e as cores da DG</li>
           <li>Cadastro inicial de até 50 peças com as fotos e preços que você enviar</li>
@@ -423,16 +423,16 @@
         </ul>
         <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
       </div>
-      <div class="card option" data-option="sub" data-mode="sub" data-price="149" data-label="Assinatura sem entrada">
+      <div class="card option" data-option="sub" data-mode="sub" data-price="249" data-label="Assinatura sem entrada">
         <span class="tag" style="background:var(--ok)">Sem entrada</span>
         <h3>Assinatura</h3>
         <p class="muted small" style="margin-top:6px">Site, hospedagem e suporte em uma mensalidade.</p>
-        <div class="price"><b>R$ 149</b><span class="per">/mês</span><span>por 12 meses</span></div>
+        <div class="price"><b>R$ 249</b><span class="per">/mês</span><span>por 12 meses</span></div>
         <ul>
           <li>Tudo do projeto fechado: site, cadastro inicial, planilha, domínio e Google Maps</li>
-          <li>Plano Essencial incluído: monitoramento, correções e resposta em 48 h</li>
+          <li>Plano Cuidado incluído: até 4 edições por mês feitas por mim, resposta em 24 h</li>
           <li>Cobrança automática no cartão ou boleto, a primeira só na publicação</li>
-          <li>Após a 12ª mensalidade, o site passa para o nome da DG e o plano cai para R$ 89/mês</li>
+          <li>Após a 12ª mensalidade, o site passa para o nome da DG e o plano cai para R$ 149/mês (ou R$ 89 no Essencial)</li>
           <li class="off"><span>Permanência de 12 meses<small>Cancelamento antes disso quita 50% das mensalidades restantes.</small></span></li>
         </ul>
         <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
@@ -446,7 +446,7 @@
     </div>
 
     <div class="note"><strong>Condição de lançamento.</strong> A DG é a primeira loja de Petrolina com este catálogo, e este valor considera isso: autorização para usar o site no meu portfólio, um depoimento curto e o crédito “site por Gois.dev” no rodapé. Sem essas condições, o projeto é orçado em R$ 1.790.</div>
-    <div class="note"><strong>Compare com uma plataforma.</strong> O plano de entrada da Nuvemshop custa R$ 58,65 por mês para sempre, mais 2% de cada venda fora do pagamento deles. Em 18 meses a plataforma custa mais que este projeto inteiro, e a loja nunca fica sua.</div>
+    <div class="note"><strong>Compare com uma plataforma.</strong> O plano de entrada da Nuvemshop custa R$ 58,65 por mês para sempre, mais 2% de cada venda fora do pagamento deles. Em menos de dois anos a plataforma custa mais que este projeto inteiro, e a loja nunca fica sua.</div>
     <div class="note print-only" id="print-accept" style="display:none;background:#eaf7ef;border-color:#bfe3cc;color:#0f4d2c"><strong>Para aceitar:</strong> responda por WhatsApp em <span id="print-wa"></span> ou por e-mail em contato@igorgois.dev, informando a opção escolhida. Eu envio no mesmo dia a lista do que precisamos para começar.</div>
   </div>
 </section>
@@ -568,7 +568,7 @@
       <div class="card">
         <div>
           <span class="muted small">Sua seleção</span>
-          <div><b id="sum-price">R$ 990</b> <span class="muted small" id="sum-label">Projeto fechado, condição de lançamento · suporte opcional</span></div>
+          <div><b id="sum-price">R$ 1.099</b> <span class="muted small" id="sum-label">Projeto fechado, condição de lançamento · suporte opcional</span></div>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn btn-wa" id="accept" href="#" target="_blank" rel="noopener">Aceitar pelo WhatsApp</a>
@@ -639,7 +639,7 @@
     const price = Number(opt.dataset.price);
     const sub = opt.dataset.mode === "sub";
     sumPrice.textContent = sub ? fmt(price) + "/mês" : fmt(price);
-    sumLabel.textContent = sub ? "Assinatura · 12 meses, suporte Essencial incluído" : opt.dataset.label + " · suporte opcional";
+    sumLabel.textContent = sub ? "Assinatura · 12 meses, plano Cuidado incluído" : opt.dataset.label + " · suporte opcional";
     const valor = sub ? `${fmt(price)} por mês, 12 meses` : fmt(price);
     const msg = `Olá, Igor! Aceito a proposta GD-2026-003 para o catálogo da DG Moda Masculina, opção "${opt.dataset.label}" (${valor}). Vamos começar?`;
     accept.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
