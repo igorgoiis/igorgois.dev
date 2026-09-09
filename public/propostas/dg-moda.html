@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Proposta · Catálogo DG Moda Masculina · Gois.dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-2: #101a30;
+    --panel: #ffffff;
+    --paper: #f6f8fc;
+    --ink: #0f172a;
+    --ink-2: #475569;
+    --ink-3: #7c879b;
+    --line: #e3e8f2;
+    --teal: #2dd4bf;
+    --blue: #3b82f6;
+    --violet: #8b5cf6;
+    --grad: linear-gradient(120deg, #2dd4bf 0%, #3b82f6 50%, #8b5cf6 100%);
+    --clinic: #0b0d12;
+    --clinic-2: #8a7a63;
+    --gold: #d9cdb8;
+    --ok: #0f7f47;
+    --radius: 20px;
+    --shadow: 0 20px 50px -24px rgb(15 23 42 / 0.25);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "DM Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: "Fraunces", Georgia, serif; font-weight: 500; letter-spacing: -0.015em; line-height: 1.1; margin: 0; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-3); }
+  .eyebrow.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .muted { color: var(--ink-2); }
+  .small { font-size: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-grad { background: var(--grad); color: #fff; box-shadow: 0 14px 30px -14px rgb(59 130 246 / .7); }
+  .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+  .btn-wa { background: var(--ok); color: #fff; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .grid { display: grid; gap: 18px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 860px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
+  section { padding: 72px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .sec-head { max-width: 640px; margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 40px); margin-top: 10px; }
+  .sec-head p { margin-top: 12px; color: var(--ink-2); font-size: 17px; }
+
+  /* topo escuro com a marca */
+  .top { background: radial-gradient(70% 90% at 90% 0%, rgba(59,130,246,.35), transparent 60%), radial-gradient(50% 70% at 0% 100%, rgba(45,212,191,.22), transparent 60%), linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); color: #fff; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; gap: 16px; flex-wrap: wrap; }
+  .brand { height: 26px; width: auto; display: block; color: #fff; }
+  .topbar .meta { display: flex; gap: 22px; font-size: 13px; color: rgba(255,255,255,.7); flex-wrap: wrap; }
+  .topbar .meta b { color: #fff; font-weight: 600; }
+  .hero { padding: 56px 0 72px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
+  @media (max-width: 860px) { .hero { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(38px, 6vw, 64px); }
+  .hero h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { margin-top: 20px; font-size: 18px; color: rgba(255,255,255,.78); max-width: 560px; }
+  .hero .cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: 24px; backdrop-filter: blur(6px); }
+  .hero-card dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 16px; margin: 0; font-size: 14px; }
+  .hero-card dt { color: rgba(255,255,255,.6); }
+  .hero-card dd { margin: 0; font-weight: 600; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; }
+  .pill.live { background: rgba(45,212,191,.15); color: var(--teal); border: 1px solid rgba(45,212,191,.35); }
+  .pill.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(45,212,191,.2); }
+
+  /* contexto */
+  .finding { display: flex; gap: 14px; }
+  .finding .n { flex: 0 0 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 700; color: #fff; background: var(--clinic); font-size: 14px; }
+  .finding h3 { font-size: 18px; }
+  .finding p { margin-top: 6px; color: var(--ink-2); font-size: 15px; }
+
+  /* entregas */
+  .feature { display: flex; gap: 14px; align-items: flex-start; }
+  .feature .ic { flex: 0 0 40px; height: 40px; border-radius: 12px; background: #f1ebe0; color: var(--clinic-2); display: grid; place-items: center; }
+  .feature h3 { font-size: 17px; }
+  .feature p { margin-top: 4px; color: var(--ink-2); font-size: 14.5px; }
+  .pages { columns: 2; column-gap: 40px; padding: 0; margin: 0; list-style: none; }
+  @media (max-width: 700px) { .pages { columns: 1; } }
+  .pages li { break-inside: avoid; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 15px; display: flex; justify-content: space-between; gap: 12px; }
+  .pages li span:last-child { color: var(--ink-3); font-size: 13px; white-space: nowrap; }
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  @media (max-width: 700px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+  .metric { background: var(--clinic); color: #fff; border-radius: 16px; padding: 20px; }
+  .metric b { display: block; font-family: "Fraunces", serif; font-size: 40px; font-weight: 500; color: #d9cdb8; line-height: 1; }
+  .metric span { display: block; margin-top: 8px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+
+  /* investimento */
+  .options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .options { grid-template-columns: 1fr; } }
+  .option { position: relative; cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .option:hover { transform: translateY(-2px); }
+  .option.selected { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(59,130,246,.15), var(--shadow); }
+  .option .tag { position: absolute; top: -12px; left: 24px; background: var(--grad); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+  .option h3 { font-size: 22px; }
+  .option .price .per { font-size: 15px; color: var(--ink-2); font-weight: 600; }
+  .option .price { margin-top: 14px; display: flex; align-items: baseline; gap: 8px; }
+  .option .price b { font-family: "Fraunces", serif; font-weight: 500; font-size: 38px; letter-spacing: -0.02em; }
+  .option .price span { color: var(--ink-3); font-size: 14px; }
+  .option ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; font-size: 15px; }
+  .option li { display: flex; gap: 10px; align-items: flex-start; }
+  .option li::before { content: ""; flex: 0 0 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: var(--clinic-2); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/70% no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/70% no-repeat; background-color: var(--clinic-2); }
+  .option li.off { color: #9a3412; }
+  .option li.off::before {
+    background-color: #dc2626;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M18 6 6 18M6 6l12 12'/%3E%3C/svg%3E");
+  }
+  .option li.off small { display: block; color: var(--ink-3); font-size: 12.5px; }
+  .option .pick { margin-top: 20px; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 14px; color: var(--blue); }
+  .option .pick .radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #cbd5e1; display: grid; place-items: center; }
+  .option.selected .pick .radio { border-color: var(--blue); }
+  .option.selected .pick .radio::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+  .terms { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 860px) { .terms { grid-template-columns: 1fr; } }
+  .terms .card { padding: 18px 20px; font-size: 14.5px; }
+  .terms .card b { display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); }
+  .note { margin-top: 18px; padding: 16px 18px; border-radius: 14px; background: #fff8e3; border: 1px solid #f1dfa2; font-size: 14.5px; color: #5b4a12; }
+
+  /* suporte */
+  .switch { display: inline-flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px; }
+  .switch button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--ink-2); }
+  .switch button.on { background: var(--ink); color: #fff; }
+  .switch .save { font-size: 12px; font-weight: 700; color: var(--ok); padding-right: 10px; }
+  .plans { margin-top: 24px; }
+  .plan h3 { font-size: 22px; }
+  .plan .who { margin-top: 4px; font-size: 14px; color: var(--ink-3); }
+  .plan .price { margin-top: 16px; }
+  .plan .price b { font-family: "Fraunces", serif; font-weight: 500; font-size: 40px; letter-spacing: -0.02em; }
+  .plan .price span { font-size: 14px; color: var(--ink-3); }
+  .plan ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; font-size: 14.5px; }
+  .plan li { padding-left: 22px; position: relative; }
+  .plan li::before { content: "•"; position: absolute; left: 6px; color: var(--blue); font-weight: 700; }
+  .plan.featured { border-color: var(--clinic-2); background: linear-gradient(180deg, #f8f4ec, #fff); }
+  .plan .badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--clinic-2); background: #f1ebe0; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+
+  /* comparativo */
+  .cmp th:first-child, .cmp td:first-child { width: 34%; color: var(--ink-2); }
+  .cmp td.bad { color: #b42318; }
+  .cmp td.good { color: var(--ok); font-weight: 600; }
+  .site-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: #0b0d12; color: #d9cdb8; }
+  .site-tag.ra { background: #1b1b1b; color: #f0d9a3; }
+  .hero-shot { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-shot img { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,.14); display: block; }
+  /* domínio */
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; }
+  .status { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 13px; }
+  .status.free { color: var(--ok); }
+  .status.taken { color: #b42318; }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; background: #eef2f8; padding: 2px 6px; border-radius: 6px; }
+
+  /* etapas */
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+  .step { position: relative; padding: 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+  .step .k { font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--blue); }
+  .step h3 { font-size: 16px; margin-top: 6px; }
+  .step p { margin-top: 6px; font-size: 13.5px; color: var(--ink-2); }
+  .check { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .check li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+  .check li .box { flex: 0 0 20px; height: 20px; border-radius: 6px; border: 1.5px solid #c7d0e0; margin-top: 2px; }
+
+  /* resumo fixo */
+  .summary { position: sticky; bottom: 16px; z-index: 5; margin-top: 30px; }
+  .summary .card { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 22px; box-shadow: var(--shadow); flex-wrap: wrap; background: var(--ink); color: #fff; border-color: transparent; }
+  .summary b { font-family: "Fraunces", serif; font-weight: 500; font-size: 26px; }
+  .summary .muted { color: rgba(255,255,255,.7); }
+
+  footer { background: var(--bg); color: #fff; padding: 48px 0 32px; }
+  footer .row { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+  footer .sig { font-size: 14px; color: rgba(255,255,255,.75); }
+  footer .sig b { color: #fff; font-weight: 600; display: block; font-size: 16px; }
+  footer .links { display: flex; gap: 18px; font-size: 14px; }
+  footer .links a { color: rgba(255,255,255,.8); text-decoration: none; }
+  footer .links a:hover { color: #fff; }
+  footer .fine { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); font-size: 12px; color: rgba(255,255,255,.5); }
+
+  [data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  [data-reveal].in { opacity: 1; transform: none; }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: #fff; zoom: 0.72; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none !important; text-shadow: none !important; }
+    .wrap { width: min(1080px, 100% - 64px); }
+    .summary, .no-print, .option .pick { display: none !important; }
+    .print-only { display: block !important; }
+    /* gradiente em texto não imprime: cai para cor sólida */
+    .eyebrow.grad, .hero h1 span { background: none !important; -webkit-text-fill-color: initial; color: #7dd3fc; }
+    .eyebrow.grad { color: #2dd4bf; }
+    .btn-grad { background: #3b82f6 !important; }
+    .hero-card { backdrop-filter: none; background: rgba(255,255,255,.08); }
+    .top { padding: 8px 0 28px; }
+    .topbar { padding: 18px 0; }
+    .hero { padding: 20px 0 8px; gap: 28px; }
+    section { padding: 34px 0; break-inside: auto; }
+    .sec-head { margin-bottom: 22px; break-after: avoid; }
+    .card, .option, .plan, .step, .finding, .feature, .metric, .note, .terms .card, tr { break-inside: avoid; }
+    .options, .plans, .steps, .terms, .grid { break-inside: auto; }
+    .option.selected { border-color: var(--line); }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    footer { break-before: auto; padding: 32px 0 24px; }
+    a { text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="topbar">
+      <svg class="brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383 93" width="383" height="93" role="img" aria-label="Gois.dev">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6 6)">
+    <path transform="translate(0.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M301 -14Q215 -14 153.5 29Q92 72 59.5 148.5Q27 225 27 325Q27 399 45.5 462.5Q64 526 103 573.5Q142 621 202 647.5Q262 674 345 674Q415 674 465.5 655Q516 636 548 602Q580 568 593 523.5Q606 479 601 428L450 410Q452 455 439 483.5Q426 512 400.5 526Q375 540 339 540Q296 540 264 517Q232 494 214.5 448Q197 402 197 333Q197 282 207 241.5Q217 201 237 173.5Q257 146 286.5 131.5Q316 117 354 117Q392 117 419 130.5Q446 144 460.5 167.5Q475 191 475 222L371 222L371 336L619 336L619 212L619 0L508 0L508 178L499 178Q494 116 469.5 73Q445 30 402.5 8Q360 -14 301 -14Z"/>
+    <path transform="translate(60.90 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M282 -14Q206 -14 147 16.5Q88 47 55 108.5Q22 170 22 263Q22 360 56.5 421.5Q91 483 150.5 512.5Q210 542 285 542Q363 542 421.5 511.5Q480 481 512.5 419.5Q545 358 545 264Q545 167 510.5 105.5Q476 44 416.5 15Q357 -14 282 -14ZM286 105Q317 105 338 122.5Q359 140 370 174Q381 208 381 255Q381 307 369 342.5Q357 378 334.5 397Q312 416 280 416Q250 416 229 398.5Q208 381 197 347Q186 313 186 265Q186 189 212.5 147Q239 105 286 105Z"/>
+    <path transform="translate(113.60 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M36 0L36 528L198 528L198 0ZM116 566Q70 566 45.5 585.5Q21 605 21 642Q21 680 45.5 699.5Q70 719 116 719Q163 719 187.5 699Q212 679 212 642Q212 606 187.5 586Q163 566 116 566Z"/>
+    <path transform="translate(133.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M267 -14Q214 -14 168.5 -3.5Q123 7 89.5 30Q56 53 38.5 91.5Q21 130 24 185L165 197Q167 164 180 142.5Q193 121 216 111Q239 101 272 101Q303 101 325.5 111.5Q348 122 348 147Q348 160 340 168.5Q332 177 310.5 184.5Q289 192 248 202Q197 215 156 228Q115 241 86 259Q57 277 42 303.5Q27 330 27 369Q27 424 56.5 462.5Q86 501 138 521.5Q190 542 258 542Q319 542 372 523Q425 504 455.5 461Q486 418 478 347L340 334Q343 363 332 383.5Q321 404 300 414.5Q279 425 249 425Q215 425 196.5 412.5Q178 400 178 381Q178 366 189.5 355.5Q201 345 225.5 337.5Q250 330 289 321Q323 314 360 303Q397 292 429 273.5Q461 255 481 225Q501 195 501 149Q501 100 474 63Q447 26 395 6Q343 -14 267 -14Z"/>
+    <circle cx="200.20" cy="56.50" r="9.50" fill="url(#g)"/>
+    <path transform="translate(217.70 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M233 -14Q178 -14 131.5 15.5Q85 45 57.5 106Q30 167 30 262Q30 352 55 412Q80 472 125.5 502.5Q171 533 230 533Q281 533 318 511Q355 489 378 444Q401 399 410 331L419 331Q413 375 408.5 411Q404 447 402 477.5Q400 508 400 534L400 685L510 685L509 217L511 0L411 0L418 173L410 173Q398 110 374 68.5Q350 27 315 6.5Q280 -14 233 -14ZM263 78Q297 78 322.5 94.5Q348 111 365 138Q382 165 390.5 195.5Q399 226 399 254L399 262Q399 282 394 305.5Q389 329 378.5 352.5Q368 376 352.5 395Q337 414 315 426Q293 438 265 438Q227 438 199 415.5Q171 393 156 352Q141 311 141 257Q141 204 155 163.5Q169 123 196.5 100.5Q224 78 263 78Z"/>
+    <path transform="translate(271.05 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M281 -14Q216 -14 169 6Q122 26 91 62Q60 98 44.5 146.5Q29 195 29 253Q29 310 44 360.5Q59 411 89 450Q119 489 164.5 511Q210 533 273 533Q331 533 374.5 513Q418 493 446.5 456Q475 419 486.5 368Q498 317 491 255L97 249L97 318L410 323L390 283Q393 332 381 367.5Q369 403 342 422.5Q315 442 273 442Q227 442 196.5 418.5Q166 395 151 353.5Q136 312 136 257Q136 167 174 120Q212 73 284 73Q319 73 342.5 84Q366 95 379.5 112.5Q393 130 398.5 151Q404 172 402 192L504 185Q505 145 492 109.5Q479 74 451.5 46.5Q424 19 381.5 2.5Q339 -14 281 -14Z"/>
+    <path transform="translate(319.15 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M189 0L7 519L125 519L257 94L262 94L395 519L508 519L326 0Z"/>
+  </g>
+</svg>
+      <div class="meta">
+        <span>Proposta <b id="num">GD-2026-003</b></span>
+        <span>Emitida em <b id="date"></b></span>
+        <span>Válida até <b id="valid"></b></span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div>
+        <p class="eyebrow grad">Proposta comercial · catálogo com pedido pelo WhatsApp</p>
+        <h1 style="margin-top:14px">Um catálogo online para a <span>DG Moda Masculina</span>, com preço, tamanho e pedido pronto no WhatsApp.</h1>
+        <p class="lead">Hoje a vitrine da DG é o Instagram, e o preço só sai por mensagem. O site coloca cada peça com preço, tamanhos e cores num endereço que o Google encontra, e transforma o “oi, tem essa polo?” num pedido completo que chega pronto na sua conversa. Já está construído e no ar para você testar no celular.</p>
+        <div class="cta">
+          <a class="btn btn-grad" href="https://dgmoda.igorgois.dev" target="_blank" rel="noopener">Ver o site no ar ↗</a>
+          <a class="btn btn-ghost no-print" href="#investimento">Ver investimento</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <span class="pill live">Demonstração no ar</span>
+        <dl style="margin-top:16px">
+          <dt>Cliente</dt><dd>DG Moda Masculina</dd>
+          <dt>Endereço</dt><dd>Av. da Integração, 121 · Jardim Maravilha · Petrolina</dd>
+          <dt>Proposta por</dt><dd>Igor Gois · Gois.dev</dd>
+          <dt>Prazo</dt><dd>5 dias úteis após fotos e preços</dd>
+          <dt>Estado</dt><dd>Site construído e testado. Faltam as fotos, os preços reais e apontar o domínio</dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="contexto">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">O que encontramos</p>
+      <h2>A DG vende bem no Instagram. Só que o Instagram não é uma loja.</h2>
+      <p>Antes de desenhar, analisamos o perfil, os destaques, a ficha no Google Maps e o domínio da loja. Cinco achados definem o projeto.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card finding" data-reveal>
+        <div class="n">1</div>
+        <div><h3>Preço e tamanho só saem por mensagem</h3><p>O perfil tem 2.273 seguidores e destaques por categoria (calças, shorts, gola polo, gola careca), mas nenhuma peça mostra preço nem tamanhos disponíveis. Quem quer saber precisa mandar mensagem e esperar. Boa parte desiste antes.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">2</div>
+        <div><h3>A loja já tem domínio há 3 anos, sem site, e ele vence dia 14</h3><p><code>dgmodamasculina.com.br</code> está registrado no CNPJ da DG desde setembro de 2023 e nunca abriu nada. A renovação vence em 14 de setembro de 2026. Vale renovar (cerca de R$ 40 por ano) e finalmente colocar algo nele.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">3</div>
+        <div><h3>O Google não encontra a DG pelo produto</h3><p>Quem pesquisa “camisa polo Petrolina” ou “calça alfaiataria Petrolina” não chega à loja, porque não existe uma página sobre isso. A ficha no Google Maps tem nota 5,0, mas está sem site e sem fotos das peças.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">4</div>
+        <div><h3>Cada pedido começa do zero na conversa</h3><p>“Tem a polo bege? Qual tamanho? Quanto fica com entrega?” São três ou quatro mensagens antes de fechar. O site manda a mensagem pronta: peça, tamanho, cor, quantidade, total e entrega ou retirada.</p></div>
+      </div>
+      <div class="card finding" data-reveal>
+        <div class="n">5</div>
+        <div><h3>A identidade visual é forte e já está pronta</h3><p>Preto, areia e artes profissionais nos posts. O site foi desenhado como continuação delas, com o logo da DG e as mesmas cores, para quem vem do Instagram sentir que está no mesmo lugar.</p></div>
+      </div>
+      <div class="card" data-reveal style="background:#0b0d12;color:#fff;border-color:transparent">
+        <p class="eyebrow" style="color:#d9cdb8">Em uma frase</p>
+        <p style="margin-top:10px;font-family:'Fraunces',serif;font-size:24px;line-height:1.25">O Instagram mostra a peça. O site vende: preço, tamanho e pedido pronto no WhatsApp, sem mensalidade de plataforma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="entrega">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">O que o site entrega</p>
+      <h2>Feito para virar pedido no WhatsApp, não só visita.</h2>
+      <p>O cliente escolhe a peça, o tamanho e a cor, monta o pedido e aperta um botão. A DG recebe “Pedido pelo site: 1x Polo piquet rosa, tam. M, R$ 99,90, entrega em Petrolina” em vez de “oi”. Pagamento em Pix, cartão ou dinheiro, combinado na conversa como já é hoje.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card" data-reveal>
+        <span class="site-tag">dgmoda.igorgois.dev · demonstração</span>
+        <h3 style="font-size:24px;margin-top:12px">Catálogo completo, sem limite de peças</h3>
+        <ul class="pages" style="margin-top:14px;columns:1">
+          <li><span>Início: destaque da loja, categorias, peças em destaque, por que a DG, como pedir, a loja e o mapa</span><span>1 página</span></li>
+          <li><span>Catálogo com filtro por categoria: calças, shorts, gola polo e gola careca</span><span>5 páginas</span></li>
+          <li><span>Uma página por peça, com fotos, preço, tamanhos, cores, etiqueta de “novo” ou “últimas peças” e sugestões que combinam</span><span>1 por peça</span></li>
+          <li><span>Carrinho com entrega ou retirada, nome e observação, e o botão “Enviar pedido no WhatsApp”</span><span>em todas</span></li>
+        </ul>
+        <p class="small muted" style="margin-top:14px">Hoje com 12 peças de exemplo. No projeto, cadastro até 50 peças com as fotos e os preços que você enviar; depois disso, sem limite.</p>
+      </div>
+      <div class="card" data-reveal>
+        <span class="site-tag">Você no controle</span>
+        <h3 style="font-size:24px;margin-top:12px">Planilha que publica sozinha</h3>
+        <ul class="pages" style="margin-top:14px;columns:1">
+          <li><span>Uma planilha Google com as peças: nome, categoria, preço, tamanhos, cores, foto, destaque, esgotado</span><span>sua</span></li>
+          <li><span>Foto é um link do Google Drive: o site corta, comprime e publica</span><span>automático</span></li>
+          <li><span>Botão “Publicar site agora” dentro da planilha. Em 2 minutos o site está atualizado</span><span>1 clique</span></li>
+          <li><span>Se esquecer de publicar, o site atualiza sozinho todo dia às 6h</span><span>diário</span></li>
+        </ul>
+        <p class="small muted" style="margin-top:14px">Trocou o preço, marcou uma peça como esgotada, colocou a coleção nova: você mesmo, sem depender de ninguém. Com vídeo curto de treinamento.</p>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:18px">
+      <div class="card feature" data-reveal><div class="ic">💬</div><div><h3>Pedido pronto no WhatsApp</h3><p>Peças, tamanhos, cores, total e forma de entrega já escritos. Você só confirma o estoque e combina o pagamento.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">📊</div><div><h3>Você edita na planilha</h3><p>Preço, tamanho, foto e estoque no Google Planilhas, do celular ou do computador. Um clique publica.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">💸</div><div><h3>Zero mensalidade de plataforma</h3><p>Sem Nuvemshop, sem Shopify, sem taxa por venda. A hospedagem não tem custo. O único custo fixo é o domínio, cerca de R$ 40 por ano.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">⚡</div><div><h3>98 no celular</h3><p>Medido no Google PageSpeed. Abre em 2 segundos no 4G do Jardim Maravilha, que é onde o cliente está quando vê o link no Instagram.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">🔗</div><div><h3>Bonito ao compartilhar</h3><p>Link de cada peça com foto, nome e preço na prévia do WhatsApp e do Instagram. Manda o link da polo e o cliente vê a polo.</p></div></div>
+      <div class="card feature" data-reveal><div class="ic">📍</div><div><h3>Google Maps e domínio</h3><p>Site e fotos das peças na ficha do Google, e o domínio da DG apontado com HTTPS. Quem procura no Google acha a loja, não só o Instagram.</p></div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:28px">
+      <div class="card" data-reveal>
+        <p class="eyebrow">Hoje e depois, lado a lado</p>
+        <table class="cmp" style="margin-top:12px">
+          <thead><tr><th></th><th>Instagram hoje</th><th>Site novo</th></tr></thead>
+          <tbody>
+            <tr><td>Preço da peça</td><td class="bad">só por mensagem</td><td class="good">visível em cada peça</td></tr>
+            <tr><td>Tamanhos e cores</td><td class="bad">pergunta e resposta</td><td class="good">escolhidos antes do pedido</td></tr>
+            <tr><td>Pedido</td><td class="bad">conversa do zero</td><td class="good">mensagem pronta com total</td></tr>
+            <tr><td>Google</td><td class="bad">não encontra a loja pelo produto</td><td class="good">uma página por peça e por categoria</td></tr>
+            <tr><td>Atualizar coleção</td><td class="bad">post por post</td><td class="good">planilha e um clique</td></tr>
+            <tr><td>Custo mensal</td><td class="bad">tempo respondendo o básico</td><td class="good">zero de plataforma</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" data-reveal>
+        <p class="eyebrow">Medido no Google PageSpeed, 9 de setembro de 2026</p>
+        <h3 style="font-size:22px;margin-top:8px">Rápido, acessível e pronto para o Google</h3>
+        <div class="metrics" style="margin-top:16px">
+          <div class="metric"><b>98</b><span>Performance celular</span></div>
+          <div class="metric"><b>100</b><span>Performance computador</span></div>
+          <div class="metric"><b>100</b><span>Boas práticas</span></div>
+          <div class="metric"><b>2,0 s</b><span>Primeira tela no 4G</span></div>
+        </div>
+        <p class="small muted" style="margin-top:14px">SEO vai a 100 assim que o site sai do modo de demonstração. Lojas em plataforma costumam ficar entre 40 e 70 no celular por causa dos scripts que elas carregam.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Investimento</p>
+      <h2>Duas formas de fechar. As duas entregam o site que está no ar.</h2>
+      <p>A diferença é só em como pagar. Nas duas, o cadastro inicial das peças e o treinamento da planilha estão incluídos.</p>
+    </div>
+
+    <div class="options" data-reveal>
+      <div class="card option selected" data-option="proj" data-price="990" data-label="Projeto fechado, condição de lançamento">
+        <span class="tag">Recomendado · condição de lançamento</span>
+        <h3>Projeto fechado</h3>
+        <p class="muted small" style="margin-top:6px">Paga uma vez. O site é seu desde o primeiro dia.</p>
+        <div class="price"><b>R$ 990</b><span>à vista no Pix, ou 3x de R$ 330</span></div>
+        <ul>
+          <li>Site completo, como na demonstração, com o logo e as cores da DG</li>
+          <li>Cadastro inicial de até 50 peças com as fotos e preços que você enviar</li>
+          <li>Planilha configurada com o botão de publicar, e vídeo de treinamento</li>
+          <li>Domínio dgmodamasculina.com.br renovado e apontado, com HTTPS</li>
+          <li>Ficha do Google Maps com site, fotos e categoria corrigidos</li>
+          <li>Prévia bonita ao compartilhar cada peça no WhatsApp e no Instagram</li>
+          <li>30 dias de ajustes após a publicação</li>
+          <li class="off"><span>Não inclui suporte mensal<small>Opcional, a partir de R$ 89 por mês. Sem ele, edições avulsas a R$ 120.</small></span></li>
+        </ul>
+        <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
+      </div>
+      <div class="card option" data-option="sub" data-mode="sub" data-price="149" data-label="Assinatura sem entrada">
+        <span class="tag" style="background:var(--ok)">Sem entrada</span>
+        <h3>Assinatura</h3>
+        <p class="muted small" style="margin-top:6px">Site, hospedagem e suporte em uma mensalidade.</p>
+        <div class="price"><b>R$ 149</b><span class="per">/mês</span><span>por 12 meses</span></div>
+        <ul>
+          <li>Tudo do projeto fechado: site, cadastro inicial, planilha, domínio e Google Maps</li>
+          <li>Plano Essencial incluído: monitoramento, correções e resposta em 48 h</li>
+          <li>Cobrança automática no cartão ou boleto, a primeira só na publicação</li>
+          <li>Após a 12ª mensalidade, o site passa para o nome da DG e o plano cai para R$ 89/mês</li>
+          <li class="off"><span>Permanência de 12 meses<small>Cancelamento antes disso quita 50% das mensalidades restantes.</small></span></li>
+        </ul>
+        <div class="pick"><span class="radio"></span> Selecionar esta opção</div>
+      </div>
+    </div>
+
+    <div class="terms">
+      <div class="card"><b>Pagamento</b>Projeto fechado: 50% no aceite, 50% na publicação; Pix ou cartão em até 3x sem juros. Assinatura: 12 mensalidades em cobrança recorrente, a primeira na publicação.</div>
+      <div class="card"><b>Propriedade</b>Projeto fechado: código, domínio, planilha e contas no nome da DG desde o início, sem fidelidade. Assinatura: o domínio e a planilha continuam seus; código e hospedagem ficam comigo até a 12ª mensalidade e então são transferidos.</div>
+      <div class="card"><b>Garantia</b>30 dias de ajustes após publicar; erros corrigidos sem custo, sempre. O site continua funcionando sem plano de suporte: a hospedagem não tem custo fixo.</div>
+    </div>
+
+    <div class="note"><strong>Condição de lançamento.</strong> A DG é a primeira loja de Petrolina com este catálogo, e este valor considera isso: autorização para usar o site no meu portfólio, um depoimento curto e o crédito “site por Gois.dev” no rodapé. Sem essas condições, o projeto é orçado em R$ 1.790.</div>
+    <div class="note"><strong>Compare com uma plataforma.</strong> O plano de entrada da Nuvemshop custa R$ 58,65 por mês para sempre, mais 2% de cada venda fora do pagamento deles. Em 18 meses a plataforma custa mais que este projeto inteiro, e a loja nunca fica sua.</div>
+    <div class="note print-only" id="print-accept" style="display:none;background:#eaf7ef;border-color:#bfe3cc;color:#0f4d2c"><strong>Para aceitar:</strong> responda por WhatsApp em <span id="print-wa"></span> ou por e-mail em contato@igorgois.dev, informando a opção escolhida. Eu envio no mesmo dia a lista do que precisamos para começar.</div>
+  </div>
+</section>
+
+<section id="suporte">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Suporte e hospedagem</p>
+      <h2>Opcional. O site funciona sem, mas fica melhor com.</h2>
+      <p>A hospedagem não tem custo fixo. O plano paga o monitoramento, as correções, a renovação das chaves que publicam o site e a garantia de que alguém responde quando precisar. Quem prefere não mexer na planilha escolhe o Cuidado e me manda as peças pelo WhatsApp.</p>
+    </div>
+
+    <div class="switch no-print" data-reveal>
+      <button class="on" data-period="m">Mensal</button>
+      <button data-period="a">Anual</button>
+      <span class="save">2 meses grátis no anual</span>
+    </div>
+
+    <div class="grid g3 plans">
+      <div class="card plan featured" data-reveal>
+        <span class="badge">Mais escolhido</span>
+        <h3>Essencial</h3>
+        <p class="who">Para quem edita a planilha sozinho e só quer o site no ar, sem surpresas.</p>
+        <div class="price"><b data-m="89" data-a="890">R$ 89</b><span data-suffix>/mês</span></div>
+        <ul>
+          <li>Hospedagem, certificado HTTPS e domínio configurados</li>
+          <li>Monitoramento 24 h com aviso se cair</li>
+          <li>Publicação automática mantida e chaves renovadas</li>
+          <li>Correções e atualizações de segurança</li>
+          <li>Resposta em até 48 h úteis</li>
+        </ul>
+      </div>
+      <div class="card plan" data-reveal>
+        <h3>Cuidado</h3>
+        <p class="who">Para quem prefere mandar as peças pelo WhatsApp e deixar comigo.</p>
+        <div class="price"><b data-m="149" data-a="1490">R$ 149</b><span data-suffix>/mês</span></div>
+        <ul>
+          <li>Tudo do Essencial</li>
+          <li>Até 4 edições por mês: cadastro de peças e fotos, promoção, banner, texto</li>
+          <li>Resposta em até 24 h úteis</li>
+          <li>Relatório mensal de visitas e cliques no WhatsApp</li>
+          <li>Ajustes de SEO conforme o Google mudar</li>
+        </ul>
+      </div>
+      <div class="card plan" data-reveal>
+        <h3>Avulso</h3>
+        <p class="who">Sem plano. Chama quando precisar.</p>
+        <div class="price"><b>R$ 120</b><span>/edição</span></div>
+        <ul>
+          <li>Cada solicitação de alteração é um chamado</li>
+          <li>Prazo de até 5 dias úteis</li>
+          <li>Sem monitoramento nem renovação das chaves de publicação</li>
+          <li>Categoria nova ou mudança de layout também entram aqui</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:16px">Com a planilha, a maioria fica confortável no Essencial: preço, estoque e foto são trocados pela própria loja.</p>
+  </div>
+</section>
+
+<section id="dominio">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Domínio e e-mail</p>
+      <h2>O endereço já é seu. Só precisa ser renovado e apontado.</h2>
+      <p>Verificado em 9 de setembro de 2026 no Registro.br. O domínio está no CNPJ da DG e o DNS já está na Cloudflare, onde o site vai ficar hospedado. A troca leva minutos.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card" data-reveal>
+        <table>
+          <thead><tr><th>Domínio</th><th>Situação</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td><code>dgmodamasculina.com.br</code></td><td><span class="status taken">Seu, vence em 14/09</span></td><td>Registrado em 2023 no CNPJ da DG, sem site. Renovar por cerca de R$ 40 por ano e apontar para o site novo.</td></tr>
+            <tr><td><code>dgmoda.com.br</code></td><td><span class="status free">Livre</span></td><td>Opcional: mais curto para falar e escrever. Registrar e redirecionar para o principal, cerca de R$ 40 por ano.</td></tr>
+            <tr><td><code>dgmoda.igorgois.dev</code></td><td><span class="status free">No ar</span></td><td>Endereço da demonstração. Sai do ar quando o site entrar no domínio definitivo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" data-reveal>
+        <p class="eyebrow">Como funciona</p>
+        <ul class="check" style="margin-top:12px">
+          <li><span class="box"></span><span><b>Renovação urgente.</b> O domínio vence em 14 de setembro. Se passar da data, entra em período de retenção e pode ser perdido. Faço a renovação com você no dia do aceite, no painel do Registro.br.</span></li>
+          <li><span class="box"></span><span><b>Configuração incluída.</b> DNS, certificado HTTPS e redirecionamento com e sem “www” ficam por minha conta, dentro do projeto.</span></li>
+          <li><span class="box"></span><span><b>Sem interrupção.</b> A demonstração continua no ar até o domínio definitivo responder.</span></li>
+          <li><span class="box"></span><span><b>E-mail profissional, opcional.</b> contato@dgmodamasculina.com.br. Zoho Mail é gratuito para até 5 contas; configuro dentro do projeto.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="etapas">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Prazo e etapas</p>
+      <h2>Cinco dias úteis depois das fotos e dos preços.</h2>
+      <p>O site já está construído. O tempo agora é de conteúdo, e depende mais de você do que de mim: uma foto por peça, tirada no celular com fundo claro, já resolve.</p>
+    </div>
+    <div class="steps" data-reveal>
+      <div class="step"><span class="k">DIA 0</span><h3>Aceite</h3><p>Resposta no WhatsApp e primeira parcela. Renovação do domínio no mesmo dia.</p></div>
+      <div class="step"><span class="k">DIAS 1 E 2</span><h3>Peças e fotos</h3><p>Você manda a lista com preço, tamanhos e cores, e as fotos. Eu cadastro tudo na planilha.</p></div>
+      <div class="step"><span class="k">DIA 3</span><h3>Revisão</h3><p>Site com as peças reais. Uma rodada de ajustes com você, pelo celular.</p></div>
+      <div class="step"><span class="k">DIAS 4 E 5</span><h3>Publicação</h3><p>Domínio apontado, Google Maps atualizado, treinamento da planilha gravado. Segunda parcela.</p></div>
+      <div class="step"><span class="k">30 DIAS</span><h3>Acompanhamento</h3><p>Ajustes incluídos e primeiro relatório de visitas e pedidos enviados.</p></div>
+    </div>
+
+    <div class="card" style="margin-top:22px" data-reveal>
+      <p class="eyebrow">O que precisamos de você</p>
+      <ul class="check" style="margin-top:12px">
+        <li><span class="box"></span><span>Logo da DG em arquivo (PNG grande, PDF ou o arquivo de quem fez a arte)</span></li>
+        <li><span class="box"></span><span>Uma foto por peça, no celular mesmo, com fundo claro e a peça inteira no quadro. Pode ser no cabide ou na mesa</span></li>
+        <li><span class="box"></span><span>Lista das peças com nome, preço, tamanhos e cores. Pode ser áudio no WhatsApp; eu organizo</span></li>
+        <li><span class="box"></span><span>Chave Pix, formas de pagamento aceitas, taxa de entrega e bairros atendidos</span></li>
+        <li><span class="box"></span><span>Acesso ao Registro.br para renovar o domínio e ao Google Business da loja (ou eu reivindico a ficha com você)</span></li>
+      </ul>
+    </div>
+
+    <div class="summary no-print" data-reveal>
+      <div class="card">
+        <div>
+          <span class="muted small">Sua seleção</span>
+          <div><b id="sum-price">R$ 990</b> <span class="muted small" id="sum-label">Projeto fechado, condição de lançamento · suporte opcional</span></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-wa" id="accept" href="#" target="_blank" rel="noopener">Aceitar pelo WhatsApp</a>
+          <button class="btn btn-ghost" id="print" type="button">Salvar em PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div style="display:flex;align-items:center;gap:18px">
+        <svg class="brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383 93" width="383" height="93" role="img" aria-label="Gois.dev">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(6 6)">
+    <path transform="translate(0.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M301 -14Q215 -14 153.5 29Q92 72 59.5 148.5Q27 225 27 325Q27 399 45.5 462.5Q64 526 103 573.5Q142 621 202 647.5Q262 674 345 674Q415 674 465.5 655Q516 636 548 602Q580 568 593 523.5Q606 479 601 428L450 410Q452 455 439 483.5Q426 512 400.5 526Q375 540 339 540Q296 540 264 517Q232 494 214.5 448Q197 402 197 333Q197 282 207 241.5Q217 201 237 173.5Q257 146 286.5 131.5Q316 117 354 117Q392 117 419 130.5Q446 144 460.5 167.5Q475 191 475 222L371 222L371 336L619 336L619 212L619 0L508 0L508 178L499 178Q494 116 469.5 73Q445 30 402.5 8Q360 -14 301 -14Z"/>
+    <path transform="translate(60.90 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M282 -14Q206 -14 147 16.5Q88 47 55 108.5Q22 170 22 263Q22 360 56.5 421.5Q91 483 150.5 512.5Q210 542 285 542Q363 542 421.5 511.5Q480 481 512.5 419.5Q545 358 545 264Q545 167 510.5 105.5Q476 44 416.5 15Q357 -14 282 -14ZM286 105Q317 105 338 122.5Q359 140 370 174Q381 208 381 255Q381 307 369 342.5Q357 378 334.5 397Q312 416 280 416Q250 416 229 398.5Q208 381 197 347Q186 313 186 265Q186 189 212.5 147Q239 105 286 105Z"/>
+    <path transform="translate(113.60 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M36 0L36 528L198 528L198 0ZM116 566Q70 566 45.5 585.5Q21 605 21 642Q21 680 45.5 699.5Q70 719 116 719Q163 719 187.5 699Q212 679 212 642Q212 606 187.5 586Q163 566 116 566Z"/>
+    <path transform="translate(133.00 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M267 -14Q214 -14 168.5 -3.5Q123 7 89.5 30Q56 53 38.5 91.5Q21 130 24 185L165 197Q167 164 180 142.5Q193 121 216 111Q239 101 272 101Q303 101 325.5 111.5Q348 122 348 147Q348 160 340 168.5Q332 177 310.5 184.5Q289 192 248 202Q197 215 156 228Q115 241 86 259Q57 277 42 303.5Q27 330 27 369Q27 424 56.5 462.5Q86 501 138 521.5Q190 542 258 542Q319 542 372 523Q425 504 455.5 461Q486 418 478 347L340 334Q343 363 332 383.5Q321 404 300 414.5Q279 425 249 425Q215 425 196.5 412.5Q178 400 178 381Q178 366 189.5 355.5Q201 345 225.5 337.5Q250 330 289 321Q323 314 360 303Q397 292 429 273.5Q461 255 481 225Q501 195 501 149Q501 100 474 63Q447 26 395 6Q343 -14 267 -14Z"/>
+    <circle cx="200.20" cy="56.50" r="9.50" fill="url(#g)"/>
+    <path transform="translate(217.70 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M233 -14Q178 -14 131.5 15.5Q85 45 57.5 106Q30 167 30 262Q30 352 55 412Q80 472 125.5 502.5Q171 533 230 533Q281 533 318 511Q355 489 378 444Q401 399 410 331L419 331Q413 375 408.5 411Q404 447 402 477.5Q400 508 400 534L400 685L510 685L509 217L511 0L411 0L418 173L410 173Q398 110 374 68.5Q350 27 315 6.5Q280 -14 233 -14ZM263 78Q297 78 322.5 94.5Q348 111 365 138Q382 165 390.5 195.5Q399 226 399 254L399 262Q399 282 394 305.5Q389 329 378.5 352.5Q368 376 352.5 395Q337 414 315 426Q293 438 265 438Q227 438 199 415.5Q171 393 156 352Q141 311 141 257Q141 204 155 163.5Q169 123 196.5 100.5Q224 78 263 78Z"/>
+    <path transform="translate(271.05 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M281 -14Q216 -14 169 6Q122 26 91 62Q60 98 44.5 146.5Q29 195 29 253Q29 310 44 360.5Q59 411 89 450Q119 489 164.5 511Q210 533 273 533Q331 533 374.5 513Q418 493 446.5 456Q475 419 486.5 368Q498 317 491 255L97 249L97 318L410 323L390 283Q393 332 381 367.5Q369 403 342 422.5Q315 442 273 442Q227 442 196.5 418.5Q166 395 151 353.5Q136 312 136 257Q136 167 174 120Q212 73 284 73Q319 73 342.5 84Q366 95 379.5 112.5Q393 130 398.5 151Q404 172 402 192L504 185Q505 145 492 109.5Q479 74 451.5 46.5Q424 19 381.5 2.5Q339 -14 281 -14Z"/>
+    <path transform="translate(319.15 66.00) scale(0.10000 -0.10000)" fill="currentColor" d="M189 0L7 519L125 519L257 94L262 94L395 519L508 519L326 0Z"/>
+  </g>
+</svg>
+        <div class="sig"><b>Igor Gois</b>Software Engineer · Full-Stack</div>
+      </div>
+      <div class="links">
+        <a href="https://igorgois.dev" target="_blank" rel="noopener">igorgois.dev</a>
+        <a href="mailto:contato@igorgois.dev">contato@igorgois.dev</a>
+        <a href="https://www.linkedin.com/in/igor-gois" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <p class="fine">Proposta válida por 15 dias a partir da emissão. Valores em reais. A demonstração em dgmoda.igorgois.dev usa artes e informações públicas do Instagram da DG Moda Masculina apenas para apresentação, com preços e fotos ilustrativos, e será substituída pelo conteúdo real na publicação. Renovação e registro de domínio são cobrados pelo Registro.br diretamente à loja. Assinatura: contrato de 12 meses com cobrança recorrente; após o período, renovação mensal sem fidelidade no plano de suporte escolhido; inadimplência superior a 30 dias suspende o site até a regularização.</p>
+  </div>
+</footer>
+
+<script>
+  // Configure aqui antes de enviar
+  const CONFIG = {
+    whatsapp: "5587998097362",
+    validityDays: 15,
+  };
+
+  const fmt = (n) => "R$ " + n.toLocaleString("pt-BR");
+  const today = new Date();
+  const valid = new Date(today); valid.setDate(valid.getDate() + CONFIG.validityDays);
+  const df = new Intl.DateTimeFormat("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+  document.getElementById("date").textContent = df.format(today);
+  document.getElementById("valid").textContent = df.format(valid);
+
+  const options = document.querySelectorAll(".option");
+  const sumPrice = document.getElementById("sum-price");
+  const sumLabel = document.getElementById("sum-label");
+  const accept = document.getElementById("accept");
+  function select(opt) {
+    options.forEach((o) => o.classList.toggle("selected", o === opt));
+    const price = Number(opt.dataset.price);
+    const sub = opt.dataset.mode === "sub";
+    sumPrice.textContent = sub ? fmt(price) + "/mês" : fmt(price);
+    sumLabel.textContent = sub ? "Assinatura · 12 meses, suporte Essencial incluído" : opt.dataset.label + " · suporte opcional";
+    const valor = sub ? `${fmt(price)} por mês, 12 meses` : fmt(price);
+    const msg = `Olá, Igor! Aceito a proposta GD-2026-003 para o catálogo da DG Moda Masculina, opção "${opt.dataset.label}" (${valor}). Vamos começar?`;
+    accept.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  }
+  options.forEach((o) => o.addEventListener("click", () => select(o)));
+  select(document.querySelector(".option.selected"));
+
+  document.querySelectorAll(".switch button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".switch button").forEach((b) => b.classList.toggle("on", b === btn));
+      const annual = btn.dataset.period === "a";
+      document.querySelectorAll(".plan [data-m]").forEach((el) => {
+        el.textContent = fmt(Number(annual ? el.dataset.a : el.dataset.m));
+        el.nextElementSibling.textContent = annual ? "/ano" : "/mês";
+      });
+    });
+  });
+
+  document.getElementById("print").addEventListener("click", () => window.print());
+  const wa = CONFIG.whatsapp.replace(/\D/g, "");
+  const m = wa.match(/^55(\d{2})(\d{5})(\d{4})$/);
+  document.getElementById("print-wa").textContent = m ? `(${m[1]}) ${m[2]}-${m[3]}` : wa;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
