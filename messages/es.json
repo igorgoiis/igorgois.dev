@@ -163,7 +163,26 @@
         "text": "Build firmado, revisión de Apple y Google, release por etapas y monitoreo de crashes y ANR. Después de la tienda, el producto sigue: métricas, ajustes, nueva versión.",
         "tag": "App Store · Google Play"
       }
-    ]
+    ],
+    "visual": {
+      "docFile": "briefing.pdf",
+      "docTitle": "¿Qué debe resolver la app?",
+      "docChecks": [
+        "Problema en 1 frase",
+        "Modelo de datos",
+        "Alcance de la v1"
+      ],
+      "docNote": "¿Quién la usa?",
+      "protoSearch": "Buscar",
+      "codeTest": "48 pruebas pasaron",
+      "storeApp": "Tu App",
+      "storeSub": "Publicada por ti",
+      "storeGet": "Obtener",
+      "storeOpen": "Abrir",
+      "storeRating": "12 mil valoraciones",
+      "storeAppleTop": "Disponible en",
+      "storeGoogleTop": "Disponible en"
+    }
   },
   "Services": {
     "meta": {

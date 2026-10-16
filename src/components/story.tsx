@@ -3,75 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { SectionTitle } from "./section-title";
+import { StoryVisual, type VisualText } from "./story-visuals";
 
 type Step = { title: string; text: string; tag: string };
 
-/** Telas ilustrativas do telefone, uma por etapa, só com CSS. */
-function Screen({ step }: { step: number }) {
-  if (step === 0) {
-    return (
-      <div className="story-screen">
-        <div className="story-note">?</div>
-        <div className="story-line w-3/4" />
-        <div className="story-line w-1/2" />
-        <div className="mt-6 grid grid-cols-2 gap-2">
-          {[0, 1, 2, 3].map((i) => <div key={i} className="story-box h-14" />)}
-        </div>
-        <div className="mt-auto story-line w-2/3" />
-      </div>
-    );
-  }
-  if (step === 1) {
-    return (
-      <div className="story-screen story-proto">
-        <div className="story-line w-2/5" />
-        <div className="story-box mt-3 h-24 border-dashed" />
-        <div className="mt-3 flex gap-2">
-          <div className="story-box h-10 flex-1 border-dashed" />
-          <div className="story-box h-10 flex-1 border-dashed" />
-        </div>
-        <div className="story-box mt-3 h-8 w-1/2 border-dashed" />
-        <div className="story-btn mt-auto">CTA</div>
-      </div>
-    );
-  }
-  if (step === 2) {
-    return (
-      <div className="story-screen story-code">
-        <pre>
-{`const app = expo({
-  router: "expo-router",
-  data: reactQuery(),
-  state: zustand(),
-  schema: zod(),
-});
-
-await ci.run("lint", "test");
-// ✓ 48 passed`}
-        </pre>
-      </div>
-    );
-  }
-  return (
-    <div className="story-screen story-store">
-      <div className="story-app-icon">IG</div>
-      <p className="mt-4 display text-lg font-bold">v6.0</p>
-      <p className="text-[11px] opacity-80">4.7 ★ · 1.5M+</p>
-      <div className="mt-6 flex flex-col gap-2">
-        <div className="story-badge">App Store</div>
-        <div className="story-badge">Google Play</div>
-      </div>
-    </div>
-  );
-}
-
 /**
- * Seção pinada: o telefone fica preso na tela e troca de conteúdo
+ * Seção pinada: a cena fica presa na tela e troca de conteúdo
  * enquanto os quatro passos passam com o scroll. No mobile vira lista.
  */
 export function Story() {
   const t = useTranslations("Story");
   const steps = t.raw("steps") as Step[];
+  const visual = t.raw("visual") as VisualText;
   const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [pinned, setPinned] = useState(false);
@@ -143,10 +86,9 @@ export function Story() {
           </div>
 
           <div className="hidden justify-center md:flex md:justify-end">
-            <div className="phone">
-              <div className="screen">
-                <Screen step={pinned ? active : active} />
-              </div>
+            {/* uma cena animada por etapa; a key reinicia a animação quando a etapa muda */}
+            <div className="sv-stage">
+              <StoryVisual key={active} step={active} v={visual} />
             </div>
           </div>
         </div>

@@ -163,7 +163,26 @@
         "text": "Signed build, Apple and Google review, staged rollout and crash and ANR monitoring. After the store, the product keeps going: metrics, tuning, next release.",
         "tag": "App Store · Google Play"
       }
-    ]
+    ],
+    "visual": {
+      "docFile": "briefing.pdf",
+      "docTitle": "What should the app solve?",
+      "docChecks": [
+        "Problem in 1 sentence",
+        "Data model",
+        "v1 scope"
+      ],
+      "docNote": "Who uses it?",
+      "protoSearch": "Search",
+      "codeTest": "48 tests passed",
+      "storeApp": "Your App",
+      "storeSub": "Published by you",
+      "storeGet": "Get",
+      "storeOpen": "Open",
+      "storeRating": "12K ratings",
+      "storeAppleTop": "Download on the",
+      "storeGoogleTop": "Get it on"
+    }
   },
   "Services": {
     "meta": {
