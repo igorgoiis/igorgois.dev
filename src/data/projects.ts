@@ -38,9 +38,9 @@ export const projects: Project[] = [
       es: "App de delivery en React Native, publicada en la App Store y en Google Play bajo tres marcas del grupo: Pede.ai, Aiboo Delivery y QFome. Reestructuración completa: nueva interfaz, animaciones con Reanimated, mapa con geolocalización, seguimiento del pedido en tiempo real y listas largas optimizadas para dispositivos sencillos.",
     },
     result: {
-      pt: "1,5 mi+ instalações · ~300 mil sessões/dia · ANR no Android reduzido em 90% · v6.0 com Pix, Apple Pay e Live Activities",
-      en: "1.5M+ installs · ~300K daily sessions · Android ANR cut by 90% · v6.0 with Pix, Apple Pay and Live Activities",
-      es: "1,5 M+ de instalaciones · ~300 mil sesiones/día · ANR en Android reducido un 90 % · v6.0 con Pix, Apple Pay y Live Activities",
+      pt: "1,5 mi+ instalações · milhares de sessões por dia · ANR no Android reduzido · v6.0 com Pix, Apple Pay e Live Activities",
+      en: "1.5M+ installs · thousands of daily sessions · lower Android ANR rate · v6.0 with Pix, Apple Pay and Live Activities",
+      es: "1,5 M+ de instalaciones · miles de sesiones al día · ANR en Android reducido · v6.0 con Pix, Apple Pay y Live Activities",
     },
     role: {
       pt: "Desenvolvedor frontend sênior, responsável pelo app",

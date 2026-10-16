@@ -53,7 +53,7 @@
     "blocks": {
       "mobile": {
         "title": "Mobile",
-        "text": "React Native and Expo apps live on the App Store and Google Play. I currently lead the rebuild of Pede.ai's three delivery apps: 1.5M+ installs, about 300K daily sessions and Android ANR rates cut by 90%. Six apps shipped over my career.",
+        "text": "React Native and Expo apps live on the App Store and Google Play. I currently lead the rebuild of Pede.ai's three delivery apps: 1.5M+ installs, thousands of daily sessions and lower Android ANR rates. Six apps shipped over my career.",
         "stat": "1.5M+",
         "statLabel": "Google Play installs"
       },

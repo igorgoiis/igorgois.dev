@@ -53,7 +53,7 @@
     "blocks": {
       "mobile": {
         "title": "Móvil",
-        "text": "Apps React Native y Expo en producción en la App Store y en Google Play. Hoy lidero la reconstrucción de las tres apps de delivery de Pede.ai: más de 1,5 M de instalaciones, unas 300 mil sesiones diarias y tasa de ANR en Android reducida un 90 %. Seis apps publicadas en mi carrera.",
+        "text": "Apps React Native y Expo en producción en la App Store y en Google Play. Hoy lidero la reconstrucción de las tres apps de delivery de Pede.ai: más de 1,5 M de instalaciones, miles de sesiones diarias y tasa de ANR en Android reducida. Seis apps publicadas en mi carrera.",
         "stat": "1,5 M+",
         "statLabel": "instalaciones en Google Play"
       },
