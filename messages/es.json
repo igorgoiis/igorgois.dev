@@ -87,7 +87,12 @@
     "next": "Pantalla siguiente",
     "realScreens": "pantallas reales",
     "cursorGallery": "Ver pantallas",
-    "cursorVisit": "Abrir"
+    "cursorVisit": "Abrir",
+    "conceptsLabel": "Proyectos conceptuales",
+    "conceptsTitle": "Sitios completos para empresas ficticias",
+    "conceptsText": "Marca, diseño y código creados desde cero para mostrar lo que entrego. Las empresas no existen, pero los sitios están en línea.",
+    "conceptBadge": "Concepto",
+    "conceptVisit": "Ver en vivo"
   },
   "Experience": {
     "no": "N° 4",

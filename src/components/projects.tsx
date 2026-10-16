@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import type { Locale } from "@/i18n/routing";
 import { projects, type Project } from "@/data/projects";
+import { concepts } from "@/data/concepts";
 import { Section } from "./section";
 import { SectionTitle } from "./section-title";
 import { ProjectGallery } from "./project-gallery";
@@ -148,6 +149,48 @@ export function Projects({ locale }: { locale: Locale }) {
           <Marquee items={p.stack} />
         </Section>
       ))}
+
+      {/* projetos conceituais: empresas fictícias, separados dos produtos reais */}
+      <Section id="concepts" className="px-5 py-16 md:px-8 md:py-24">
+        <div className="max-w-2xl">
+          <p className="mono-label">{t("conceptsLabel")}</p>
+          <h3 className="display mt-3 text-4xl font-bold tracking-tight md:text-5xl">{t("conceptsTitle")}</h3>
+          <p className="mt-5 leading-relaxed text-muted-foreground">{t("conceptsText")}</p>
+        </div>
+        <ul className="mt-12 grid gap-10 md:grid-cols-2 md:gap-12">
+          {concepts.map((c, i) => (
+            <li key={c.slug} className={`in-view-anim in-view-anim-${(i % 2) + 1}`}>
+              <a href={c.url} target="_blank" rel="noopener" data-cursor={t("cursorVisit")} className="group block">
+                <div className="frame">
+                  <div className="frame-chrome">
+                    <i /><i /><i />
+                    <span className="url">{c.url.replace("https://", "")}</span>
+                  </div>
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image src={c.cover} alt={c.name} fill sizes="(max-width: 768px) 100vw, 45vw" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]" />
+                  </div>
+                </div>
+              </a>
+              <p className="mono-label mt-6">
+                {t("conceptBadge")} · {c.category[locale]}
+              </p>
+              <h4 className="display mt-2 text-2xl font-bold tracking-tight md:text-3xl">{c.name}</h4>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{c.description[locale]}</p>
+              <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <span className="flex flex-wrap gap-1.5">
+                  {c.stack.map((s) => (
+                    <span key={s} className="chip">{s}</span>
+                  ))}
+                </span>
+                <a href={c.url} target="_blank" rel="noopener" data-cursor={t("cursorVisit")} className="arrow-link">
+                  {t("conceptVisit")}
+                  <ArrowUpRightIcon className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
       {galleryProject && (
         <ProjectGallery project={galleryProject} locale={locale} onClose={() => setGallery(null)} />

@@ -87,7 +87,12 @@
     "next": "Next screen",
     "realScreens": "real screens",
     "cursorGallery": "View screens",
-    "cursorVisit": "Open"
+    "cursorVisit": "Open",
+    "conceptsLabel": "Concept projects",
+    "conceptsTitle": "Complete websites for fictional companies",
+    "conceptsText": "Brand, design and code built from scratch to show what I deliver. The companies don't exist, but the websites are live.",
+    "conceptBadge": "Concept",
+    "conceptVisit": "See it live"
   },
   "Experience": {
     "no": "N° 4",
