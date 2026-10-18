@@ -51,7 +51,6 @@ export function Header() {
         <div className="site-bar mx-auto flex w-full max-w-5xl items-center justify-between gap-3 rounded-full px-4 py-2 md:px-5">
           <a href={`${base}#top`} data-transition={site.name} className="flex items-center gap-3 text-foreground no-underline" aria-label={site.name}>
             <Logo className="h-6 w-auto" />
-            <span className="mono-label hidden sm:inline">{site.domain}</span>
           </a>
           <div className="flex items-center gap-1.5 md:gap-2">
             <div className="hidden md:block">
