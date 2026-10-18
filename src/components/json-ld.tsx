@@ -23,7 +23,7 @@ export function JsonLd({ locale, description }: { locale: Locale; description: s
   const business = {
     "@type": ["ProfessionalService", "LocalBusiness"],
     "@id": `${site.url}/#business`,
-    name: "Gois.dev · Igor Gois",
+    name: "igorgois.dev · Igor Gois",
     alternateName: "Igor Gois · Desenvolvimento de Software",
     url: `${site.url}/${locale}${servicesPath[locale]}`,
     image: `${site.url}/${locale}/opengraph-image`,

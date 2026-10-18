@@ -54,7 +54,7 @@ export default async function CvPage({ params }: { params: Promise<{ locale: str
 
           <article className="cv-document">
             <header className="cv-header">
-              <div className="mb-4 text-foreground"><Logo className="h-5 w-auto" /></div>
+              <div className="mb-4 text-foreground"><Logo className="h-[22px] w-auto" /></div>
               <h1 className="display text-4xl font-bold tracking-tight print:text-3xl">{site.name}</h1>
               <p className="mt-1 text-lg text-muted-foreground">
                 {c.title} · {c.headline}

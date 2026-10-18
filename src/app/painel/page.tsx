@@ -47,7 +47,7 @@ export default async function Painel({ searchParams }: { searchParams: Promise<{
     <main className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8">
       <header className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm text-muted-foreground">Gois.dev</p>
+          <p className="text-sm text-muted-foreground">igorgois.dev</p>
           <h1 className="text-2xl font-semibold">Placas de avaliação</h1>
         </div>
         <form action={sair}><button className={botaoLeve}>Sair</button></form>
