@@ -135,7 +135,8 @@
       "If you made it this far, Lighthouse made it to 90+ too.",
       "Dark mode is navy because pure black hurts the eyes."
     ],
-    "servicesLink": "Services in Petrolina"
+    "servicesLink": "Services in Petrolina",
+    "privacyLink": "Privacy"
   },
   "Story": {
     "no": "N° 2",
@@ -252,5 +253,130 @@
     "ctaText": "Write to contato@igorgois.dev with what you need. I reply within one business day.",
     "ctaButton": "Send e-mail",
     "ctaPortfolio": "View projects"
+  },
+  "Privacy": {
+    "meta": {
+      "title": "Privacy policy | igorgois.dev",
+      "description": "How igorgois.dev handles personal data on its website and in its WhatsApp scheduling assistant for clinics, under Brazil's LGPD."
+    },
+    "no": "Privacy",
+    "eyebrow": "Privacy policy",
+    "h1": "Privacy policy",
+    "updated": "Last updated October 21, 2026.",
+    "lead": "This page explains which personal data we process, why, who we share it with and how you can ask for access or deletion, under Brazil's General Data Protection Law (LGPD, Law 13,709/2018).",
+    "sections": [
+      {
+        "id": "quem",
+        "title": "1. Who we are",
+        "paragraphs": [
+          "The igorgois.dev website and the igorgois.dev products are run by {company}, based in Petrolina (PE), Brazil.",
+          "For any privacy matter, including contacting our data protection officer, write to {email}."
+        ]
+      },
+      {
+        "id": "escopo",
+        "title": "2. What this policy covers",
+        "paragraphs": [
+          "The igorgois.dev website and the WhatsApp customer service and scheduling assistant for clinics (the \"Assistant\"). The Assistant uses Meta's WhatsApp Business Platform and, when the clinic connects it, Google Calendar."
+        ]
+      },
+      {
+        "id": "site",
+        "title": "3. Data on the website",
+        "paragraphs": [
+          "We use Google Analytics to understand how the site is used: pages visited, device type, browser and approximate city, collected through cookies. We do not use this data to identify you.",
+          "When you write to us by email or WhatsApp, we keep the conversation to reply and, if it becomes a project, for the contract. The legal bases are legitimate interest and performance of a contract."
+        ]
+      },
+      {
+        "id": "assistente",
+        "title": "4. Data in the Assistant",
+        "paragraphs": [
+          "The clinic that subscribes to the Assistant is the controller of its patients' data. igorgois.dev is a processor: it handles the data only on the clinic's behalf and following its instructions."
+        ],
+        "items": [
+          "Patient data: name, phone number and WhatsApp profile picture, message content (text, audio, images and documents the patient sends) and appointment data (service, professional, date and time).",
+          "Reason for the visit, when the patient shares it. This may be health data, which the law treats as sensitive: the Assistant asks only what it needs to book.",
+          "Clinic data: name, contact of the account administrator, configuration (services, hours, prices, FAQ) and subscription billing data."
+        ],
+        "after": [
+          "We use this data only to reply to patients, check availability, book, reschedule and cancel appointments, and hand the conversation over to the clinic's staff. We do not sell data, use it for advertising or use it to train artificial intelligence models.",
+          "The Assistant says at the start of the conversation that it is an automated service, and it never gives health advice or diagnoses."
+        ]
+      },
+      {
+        "id": "google",
+        "title": "5. Google Calendar",
+        "paragraphs": [
+          "When a clinic connects Google Calendar, the Assistant accesses only the calendars the clinic chooses, to check free times and to create, change or cancel appointment events. We do not read any other Google account data.",
+          "igorgois.dev's use and transfer to any other app of information received from Google APIs will adhere to the <a href=\"https://developers.google.com/terms/api-services-user-data-policy\">Google API Services User Data Policy</a>, including the Limited Use requirements."
+        ]
+      },
+      {
+        "id": "compartilhamento",
+        "title": "6. Who we share data with",
+        "paragraphs": [
+          "We share data only with the providers needed to run the service, who also act as processors:"
+        ],
+        "items": [
+          "Meta (WhatsApp Business Platform): sending and receiving messages.",
+          "Google: Google Calendar, when connected, and Google Analytics on the website.",
+          "Anthropic: the artificial intelligence model that writes the Assistant's replies. Under its commercial terms, this data is not used to train models.",
+          "Cloudflare and Vercel: hosting for the Assistant and the website.",
+          "Asaas: billing for the clinic's subscription."
+        ],
+        "after": [
+          "Some of these providers store data outside Brazil, mainly in the United States. In those cases the transfer follows article 33 of the LGPD, with contracts that require equivalent protection.",
+          "We may also share data when the law or an authority requires it."
+        ]
+      },
+      {
+        "id": "prazo",
+        "title": "7. How long we keep data",
+        "items": [
+          "Conversations and appointments: while the clinic is a customer and up to 90 days after cancellation, or less if the clinic asks.",
+          "Technical logs: up to 30 days, without message content.",
+          "Billing data and invoices: for the period required by tax law.",
+          "Messages sent through the website or by email: up to 2 years after the last contact."
+        ]
+      },
+      {
+        "id": "seguranca",
+        "title": "8. Security",
+        "paragraphs": [
+          "We use encrypted connections (HTTPS), store Meta and Google access keys encrypted, give access only to those who need it, and each clinic sees only its own data. If an incident could cause risk, we notify the clinic and Brazil's data protection authority (ANPD) as the law requires."
+        ]
+      },
+      {
+        "id": "direitos",
+        "title": "9. Your rights",
+        "paragraphs": [
+          "Under article 18 of the LGPD, you can ask for: confirmation that we process your data, access, correction, anonymization, blocking or deletion, portability, information about who we share it with, and withdrawal of consent.",
+          "If you are a patient of a clinic that uses the Assistant, your request goes to the clinic, which is the controller. You can also write to us and we will forward it."
+        ]
+      },
+      {
+        "id": "exclusao",
+        "title": "10. How to request data deletion",
+        "items": [
+          "Patient or visitor: write to {email} with the subject \"Data deletion\", giving your name and the phone number you used on WhatsApp. We reply within 15 days.",
+          "Clinic: disconnect WhatsApp and Google Calendar in the dashboard, or remove igorgois.dev's access in Meta Business Manager and at myaccount.google.com/permissions, and request deletion at the same email. We delete the clinic's and its patients' data within 30 days, except what the law requires us to keep."
+        ]
+      },
+      {
+        "id": "criancas",
+        "title": "11. Children and teenagers",
+        "paragraphs": [
+          "The Assistant may receive messages from parents or guardians about patients under 18. This data is used only for scheduling, in the best interest of the child or teenager."
+        ]
+      },
+      {
+        "id": "mudancas",
+        "title": "12. Changes to this policy",
+        "paragraphs": [
+          "When this policy changes, the new version appears on this page with the updated date. Clinics are told about important changes by email."
+        ]
+      }
+    ]
   }
 }

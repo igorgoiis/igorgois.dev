@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
-import { routing, servicesPath } from "@/i18n/routing";
+import { privacyPath, routing, servicesPath } from "@/i18n/routing";
 import { site } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const languages = Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}`]));
   const cvLanguages = Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}/cv`]));
   const servicesLanguages = Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}${servicesPath[l]}`]));
+  const privacyLanguages = Object.fromEntries(routing.locales.map((l) => [l, `${site.url}/${l}${privacyPath[l]}`]));
   return routing.locales.flatMap((locale) => [
     {
       url: `${site.url}/${locale}`,
@@ -27,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.6,
       alternates: { languages: cvLanguages },
+    },
+    {
+      url: `${site.url}/${locale}${privacyPath[locale]}`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+      alternates: { languages: privacyLanguages },
     },
   ]);
 }

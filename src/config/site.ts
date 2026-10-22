@@ -15,6 +15,11 @@ export const site = {
     timeZone: "America/Recife",
     utc: "UTC-3",
   },
+  /** Empresa que responde pela política de privacidade. Igual ao cartão CNPJ; vazio mostra só o nome. */
+  company: {
+    legalName: "",
+    cnpj: "",
+  },
   links: {
     github: "https://github.com/igorgoiis",
     linkedin: "https://www.linkedin.com/in/igor-gois",

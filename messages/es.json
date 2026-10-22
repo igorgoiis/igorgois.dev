@@ -135,7 +135,8 @@
       "Si llegaste hasta aquí, Lighthouse también llegó a 90+.",
       "El modo oscuro es navy porque el negro puro cansa la vista."
     ],
-    "servicesLink": "Servicios en Petrolina"
+    "servicesLink": "Servicios en Petrolina",
+    "privacyLink": "Privacidad"
   },
   "Story": {
     "no": "N° 2",
@@ -252,5 +253,130 @@
     "ctaText": "Escribe a contato@igorgois.dev con lo que necesitas. Respondo en un día hábil.",
     "ctaButton": "Enviar e-mail",
     "ctaPortfolio": "Ver proyectos"
+  },
+  "Privacy": {
+    "meta": {
+      "title": "Política de privacidad | igorgois.dev",
+      "description": "Cómo igorgois.dev trata los datos personales en su sitio y en el asistente de atención por WhatsApp para clínicas, según la LGPD de Brasil."
+    },
+    "no": "Privacidad",
+    "eyebrow": "Política de privacidad",
+    "h1": "Política de privacidad",
+    "updated": "Actualizada el 21 de octubre de 2026.",
+    "lead": "Esta página explica qué datos personales tratamos, por qué, con quién los compartimos y cómo puedes pedir acceso o eliminación, según la Ley General de Protección de Datos de Brasil (LGPD, Ley 13.709/2018).",
+    "sections": [
+      {
+        "id": "quem",
+        "title": "1. Quiénes somos",
+        "paragraphs": [
+          "El sitio igorgois.dev y los productos de igorgois.dev los mantiene {company}, de Petrolina (PE), Brasil.",
+          "Para cualquier asunto de privacidad, incluso contactar al encargado de datos, escribe a {email}."
+        ]
+      },
+      {
+        "id": "escopo",
+        "title": "2. Qué cubre esta política",
+        "paragraphs": [
+          "El sitio igorgois.dev y el asistente de atención y agenda por WhatsApp para clínicas (el \"Asistente\"). El Asistente usa la Plataforma de WhatsApp Business, de Meta, y, cuando la clínica lo conecta, Google Calendar."
+        ]
+      },
+      {
+        "id": "site",
+        "title": "3. Datos en el sitio",
+        "paragraphs": [
+          "Usamos Google Analytics para entender el uso del sitio: páginas visitadas, tipo de dispositivo, navegador y ciudad aproximada, recogidos mediante cookies. No usamos estos datos para identificarte.",
+          "Cuando nos escribes por correo o WhatsApp, guardamos la conversación para responder y, si se convierte en un proyecto, para el contrato. Las bases legales son el interés legítimo y la ejecución de un contrato."
+        ]
+      },
+      {
+        "id": "assistente",
+        "title": "4. Datos en el Asistente",
+        "paragraphs": [
+          "La clínica que contrata el Asistente es la responsable de los datos de sus pacientes. igorgois.dev es encargada del tratamiento: trata los datos solo en nombre de la clínica y según sus instrucciones."
+        ],
+        "items": [
+          "Del paciente: nombre, número de teléfono y foto de perfil de WhatsApp, contenido de los mensajes (texto, audio, imágenes y documentos que envíe) y datos de la cita (servicio, profesional, fecha y hora).",
+          "Motivo de la consulta, cuando el paciente lo indica. Puede ser un dato de salud, que la ley trata como sensible: el Asistente pregunta solo lo necesario para agendar.",
+          "De la clínica: nombre, contacto de quien administra la cuenta, configuración (servicios, horarios, precios, preguntas frecuentes) y datos de cobro de la suscripción."
+        ],
+        "after": [
+          "Usamos estos datos solo para responder al paciente, consultar horarios, agendar, cambiar y cancelar citas y pasar la conversación al equipo de la clínica. No vendemos datos, no los usamos para publicidad ni para entrenar modelos de inteligencia artificial.",
+          "El Asistente avisa al inicio de la conversación que es una atención automática y no da orientación de salud ni diagnósticos."
+        ]
+      },
+      {
+        "id": "google",
+        "title": "5. Google Calendar",
+        "paragraphs": [
+          "Cuando la clínica conecta Google Calendar, el Asistente accede solo a los calendarios que ella elige, para consultar horarios libres y crear, cambiar o cancelar los eventos de las citas. No leemos otros datos de la cuenta de Google.",
+          "El uso y la transferencia, por parte de igorgois.dev, de información recibida de las API de Google siguen la <a href=\"https://developers.google.com/terms/api-services-user-data-policy\">Política de Datos del Usuario de los Servicios de API de Google</a>, incluidos los requisitos de Uso Limitado."
+        ]
+      },
+      {
+        "id": "compartilhamento",
+        "title": "6. Con quién compartimos",
+        "paragraphs": [
+          "Compartimos datos solo con los proveedores necesarios para que el servicio funcione, que también actúan como encargados:"
+        ],
+        "items": [
+          "Meta (WhatsApp Business Platform): envío y recepción de mensajes.",
+          "Google: Google Calendar, cuando está conectado, y Google Analytics en el sitio.",
+          "Anthropic: modelo de inteligencia artificial que redacta las respuestas del Asistente. Según sus términos comerciales, estos datos no se usan para entrenar modelos.",
+          "Cloudflare y Vercel: alojamiento del Asistente y del sitio.",
+          "Asaas: cobro de la suscripción de la clínica."
+        ],
+        "after": [
+          "Algunos de estos proveedores guardan datos fuera de Brasil, sobre todo en Estados Unidos. En esos casos la transferencia sigue el artículo 33 de la LGPD, con contratos que exigen una protección equivalente.",
+          "También podemos compartir datos cuando la ley o una autoridad lo exija."
+        ]
+      },
+      {
+        "id": "prazo",
+        "title": "7. Cuánto tiempo guardamos",
+        "items": [
+          "Conversaciones y citas: mientras la clínica sea cliente y hasta 90 días después de la cancelación, o menos si la clínica lo pide.",
+          "Registros técnicos (logs): hasta 30 días, sin el contenido de los mensajes.",
+          "Datos de cobro y facturas: durante el plazo que exige la ley fiscal.",
+          "Mensajes enviados por el sitio o por correo: hasta 2 años después del último contacto."
+        ]
+      },
+      {
+        "id": "seguranca",
+        "title": "8. Seguridad",
+        "paragraphs": [
+          "Usamos conexión cifrada (HTTPS), guardamos cifradas las claves de acceso de Meta y Google, damos acceso solo a quien lo necesita y cada clínica ve solo sus propios datos. Si ocurre un incidente que pueda causar riesgo, avisamos a la clínica y a la autoridad brasileña de protección de datos (ANPD), como exige la ley."
+        ]
+      },
+      {
+        "id": "direitos",
+        "title": "9. Tus derechos",
+        "paragraphs": [
+          "Según el artículo 18 de la LGPD, puedes pedir: confirmación de que tratamos tus datos, acceso, corrección, anonimización, bloqueo o eliminación, portabilidad, información sobre con quién los compartimos y revocación del consentimiento.",
+          "Si eres paciente de una clínica que usa el Asistente, la solicitud va a la clínica, que es la responsable. También puedes escribirnos y se la reenviamos."
+        ]
+      },
+      {
+        "id": "exclusao",
+        "title": "10. Cómo pedir la eliminación de los datos",
+        "items": [
+          "Paciente o visitante: escribe a {email} con el asunto \"Eliminación de datos\", indicando tu nombre y el número de teléfono que usaste en WhatsApp. Respondemos en un plazo de 15 días.",
+          "Clínica: desconecta WhatsApp y Google Calendar en el panel, o quita el acceso de igorgois.dev en el Administrador comercial de Meta y en myaccount.google.com/permissions, y pide la eliminación al mismo correo. Borramos los datos de la clínica y de sus pacientes en un plazo de 30 días, salvo lo que la ley obliga a guardar."
+        ]
+      },
+      {
+        "id": "criancas",
+        "title": "11. Niños y adolescentes",
+        "paragraphs": [
+          "El Asistente puede recibir mensajes de padres o tutores sobre pacientes menores de edad. Esos datos se usan solo para la cita, en el mejor interés del niño o adolescente."
+        ]
+      },
+      {
+        "id": "mudancas",
+        "title": "12. Cambios en esta política",
+        "paragraphs": [
+          "Cuando esta política cambie, la nueva versión aparecerá en esta página con la fecha actualizada. Los cambios importantes se avisan a las clínicas por correo."
+        ]
+      }
+    ]
   }
 }

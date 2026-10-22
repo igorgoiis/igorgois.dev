@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { site } from "@/config/site";
 import { Humor } from "./humor";
 import { Logo } from "./logo";
-import { servicesPath, type Locale } from "@/i18n/routing";
+import { privacyPath, servicesPath, type Locale } from "@/i18n/routing";
 
 export function Footer() {
   const t = useTranslations("Footer");
@@ -22,6 +22,10 @@ export function Footer() {
             {year} © {site.name} · {t("builtWith")} ·{" "}
             <a href={`/${locale}${servicesPath[locale as Locale]}`} className="hover:text-foreground">
               {t("servicesLink")}
+            </a>{" "}
+            ·{" "}
+            <a href={`/${locale}${privacyPath[locale as Locale]}`} className="hover:text-foreground">
+              {t("privacyLink")}
             </a>
           </p>
         </div>
