@@ -21,8 +21,8 @@ const MENSAGENS: Record<string, string> = {
 };
 
 export function Aviso({ ok, erro }: { ok?: string; erro?: string }) {
-  if (erro) return <p className="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800">{erro}</p>;
-  if (ok && MENSAGENS[ok]) return <p className="rounded-lg border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800">{MENSAGENS[ok]}</p>;
+  if (erro) return <p className="rounded-lg border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">{erro}</p>;
+  if (ok && MENSAGENS[ok]) return <p className="rounded-lg border border-status/40 bg-status/10 px-4 py-3 text-sm text-status">{MENSAGENS[ok]}</p>;
   return null;
 }
 
@@ -48,8 +48,9 @@ export function Campo({ rotulo, dica, children }: { rotulo: string; dica?: React
   );
 }
 
-export const entrada = "w-full rounded-lg border border-border bg-background px-3 py-2 text-base outline-none focus:border-foreground";
-export const botao = "inline-flex items-center justify-center rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background hover:opacity-90";
+export const entrada = "w-full rounded-lg border border-border bg-background px-3 py-2 text-base outline-none focus:border-status";
+export const botao = "inline-flex items-center justify-center rounded-lg bg-status px-4 py-2 text-sm font-semibold text-[#06210f] hover:opacity-90";
+export const botaoPerigo = "w-fit rounded-lg border border-red-400/40 bg-red-500/10 px-4 py-2 text-sm font-semibold text-red-300 hover:bg-red-500/20";
 export const botaoLeve = "inline-flex items-center justify-center rounded-lg border border-border px-3 py-1.5 text-sm hover:bg-muted";
 
 export const reais = (valor: number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(valor);
@@ -58,9 +59,31 @@ export function Status({ ativa, temCliente, temDestino = true }: { ativa: boolea
   const [rotulo, cor] = !temCliente
     ? ["Em estoque", "bg-muted text-muted-foreground"]
     : !temDestino
-      ? ["Sem destino", "bg-red-100 text-red-800"]
+      ? ["Sem destino", "bg-red-500/15 text-red-300"]
       : ativa
-        ? ["Ativa", "bg-green-100 text-green-800"]
-        : ["Pausada", "bg-amber-100 text-amber-800"];
+        ? ["Ativa", "bg-status/15 text-status"]
+        : ["Pausada", "bg-amber-400/15 text-amber-300"];
   return <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${cor}`}>{rotulo}</span>;
+}
+
+export function Titulo({ titulo, texto, acao }: { titulo: ReactNode; texto?: ReactNode; acao?: ReactNode }) {
+  return (
+    <header className="flex flex-wrap items-end justify-between gap-3">
+      <div className="min-w-0">
+        <h1 className="text-2xl font-semibold">{titulo}</h1>
+        {texto && <p className="mt-1 text-sm text-muted-foreground">{texto}</p>}
+      </div>
+      {acao}
+    </header>
+  );
+}
+
+export function Numero({ rotulo, valor, nota }: { rotulo: string; valor: ReactNode; nota?: ReactNode }) {
+  return (
+    <div className="rounded-xl border border-border bg-card p-4">
+      <p className="text-sm text-muted-foreground">{rotulo}</p>
+      <p className="mt-1 text-2xl font-semibold">{valor}</p>
+      {nota && <p className="mt-1 text-xs text-muted-foreground">{nota}</p>}
+    </div>
+  );
 }

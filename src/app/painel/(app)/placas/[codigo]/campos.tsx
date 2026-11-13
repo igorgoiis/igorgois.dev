@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { DESTINOS, PAGAMENTOS, ehDestino, type DestinoTipo } from "@/lib/destinos";
-import { Campo, botaoLeve, entrada } from "../../ui";
+import { Campo, botaoLeve, entrada } from "@/app/painel/ui";
 
 type Props = {
   clientes: { id: number; nome: string }[];
@@ -40,7 +40,7 @@ export function CamposPlaca({ clientes, clienteId, nome, destinoTipo, destinoLin
         <input name="nome" defaultValue={nome ?? ""} placeholder="Ex.: Balcão de entrada" maxLength={80} className={entrada} />
       </Campo>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid items-start gap-4 sm:grid-cols-2">
         <Campo rotulo="Para onde a placa deve levar?">
           <select name="destino_tipo" value={tipo} onChange={(e) => setTipo(e.target.value as DestinoTipo)} className={entrada}>
             {Object.entries(DESTINOS).map(([chave, d]) => <option key={chave} value={chave}>{d.rotulo}</option>)}

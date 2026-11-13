@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db, pareceGoogle, type Cliente } from "@/lib/db";
 import { exigirLogin } from "@/lib/painel-auth";
-import { desligarPlaca, excluirCliente, ligarPlaca, salvarCliente } from "../../actions";
-import { Aviso, Campo, Cartao, Status, botao, botaoLeve, entrada, linkWhatsapp, quando } from "../../ui";
+import { desligarPlaca, excluirCliente, ligarPlaca, salvarCliente } from "@/app/painel/actions";
+import { Aviso, Campo, Cartao, Status, botao, botaoLeve, botaoPerigo, entrada, linkWhatsapp, quando } from "@/app/painel/ui";
 
 type PlacaDoCliente = { codigo: string; ativa: boolean; ativada_em: string | null; total: number; mes: number };
 type Dia = { dia: string; total: number };
@@ -49,8 +49,8 @@ export default async function ClientePage({
   const voltar = `/painel/clientes/${id}`;
 
   return (
-    <main className="mx-auto flex max-w-3xl flex-col gap-6 px-4 py-8">
-      <Link href="/painel" className="w-fit text-sm text-muted-foreground hover:underline">← Voltar ao painel</Link>
+    <div className="flex max-w-3xl flex-col gap-6">
+      <Link href="/painel/clientes" className="w-fit text-sm text-muted-foreground hover:underline">← Clientes</Link>
       <h1 className="text-2xl font-semibold">{novo ? "Novo cliente" : cliente!.nome}</h1>
       <Aviso ok={ok} erro={erro} />
 
@@ -69,7 +69,7 @@ export default async function ClientePage({
             <input name="link_avaliacao" type="url" placeholder="https://g.page/r/..." defaultValue={cliente?.link_avaliacao ?? ""} className={entrada} />
           </Campo>
           {cliente?.link_avaliacao && !pareceGoogle(cliente.link_avaliacao) && (
-            <p className="text-sm text-amber-700">Atenção: este link não parece ser do Google. Confira antes de entregar a placa.</p>
+            <p className="text-sm text-amber-300">Atenção: este link não parece ser do Google. Confira antes de entregar a placa.</p>
           )}
           <Campo rotulo="Observações"><textarea name="observacoes" rows={3} defaultValue={cliente?.observacoes ?? ""} className={entrada} /></Campo>
           <div className="flex flex-wrap gap-3">
@@ -92,7 +92,7 @@ export default async function ClientePage({
                     <Link href={`/painel/placas/${p.codigo}`} className="font-mono font-semibold hover:underline">{p.codigo}</Link>
                     <Status ativa={p.ativa} temCliente />
                     <span className="text-muted-foreground">desde {quando(p.ativada_em)}</span>
-                    <span className="text-muted-foreground">{p.mes} toques em 30 dias · {p.total} no total</span>
+                    <span className="text-muted-foreground">{p.mes} leituras em 30 dias · {p.total} no total</span>
                     <form action={desligarPlaca} className="ml-auto">
                       <input type="hidden" name="codigo" value={p.codigo} />
                       <input type="hidden" name="voltar" value={voltar} />
@@ -113,19 +113,19 @@ export default async function ClientePage({
                 <button className={botao}>Ligar placa</button>
               </form>
             ) : (
-              <p className="text-sm text-muted-foreground">Não há placas em estoque. Crie um lote novo no painel.</p>
+              <p className="text-sm text-muted-foreground">Não há placas em estoque. Cadastre um lote em “Cadastrar placas”.</p>
             )}
           </Cartao>
 
-          <Cartao titulo="Toques nos últimos 30 dias">
+          <Cartao titulo="Leituras nos últimos 30 dias">
             {dias.length === 0 ? (
-              <p className="text-sm text-muted-foreground">Nenhum toque registrado ainda.</p>
+              <p className="text-sm text-muted-foreground">Nenhuma leitura registrada ainda.</p>
             ) : (
               <ul className="grid gap-1.5">
                 {dias.map((d) => (
                   <li key={d.dia} className="flex items-center gap-3 text-sm">
                     <span className="w-12 font-mono text-xs text-muted-foreground">{d.dia}</span>
-                    <span className="h-3 rounded bg-foreground/70" style={{ width: `${(d.total / maior) * 100}%`, minWidth: 6 }} />
+                    <span className="h-3 rounded bg-status/70" style={{ width: `${(d.total / maior) * 100}%`, minWidth: 6 }} />
                     <span className="w-8 text-right">{d.total}</span>
                   </li>
                 ))}
@@ -141,11 +141,11 @@ export default async function ClientePage({
                 <input type="checkbox" name="confirmo" value="sim" />
                 Confirmo: excluir este cliente. As placas voltam para o estoque.
               </label>
-              <button className="w-fit rounded-lg border border-red-300 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Excluir cliente</button>
+              <button className={botaoPerigo}>Excluir cliente</button>
             </form>
           </Cartao>
         </>
       )}
-    </main>
+    </div>
   );
 }

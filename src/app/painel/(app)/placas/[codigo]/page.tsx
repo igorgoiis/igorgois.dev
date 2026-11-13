@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import QRCode from "qrcode";
 import { db, type Placa } from "@/lib/db";
 import { exigirLogin } from "@/lib/painel-auth";
-import { limparPlaca, salvarPlaca } from "../../actions";
-import { Aviso, Campo, Cartao, Status, botao, botaoLeve, entrada, quando } from "../../ui";
+import { comBanco } from "@/lib/painel-banco";
+import { limparPlaca, salvarPlaca } from "@/app/painel/actions";
+import { Aviso, Campo, Cartao, Status, botao, botaoLeve, botaoPerigo, entrada, quando } from "@/app/painel/ui";
 import { CamposPlaca, CopiarLink } from "./campos";
 
 type Detalhe = Placa & { ativada_em: string | null; destino: string | null; total: number; mes: number; ultimo: string | null };
@@ -22,7 +23,7 @@ export default async function PlacaPage({
   const { ok, erro } = await searchParams;
   const sql = db();
 
-  const [[placa], clientes] = (await Promise.all([
+  const [[placa], clientes] = (await comBanco(() => Promise.all([
     sql`select p.*,
           coalesce(p.destino_link, case when coalesce(p.destino_tipo, 'avaliacao') = 'avaliacao' then c.link_avaliacao end) as destino,
           (select count(*) from toques t where t.codigo = p.codigo)::int as total,
@@ -30,22 +31,22 @@ export default async function PlacaPage({
           (select max(criado_em) from toques t where t.codigo = p.codigo) as ultimo
         from placas p left join clientes c on c.id = p.cliente_id where p.codigo = ${codigo}`,
     sql`select id, nome from clientes order by nome`,
-  ])) as [Detalhe[], { id: number; nome: string }[]];
+  ]))) as [Detalhe[], { id: number; nome: string }[]];
   if (!placa) notFound();
 
   const link = `https://igorgois.dev/r/${placa.codigo}`;
   const qr = await QRCode.toString(link, { type: "svg", margin: 2, errorCorrectionLevel: "M" });
 
   return (
-    <main className="mx-auto flex max-w-2xl flex-col gap-6 px-4 py-8">
-      <Link href="/painel" className="w-fit text-sm text-muted-foreground hover:underline">← Voltar ao painel</Link>
+    <div className="flex max-w-2xl flex-col gap-6">
+      <Link href="/painel/placas" className="w-fit text-sm text-muted-foreground hover:underline">← Minhas placas</Link>
       <div className="flex flex-wrap items-center gap-3">
         <h1 className="font-mono text-2xl font-semibold">{placa.codigo}</h1>
         <Status ativa={placa.ativa} temCliente={!!placa.cliente_id} temDestino={!!placa.destino} />
       </div>
       <Aviso ok={ok} erro={erro} />
       {placa.cliente_id && !placa.destino && (
-        <p className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+        <p className="rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-sm text-amber-300">
           Esta placa tem cliente, mas não tem destino. Preencha o link abaixo ou o link de avaliação no cadastro do cliente.
         </p>
       )}
@@ -111,10 +112,10 @@ export default async function PlacaPage({
               <input type="checkbox" name="confirmo" value="sim" />
               Confirmo: limpar a placa {placa.codigo}.
             </label>
-            <button className="w-fit rounded-lg border border-red-300 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Limpar placa</button>
+            <button className={botaoPerigo}>Limpar placa</button>
           </form>
         </Cartao>
       )}
-    </main>
+    </div>
   );
 }

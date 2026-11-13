@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function PainelLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="dark">
       <body className="min-h-screen bg-background text-foreground">{children}</body>
     </html>
   );

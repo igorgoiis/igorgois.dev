@@ -56,7 +56,7 @@ export async function excluirCliente(f: FormData) {
   if (texto(f, "confirmo") !== "sim") comErro(`/painel/clientes/${id}`, "Marque a confirmação para excluir.");
   // As placas do cliente voltam para o estoque (on delete set null).
   await db()`delete from clientes where id = ${id}`;
-  redirect("/painel?ok=excluido");
+  redirect("/painel/clientes?ok=excluido");
 }
 
 export async function ligarPlaca(f: FormData) {
@@ -77,7 +77,7 @@ export async function desligarPlaca(f: FormData) {
   await db()`update placas set cliente_id = null, ativada_em = null,
       nome = null, destino_tipo = null, destino_link = null, valor_venda = null, forma_pagamento = null
     where codigo = ${codigo}`;
-  redirect(`${texto(f, "voltar") || "/painel"}?ok=placa`);
+  redirect(`${texto(f, "voltar") || "/painel/placas"}?ok=placa`);
 }
 
 export async function salvarPlaca(f: FormData) {
@@ -121,7 +121,7 @@ export async function salvarPlaca(f: FormData) {
 export async function alternarPlaca(f: FormData) {
   await exigirLogin();
   await db()`update placas set ativa = not ativa where codigo = ${texto(f, "codigo")}`;
-  redirect("/painel?ok=placa");
+  redirect("/painel/placas?ok=placa");
 }
 
 export async function limparPlaca(f: FormData) {
@@ -144,14 +144,14 @@ export async function criarLote(f: FormData) {
   const prefixo = texto(f, "prefixo").toUpperCase();
   const de = Number(texto(f, "de"));
   const ate = Number(texto(f, "ate"));
-  if (!/^[A-Z]{1,3}$/.test(prefixo)) comErro("/painel", "O prefixo deve ter de 1 a 3 letras.");
+  if (!/^[A-Z]{1,3}$/.test(prefixo)) comErro("/painel/lotes", "O prefixo deve ter de 1 a 3 letras.");
   if (!Number.isInteger(de) || !Number.isInteger(ate) || de < 1 || ate > 999 || ate < de || ate - de > 499) {
-    comErro("/painel", "Use números de 1 a 999, no máximo 500 placas por lote.");
+    comErro("/painel/lotes", "Use números de 1 a 999, no máximo 500 placas por lote.");
   }
   await db()`insert into placas (codigo)
     select ${prefixo} || lpad(n::text, 3, '0') from generate_series(${de}::int, ${ate}::int) as n
     on conflict (codigo) do nothing`;
-  redirect("/painel?ok=lote");
+  redirect("/painel/lotes?ok=lote");
 }
 
 export async function prepararBanco() {
