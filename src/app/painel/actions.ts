@@ -3,20 +3,22 @@
 import { redirect } from "next/navigation";
 import { db, linkValido } from "@/lib/db";
 import { SCHEMA } from "@/lib/schema";
-import { abrirSessao, exigirLogin, fecharSessao, senhaConfere } from "@/lib/painel-auth";
+import { PAGAMENTOS, ehDestino, montarDestino } from "@/lib/destinos";
+import { abrirSessao, exigirLogin, fecharSessao, senhaConfere, voltarSeguro } from "@/lib/painel-auth";
 
 const texto = (f: FormData, campo: string) => String(f.get(campo) ?? "").trim();
 const opcional = (f: FormData, campo: string) => texto(f, campo) || null;
 const comErro = (caminho: string, msg: string) => redirect(`${caminho}?erro=${encodeURIComponent(msg)}`);
 
 export async function entrar(f: FormData) {
+  const voltar = voltarSeguro(texto(f, "voltar"));
   if (!senhaConfere(texto(f, "senha"))) {
     // Atraso simples contra tentativas em sequência.
     await new Promise((r) => setTimeout(r, 1000));
-    redirect("/painel/entrar?erro=1");
+    redirect(`/painel/entrar?erro=1${voltar ? `&voltar=${encodeURIComponent(voltar)}` : ""}`);
   }
   await abrirSessao();
-  redirect("/painel");
+  redirect(voltar ?? "/painel");
 }
 
 export async function sair() {
@@ -29,9 +31,10 @@ export async function salvarCliente(f: FormData) {
   const id = texto(f, "id");
   const voltar = `/painel/clientes/${id || "novo"}`;
   const nome = texto(f, "nome");
-  const link = linkValido(texto(f, "link_avaliacao"));
+  const digitado = texto(f, "link_avaliacao");
+  const link = digitado ? linkValido(digitado) : null;
   if (!nome) comErro(voltar, "Informe o nome do cliente.");
-  if (!link) comErro(voltar, "O link de avaliação precisa começar com https://");
+  if (digitado && !link) comErro(voltar, "O link de avaliação precisa começar com https://");
 
   const sql = db();
   const dados = [nome, opcional(f, "whatsapp"), opcional(f, "cidade"), link, opcional(f, "observacoes")] as const;
@@ -61,7 +64,9 @@ export async function ligarPlaca(f: FormData) {
   const clienteId = Number(texto(f, "cliente_id"));
   const codigo = texto(f, "codigo").toUpperCase();
   if (!codigo) comErro(`/painel/clientes/${clienteId}`, "Escolha uma placa do estoque.");
-  await db()`update placas set cliente_id = ${clienteId}, ativa = true, ativada_em = now()
+  // A placa entra sem herdar nome, destino nem venda de um dono anterior.
+  await db()`update placas set cliente_id = ${clienteId}, ativa = true, ativada_em = now(),
+      nome = null, destino_tipo = null, destino_link = null, valor_venda = null, forma_pagamento = null
     where codigo = ${codigo} and cliente_id is null`;
   redirect(`/painel/clientes/${clienteId}?ok=placa`);
 }
@@ -69,20 +74,69 @@ export async function ligarPlaca(f: FormData) {
 export async function desligarPlaca(f: FormData) {
   await exigirLogin();
   const codigo = texto(f, "codigo");
-  await db()`update placas set cliente_id = null, ativada_em = null where codigo = ${codigo}`;
+  await db()`update placas set cliente_id = null, ativada_em = null,
+      nome = null, destino_tipo = null, destino_link = null, valor_venda = null, forma_pagamento = null
+    where codigo = ${codigo}`;
   redirect(`${texto(f, "voltar") || "/painel"}?ok=placa`);
 }
 
 export async function salvarPlaca(f: FormData) {
   await exigirLogin();
-  const codigo = texto(f, "codigo");
-  const clienteId = texto(f, "cliente_id") ? Number(texto(f, "cliente_id")) : null;
-  const ativa = f.get("ativa") === "on";
-  await db()`update placas set
+  const codigo = texto(f, "codigo").toUpperCase();
+  const voltar = `/painel/placas/${codigo}`;
+  const escolha = texto(f, "cliente_id");
+  const novoNome = texto(f, "novo_nome");
+  const tipo = texto(f, "destino_tipo") || "avaliacao";
+  const digitado = texto(f, "destino");
+  const valorTexto = texto(f, "valor_venda").replace(/\./g, "").replace(",", ".");
+  const valor = valorTexto ? Number(valorTexto) : null;
+  const pagamento = opcional(f, "forma_pagamento");
+
+  if (!ehDestino(tipo)) return comErro(voltar, "Escolha para onde a placa deve levar.");
+  if (escolha === "novo" && !novoNome) comErro(voltar, "Informe o nome do novo cliente.");
+  if (valor !== null && (!Number.isFinite(valor) || valor < 0 || valor > 99999999)) comErro(voltar, "O valor da venda não é um número válido.");
+  if (pagamento && !(PAGAMENTOS as readonly string[]).includes(pagamento)) comErro(voltar, "Forma de pagamento inválida.");
+  const link = montarDestino(tipo, digitado);
+  if (digitado && !link) comErro(voltar, "Não consegui montar o link de destino. Confira o que foi digitado (só links https).");
+
+  const sql = db();
+  let clienteId: number | null = null;
+  if (escolha === "novo") {
+    const [novo] = await sql`insert into clientes (nome, whatsapp) values (${novoNome}, ${opcional(f, "novo_whatsapp")}) returning id`;
+    clienteId = novo.id;
+  } else if (escolha) {
+    clienteId = Number(escolha);
+    if (!Number.isInteger(clienteId)) comErro(voltar, "Cliente inválido.");
+  }
+
+  await sql`update placas set
       ativada_em = case when cliente_id is distinct from ${clienteId} then (case when ${clienteId}::int is null then null else now() end) else ativada_em end,
-      cliente_id = ${clienteId}, ativa = ${ativa}, observacoes = ${opcional(f, "observacoes")}
+      cliente_id = ${clienteId}, ativa = ${f.get("ativa") === "on"}, observacoes = ${opcional(f, "observacoes")},
+      nome = ${opcional(f, "nome")}, destino_tipo = ${tipo}, destino_link = ${link},
+      valor_venda = ${valor}, forma_pagamento = ${pagamento}
     where codigo = ${codigo}`;
-  redirect(`/painel/placas/${codigo}?ok=salvo`);
+  redirect(`${voltar}?ok=salvo`);
+}
+
+export async function alternarPlaca(f: FormData) {
+  await exigirLogin();
+  await db()`update placas set ativa = not ativa where codigo = ${texto(f, "codigo")}`;
+  redirect("/painel?ok=placa");
+}
+
+export async function limparPlaca(f: FormData) {
+  await exigirLogin();
+  const codigo = texto(f, "codigo");
+  if (texto(f, "confirmo") !== "sim") comErro(`/painel/placas/${codigo}`, "Marque a confirmação para limpar a placa.");
+  const sql = db();
+  // O código impresso continua valendo: a placa volta ao estoque em branco.
+  await sql.transaction([
+    sql`delete from toques where codigo = ${codigo}`,
+    sql`update placas set cliente_id = null, ativa = true, ativada_em = null, observacoes = null,
+          nome = null, destino_tipo = null, destino_link = null, valor_venda = null, forma_pagamento = null
+        where codigo = ${codigo}`,
+  ]);
+  redirect(`/painel/placas/${codigo}?ok=limpa`);
 }
 
 export async function criarLote(f: FormData) {

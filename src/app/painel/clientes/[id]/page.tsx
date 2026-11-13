@@ -63,18 +63,18 @@ export default async function ClientePage({
             <Campo rotulo="Cidade"><input name="cidade" placeholder="Petrolina" defaultValue={cliente?.cidade ?? ""} className={entrada} /></Campo>
           </div>
           <Campo
-            rotulo="Link de avaliação no Google *"
-            dica={<>No Perfil da Empresa no Google: <b>Pedir avaliações</b> → copiar o link (começa com https://g.page/r/…).</>}
+            rotulo="Link de avaliação no Google"
+            dica={<>No Perfil da Empresa no Google: <b>Pedir avaliações</b> → copiar o link (começa com https://g.page/r/…). É o destino padrão das placas de avaliação deste cliente.</>}
           >
-            <input name="link_avaliacao" type="url" required placeholder="https://g.page/r/..." defaultValue={cliente?.link_avaliacao} className={entrada} />
+            <input name="link_avaliacao" type="url" placeholder="https://g.page/r/..." defaultValue={cliente?.link_avaliacao ?? ""} className={entrada} />
           </Campo>
-          {cliente && !pareceGoogle(cliente.link_avaliacao) && (
+          {cliente?.link_avaliacao && !pareceGoogle(cliente.link_avaliacao) && (
             <p className="text-sm text-amber-700">Atenção: este link não parece ser do Google. Confira antes de entregar a placa.</p>
           )}
           <Campo rotulo="Observações"><textarea name="observacoes" rows={3} defaultValue={cliente?.observacoes ?? ""} className={entrada} /></Campo>
           <div className="flex flex-wrap gap-3">
             <button className={botao}>Salvar</button>
-            {cliente && <a href={cliente.link_avaliacao} target="_blank" rel="noreferrer" className={botaoLeve}>Testar link</a>}
+            {cliente?.link_avaliacao && <a href={cliente.link_avaliacao} target="_blank" rel="noreferrer" className={botaoLeve}>Testar link</a>}
             {wa && <a href={wa} target="_blank" rel="noreferrer" className={botaoLeve}>Abrir WhatsApp</a>}
           </div>
         </form>

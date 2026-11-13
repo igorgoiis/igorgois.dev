@@ -24,9 +24,14 @@ export async function logado() {
 }
 
 /** Chamar no começo de toda página e de toda server action do painel. */
-export async function exigirLogin() {
-  if (!(await logado())) redirect("/painel/entrar");
+export async function exigirLogin(voltar?: string) {
+  if (await logado()) return;
+  redirect(voltar ? `/painel/entrar?voltar=${encodeURIComponent(voltar)}` : "/painel/entrar");
 }
+
+/** Só caminhos do próprio painel, para o login não virar redirecionamento aberto. */
+export const voltarSeguro = (valor: string | undefined) =>
+  valor && /^\/painel\/[A-Za-z0-9/_-]*$/.test(valor) ? valor : null;
 
 export function senhaConfere(senha: string) {
   const certa = process.env.PAINEL_SENHA;

@@ -26,6 +26,13 @@ export const SCHEMA = [
   cliente_id integer references clientes(id) on delete set null,
   criado_em timestamptz not null default now()
 )`,
+  // Destino por placa (Google, Instagram, WhatsApp, site) e dados da venda.
+  `alter table clientes alter column link_avaliacao drop not null`,
+  `alter table placas add column if not exists nome text`,
+  `alter table placas add column if not exists destino_tipo text`,
+  `alter table placas add column if not exists destino_link text`,
+  `alter table placas add column if not exists valor_venda numeric(10,2)`,
+  `alter table placas add column if not exists forma_pagamento text`,
   `create index if not exists toques_codigo_idx on toques (codigo, criado_em)`,
   `create index if not exists toques_cliente_idx on toques (cliente_id, criado_em)`,
   `insert into placas (codigo)

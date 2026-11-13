@@ -14,9 +14,10 @@ export const linkWhatsapp = (numero: string | null) => {
 const MENSAGENS: Record<string, string> = {
   salvo: "Salvo.",
   placa: "Placa atualizada.",
+  limpa: "Placa limpa. Ela voltou para o estoque, em branco.",
   lote: "Lote de placas criado.",
   excluido: "Cliente excluído. As placas dele voltaram para o estoque.",
-  banco: "Banco preparado: tabelas criadas e placas A001 a A020 cadastradas.",
+  banco: "Banco preparado e atualizado.",
 };
 
 export function Aviso({ ok, erro }: { ok?: string; erro?: string }) {
@@ -51,11 +52,15 @@ export const entrada = "w-full rounded-lg border border-border bg-background px-
 export const botao = "inline-flex items-center justify-center rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background hover:opacity-90";
 export const botaoLeve = "inline-flex items-center justify-center rounded-lg border border-border px-3 py-1.5 text-sm hover:bg-muted";
 
-export function Status({ ativa, temCliente }: { ativa: boolean; temCliente: boolean }) {
+export const reais = (valor: number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(valor);
+
+export function Status({ ativa, temCliente, temDestino = true }: { ativa: boolean; temCliente: boolean; temDestino?: boolean }) {
   const [rotulo, cor] = !temCliente
     ? ["Em estoque", "bg-muted text-muted-foreground"]
-    : ativa
-      ? ["Ativa", "bg-green-100 text-green-800"]
-      : ["Pausada", "bg-amber-100 text-amber-800"];
+    : !temDestino
+      ? ["Sem destino", "bg-red-100 text-red-800"]
+      : ativa
+        ? ["Ativa", "bg-green-100 text-green-800"]
+        : ["Pausada", "bg-amber-100 text-amber-800"];
   return <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${cor}`}>{rotulo}</span>;
 }
